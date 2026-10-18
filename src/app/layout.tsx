@@ -14,6 +14,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hafizhamdani.vercel.app"),
+  alternates: { canonical: "/" },
   title: "Hafiz Hamdani | Software QA Engineer",
   description:
     "Portfolio of Hafiz (Dani) Hamdani, a software QA engineer in Jakarta working on mobile banking, and building dashboards and trackers on the side.",
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
     description:
       "QA engineer in Jakarta working on mobile banking, with case studies in API testing, Playwright E2E and live data apps.",
     type: "website",
-    url: "https://portfolio-rust-iota-p4cmnje6xm.vercel.app/",
+    url: "https://hafizhamdani.vercel.app/",
     siteName: "Hafiz Hamdani",
   },
   twitter: {

@@ -3,7 +3,7 @@
 Personal portfolio site: selected QA experience and side projects, with a
 focus on motion and typography.
 
-**Live:** https://portfolio-rust-iota-p4cmnje6xm.vercel.app/
+**Live:** https://hafizhamdani.vercel.app/
 
 ## Stack
 
