@@ -113,6 +113,7 @@ export const projects: Project[] = [
     live: "https://karhutla-watch.vercel.app",
     repo: "https://github.com/hyderoo/karhutla-watch",
     preview: "/previews/karhutla.png",
+    ci: { repo: "hyderoo/karhutla-watch", workflow: "e2e" },
   },
   {
     index: "04",
@@ -124,6 +125,7 @@ export const projects: Project[] = [
     live: "https://quakewatch-one.vercel.app",
     repo: "https://github.com/hyderoo/quakewatch",
     preview: "/previews/quake.png",
+    ci: { repo: "hyderoo/quakewatch", workflow: "e2e" },
   },
   {
     index: "05",
@@ -140,9 +142,10 @@ export const projects: Project[] = [
     title: "ShelfSeeker",
     year: "2023",
     description:
-      "University project turned portfolio piece: a book-discovery app on the OpenLibrary API with a reading list, barcode scan and similar-book suggestions. Redesigned and extended in 2026.",
+      "University project turned portfolio piece: a book-discovery app on the OpenLibrary API with a reading list, barcode scan and similar-book suggestions. Redesigned and extended in 2026. The badge here is live from the ShelfSeeker E2E suite (project 05), which tests this deployed app.",
     tags: ["React", "Firebase", "OpenLibrary"],
     repo: "https://github.com/hyderoo/ShelfSeeker",
+    ci: { repo: "hyderoo/ShelfSeeker-e2e", workflow: "e2e" },
   },
   {
     index: "07",
