@@ -148,7 +148,11 @@ export default function BugHunt() {
                 </dl>
                 <p className="mt-6 text-xs text-muted">
                   This is how I like bug reports: reproducible steps, expected vs actual, honest severity.
-                  Stored only in your browser.
+                  Stored only in your browser. Want the real thing?{" "}
+                  <a href="/break-this-app" className="link-underline text-accent">
+                    Break this app
+                  </a>
+                  .
                 </p>
                 <div className="mt-7 text-right">
                   <button

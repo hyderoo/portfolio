@@ -231,6 +231,10 @@ export default function SampleWorkPage() {
           <Link href="/#work" className="link-underline hover:text-ink">
             &larr; Back to selected work
           </Link>
+          <span className="mx-3 text-line">·</span>
+          <Link href="/break-this-app" className="link-underline hover:text-ink">
+            Try it yourself: break this app &rarr;
+          </Link>
         </p>
       </div>
     </main>
