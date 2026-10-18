@@ -128,8 +128,8 @@ const c: Record<string, string> = {
     "ライブフィードのスキーマが実際に変わった場合は、同期の実行時にしか検知できません。同期のテストは、実際のAPIではなく、記録したフィクスチャで動作を固定しています。",
   "The tests themselves": "テストコード本体",
   // risk map
-  "The map shows where the 41 tests sit: cell size and intensity follow the number of tests mapped to each risk area. Select a cell to open its coverage.":
-    "このマップは41件のテストの配分を示しています。セルの大きさと濃さは、各リスク領域に割り当てたテスト数に比例します。セルを選ぶと、そのカバー範囲が開きます。",
+  "The map shows where the 41 tests sit: cell intensity and the number show how many tests are mapped to each risk area. Select a cell to open its coverage.":
+    "このマップは41件のテストの配分を示しています。セルの濃さと数字は、各リスク領域に割り当てたテスト数を表します。セルを選ぶと、そのカバー範囲が開きます。",
   "Risk areas by test coverage": "テストカバレッジ別のリスク領域",
   "{name}, {count} tests": "{name}、{count}件のテスト",
   "{count} tests": "{count}件のテスト",
