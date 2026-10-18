@@ -4,10 +4,13 @@ import { useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect } from "react";
 import { Float } from "@react-three/drei";
-import { useReducedMotion } from "motion/react";
 import * as THREE from "three";
 
-function ParticleGlobe({ reduced }: { reduced: boolean }) {
+// This scene only mounts when Hero has confirmed a hardware-accelerated GL
+// context and no reduced-motion preference; software rasterizers and reduced
+// motion get a pre-rendered still instead, so this file can assume a real GPU.
+
+function ParticleGlobe() {
   const group = useRef<THREE.Group>(null);
   const pointer = useRef({ x: 0, y: 0 });
 
@@ -19,7 +22,7 @@ function ParticleGlobe({ reduced }: { reduced: boolean }) {
   const wireGeometry = useMemo(() => new THREE.IcosahedronGeometry(2.36, 1), []);
 
   useFrame((state, delta) => {
-    if (reduced || !group.current) return;
+    if (!group.current) return;
     group.current.rotation.y += delta * 0.07;
     group.current.rotation.x += delta * 0.02;
     pointer.current.x = state.pointer.x;
@@ -29,7 +32,7 @@ function ParticleGlobe({ reduced }: { reduced: boolean }) {
   });
 
   return (
-    <Float speed={reduced ? 0 : 1.1} rotationIntensity={reduced ? 0 : 0.35} floatIntensity={reduced ? 0 : 0.9}>
+    <Float speed={1.1} rotationIntensity={0.35} floatIntensity={0.9}>
       <group ref={group} rotation={[0.35, 0.4, 0]}>
         <points geometry={pointsGeometry}>
           <pointsMaterial
@@ -59,37 +62,9 @@ function CameraRig() {
   return null;
 }
 
-function isSoftwareGL(): boolean {
-  try {
-    const c = document.createElement("canvas");
-    const gl = c.getContext("webgl");
-    if (!gl) return true;
-    const ext = gl.getExtension("WEBGL_debug_renderer_info");
-    const renderer = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : "";
-    return /swiftshader|llvmpipe|softpipe|software/i.test(renderer);
-  } catch {
-    return false;
-  }
-}
-
-function SlowTicker() {
-  const invalidate = useThree((s) => s.invalidate);
-  useEffect(() => {
-    const i = setInterval(() => invalidate(), 250);
-    return () => clearInterval(i);
-  }, [invalidate]);
-  return null;
-}
-
 export default function HeroScene() {
-  const reduced = useReducedMotion() ?? false;
   const host = useRef<HTMLDivElement>(null);
   const [onScreen, setOnScreen] = useState(true);
-  const [softGL, setSoftGL] = useState(false);
-
-  useEffect(() => {
-    setSoftGL(isSoftwareGL());
-  }, []);
 
   useEffect(() => {
     const el = host.current;
@@ -107,13 +82,12 @@ export default function HeroScene() {
       <Canvas
         className="!absolute inset-0"
         camera={{ position: [0, 0, 6.2], fov: 42 }}
-        dpr={softGL ? 1 : [1, 1.75]}
-        frameloop={reduced || !onScreen ? "never" : softGL ? "demand" : "always"}
-        gl={{ antialias: !softGL, alpha: true, powerPreference: "low-power" }}
+        dpr={[1, 1.75]}
+        frameloop={onScreen ? "always" : "never"}
+        gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
       >
-        {softGL && !reduced && onScreen && <SlowTicker />}
         <CameraRig />
-        <ParticleGlobe reduced={reduced} />
+        <ParticleGlobe />
       </Canvas>
     </div>
   );

@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { SplitChars } from "../Reveal";
 import { profile } from "@/lib/data";
 import { T } from "@/lib/lang";
@@ -12,8 +12,27 @@ const HERO_COPY =
 
 const HeroScene = dynamic(() => import("../HeroScene"), { ssr: false });
 
+// Software rasterizers (SwiftShader, llvmpipe) turn the WebGL orb into seconds
+// of main-thread work for a slideshow. Those clients get a pre-rendered still
+// of the orb instead: same look, same moment, no three.js download and no
+// render loop. Real GPUs always get the live scene.
+function isSoftwareGL(): boolean {
+  try {
+    const c = document.createElement("canvas");
+    const gl = c.getContext("webgl");
+    if (!gl) return true;
+    const ext = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : "";
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return !renderer || /swiftshader|llvmpipe|softpipe|software/i.test(renderer);
+  } catch {
+    return true;
+  }
+}
+
 export default function Hero({ started }: { started: boolean }) {
-  const [sceneReady, setSceneReady] = useState(false);
+  const reduced = useReducedMotion() ?? false;
+  const [scene, setScene] = useState<"pending" | "webgl" | "still">("pending");
   // Hero text starts its reveal as soon as React is up, not after the preloader
   // lifts. The preloader is opaque while it counts, so the choreography looks
   // identical, but the copy paints about a second earlier (better LCP).
@@ -35,7 +54,7 @@ export default function Hero({ started }: { started: boolean }) {
     // main thread first.
     let idleId: number | undefined;
     const t = setTimeout(() => {
-      const mount = () => setSceneReady(true);
+      const mount = () => setScene(reduced || isSoftwareGL() ? "still" : "webgl");
       if (window.requestIdleCallback) {
         idleId = window.requestIdleCallback(mount, { timeout: 1200 });
       } else {
@@ -46,7 +65,7 @@ export default function Hero({ started }: { started: boolean }) {
       clearTimeout(t);
       if (idleId !== undefined) window.cancelIdleCallback(idleId);
     };
-  }, [started]);
+  }, [started, reduced]);
 
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-between overflow-hidden">
@@ -56,7 +75,21 @@ export default function Hero({ started }: { started: boolean }) {
         animate={started ? { opacity: 0.9 } : {}}
         transition={{ duration: 1.2 }}
       >
-        {sceneReady && <HeroScene />}
+        {scene === "webgl" && <HeroScene />}
+        {scene === "still" && (
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/orb-still-mobile.webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/orb-still.webp"
+              alt=""
+              aria-hidden
+              fetchPriority="low"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </picture>
+        )}
       </motion.div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/30 via-transparent to-bg" />
 
