@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -36,7 +37,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${spaceGrotesk.variable}`}>
-      <body className="grain">{children}</body>
+      <body className="grain">
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

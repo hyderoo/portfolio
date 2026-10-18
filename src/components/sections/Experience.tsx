@@ -1,16 +1,20 @@
+"use client";
+
+import { useLang } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import { FadeUp } from "../Reveal";
 import { experience } from "@/lib/data";
 
 export default function Experience() {
+  const { tx } = useLang();
   return (
     <section id="experience" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
-      <SectionHeading index="02" label="Experience" title="Where I've tested." />
+      <SectionHeading index="02" label={tx("sh.experience.label", "Experience")} title={tx("sh.experience.title", "Where I've tested.")} />
       <div className="hairline-t">
         {experience.map((job, i) => (
           <FadeUp key={job.role} delay={i * 0.05}>
             <article className="group grid gap-4 border-b border-line py-10 transition-colors duration-500 hover:bg-surface md:grid-cols-12 md:gap-8 md:px-4">
-              <p className="text-sm text-muted md:col-span-2">{job.period}</p>
+              <p className="text-sm text-muted md:col-span-2">{tx(`exp.${i}.period`, job.period)}</p>
               <div className="flex items-start gap-4 md:col-span-4">
                 <span className="mt-1 flex h-12 w-16 shrink-0 items-center justify-start">
                   {job.logo ? (
@@ -29,12 +33,12 @@ export default function Experience() {
                   )}
                 </span>
                 <div>
-                  <h3 className="font-display text-2xl leading-tight md:text-3xl">{job.role}</h3>
+                  <h3 className="font-display text-2xl leading-tight md:text-3xl">{tx(`exp.${i}.role`, job.role)}</h3>
                   <p className="mt-2 text-sm text-accent">{job.org}</p>
                 </div>
               </div>
               <div className="md:col-span-6">
-                <p className="max-w-xl leading-relaxed text-muted">{job.summary}</p>
+                <p className="max-w-xl leading-relaxed text-muted">{tx(`exp.${i}.summary`, job.summary)}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {job.tags.map((t) => (
                     <li

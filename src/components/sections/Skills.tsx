@@ -1,16 +1,20 @@
+"use client";
+
+import { useLang } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import { FadeUp } from "../Reveal";
 import { skillGroups, credentials, education } from "@/lib/data";
 
 export default function Skills() {
+  const { tx } = useLang();
   return (
     <section id="skills" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
-      <SectionHeading index="05" label="Toolbox" title="What I test with." />
+      <SectionHeading index="05" label={tx("sh.skills.label", "Toolbox")} title={tx("sh.skills.title", "What I test with.")} />
       <div className="grid gap-14 md:grid-cols-2">
         <div className="space-y-10">
           {skillGroups.map((group, gi) => (
             <FadeUp key={group.title} delay={gi * 0.06}>
-              <h3 className="mb-4 text-[11px] uppercase tracking-[0.25em] text-accent">{group.title}</h3>
+              <h3 className="mb-4 text-[11px] uppercase tracking-[0.25em] text-accent">{tx(`sg.${gi}.title`, group.title)}</h3>
               <ul className="flex flex-wrap gap-2">
                 {group.skills.map((s) => (
                   <li key={s.name} className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-ink/85">
@@ -26,26 +30,27 @@ export default function Skills() {
           ))}
           <FadeUp delay={0.15}>
             <p className="max-w-md text-sm leading-relaxed text-muted">
-              Honest note: my automation skills come from courses and side
-              projects, not production ownership — yet. That&apos;s the gap
-              I&apos;m closing on purpose.
+              {tx(
+                "skills.honest",
+                "Honest note: my automation skills come from courses and side projects, not production ownership — yet. That's the gap I'm closing on purpose."
+              )}
             </p>
           </FadeUp>
         </div>
         <div>
           <FadeUp>
-            <h3 className="mb-4 text-[11px] uppercase tracking-[0.25em] text-accent">Credentials</h3>
+            <h3 className="mb-4 text-[11px] uppercase tracking-[0.25em] text-accent">{tx("skills.credentials", "Credentials")}</h3>
             <ul className="hairline-t">
-              {credentials.map((c) => (
+              {credentials.map((c, ci) => (
                 <li key={c.name} className="flex items-baseline justify-between gap-6 border-b border-line py-4">
                   <span className="font-display text-lg">{c.name}</span>
-                  <span className="text-right text-sm text-muted">{c.detail}</span>
+                  <span className="text-right text-sm text-muted">{tx(`cred.${ci}.detail`, c.detail)}</span>
                 </li>
               ))}
             </ul>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <h3 className="mb-4 mt-12 text-[11px] uppercase tracking-[0.25em] text-accent">Education</h3>
+            <h3 className="mb-4 mt-12 text-[11px] uppercase tracking-[0.25em] text-accent">{tx("skills.education", "Education")}</h3>
             <div className="flex items-start gap-4 border border-line p-6">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center">
                 {education.logo ? (
@@ -63,8 +68,8 @@ export default function Skills() {
               </span>
               <div>
               <p className="font-display text-xl">{education.school}</p>
-              <p className="mt-1 text-ink/85">{education.degree}</p>
-              <p className="mt-2 text-sm text-muted">{education.detail}</p>
+              <p className="mt-1 text-ink/85">{tx("edu.degree", education.degree)}</p>
+              <p className="mt-2 text-sm text-muted">{tx("edu.detail", education.detail)}</p>
               </div>
             </div>
           </FadeUp>

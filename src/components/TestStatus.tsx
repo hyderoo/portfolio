@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang } from "@/lib/i18n";
 
 type RunInfo = { conclusion: string; updatedAt: string; url: string };
 
@@ -11,6 +12,7 @@ type RunInfo = { conclusion: string; updatedAt: string; url: string };
  */
 export default function TestStatus({ repo, workflow }: { repo: string; workflow: string }) {
   const [run, setRun] = useState<RunInfo | null>(null);
+  const { tx } = useLang();
 
   useEffect(() => {
     const key = `ci:${repo}:${workflow}`;
@@ -51,7 +53,7 @@ export default function TestStatus({ repo, workflow }: { repo: string; workflow:
     day: "numeric",
     month: "short",
   });
-  const label = ok ? "Tests passing" : `Tests ${run.conclusion}`;
+  const label = ok ? tx("ts.passing", "Tests passing") : tx("ts.failing", "Tests failing");
 
   return (
     <a
