@@ -1,23 +1,34 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { scrollTo } from "./SmoothScroll";
 import { profile } from "@/lib/data";
-import { useLang } from "@/lib/i18n";
-import LangSwitcher from "./LangSwitcher";
 
 const links = [
-  { key: "nav.about", label: "About", target: "#about" },
-  { key: "nav.experience", label: "Experience", target: "#experience" },
-  { key: "nav.work", label: "Work", target: "#work" },
-  { key: "nav.contact", label: "Contact", target: "#contact" },
+  { label: "About", target: "#about" },
+  { label: "Experience", target: "#experience" },
+  { label: "Work", target: "#work" },
+  { label: "Contact", target: "#contact" },
 ];
 
 export default function Nav({ visible }: { visible: boolean }) {
-  const { tx } = useLang();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <motion.header
-      className="fixed inset-x-0 top-0 z-40 mix-blend-difference"
+      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
+        scrolled
+          ? "border-b border-line/60 bg-bg/80 backdrop-blur-md"
+          : "mix-blend-difference"
+      }`}
       initial={{ y: -40, opacity: 0 }}
       animate={visible ? { y: 0, opacity: 1 } : {}}
       transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -32,18 +43,15 @@ export default function Nav({ visible }: { visible: boolean }) {
         </button>
         <ul className="flex items-center gap-5 text-[11px] uppercase tracking-[0.22em] md:gap-8">
           {links.map((l) => (
-            <li key={tx(l.key, l.label)} className="hidden md:block">
+            <li key={l.label} className="hidden md:block">
               <button className="link-underline" onClick={() => scrollTo(l.target)}>
-                {tx(l.key, l.label)}
+                {l.label}
               </button>
             </li>
           ))}
           <li>
-            <LangSwitcher />
-          </li>
-          <li>
             <a href={`mailto:${profile.email}`} className="rounded-full border border-white/60 px-4 py-1.5 transition-colors hover:bg-white hover:text-black">
-              {tx("nav.hireme", "Hire me")}
+              Hire me
             </a>
           </li>
         </ul>

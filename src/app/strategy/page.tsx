@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TestStatus from "@/components/TestStatus";
-import EnglishNote from "@/components/EnglishNote";
 
 export const metadata: Metadata = {
   title: "Test strategy: Worlds 2026 Live - Hafiz Hamdani",
@@ -118,9 +117,6 @@ export default function StrategyPage() {
           directory and CI workflow, not from memory.
         </p>
         <TestStatus repo="hyderoo/worlds-2026-live" workflow="CI" />
-        <div>
-          <EnglishNote />
-        </div>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-3">
           <div className="border border-line p-5">

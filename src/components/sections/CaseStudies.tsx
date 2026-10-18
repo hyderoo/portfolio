@@ -2,7 +2,6 @@ import SectionHeading from "./SectionHeading";
 import { FadeUp } from "../Reveal";
 import { caseStudies } from "@/lib/data";
 import TestStatus from "../TestStatus";
-import { useLang } from "@/lib/i18n";
 
 function ArrowIcon() {
   return (
@@ -13,18 +12,17 @@ function ArrowIcon() {
 }
 
 export default function CaseStudies() {
-  const { tx } = useLang();
   return (
     <section id="practice" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
-      <SectionHeading index="04" label={tx("sh.practice.label", "QA in practice")} title={tx("sh.practice.title", "How I actually test.")} />
+      <SectionHeading index="04" label="QA in practice" title="How I actually test." />
       <div className="space-y-6">
         {caseStudies.map((cs, i) => (
           <FadeUp key={cs.title} delay={Math.min(i * 0.05, 0.15)}>
             <article className="grid gap-8 border border-line bg-surface/40 p-6 transition-colors duration-500 hover:border-accent/40 md:grid-cols-12 md:p-10">
               <div className="md:col-span-4">
                 <span className="font-display text-5xl italic text-accent/80">{cs.index}</span>
-                <h3 className="mt-4 font-display text-2xl leading-tight md:text-3xl">{tx(`cs.${i}.title`, cs.title)}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted">{tx(`cs.${i}.context`, cs.context)}</p>
+                <h3 className="mt-4 font-display text-2xl leading-tight md:text-3xl">{cs.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted">{cs.context}</p>
                 {cs.ci && <TestStatus repo={cs.ci.repo} workflow={cs.ci.workflow} />}
               </div>
               <div className="md:col-span-6">
@@ -37,7 +35,7 @@ export default function CaseStudies() {
                   ))}
                 </ul>
                 <p className="mt-6 border-l-2 border-accent/60 pl-4 text-sm italic leading-relaxed text-muted">
-                  {tx(`cs.${i}.takeaway`, cs.takeaway)}
+                  {cs.takeaway}
                 </p>
               </div>
               <div className="flex flex-row gap-5 md:col-span-2 md:flex-col md:items-end md:justify-start">

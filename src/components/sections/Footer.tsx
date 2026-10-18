@@ -3,27 +3,24 @@
 import { SplitChars, FadeUp } from "../Reveal";
 import { profile } from "@/lib/data";
 import BugHunt from "../BugHunt";
-import { useLang } from "@/lib/i18n";
 
 export default function Footer() {
-  const { tx } = useLang();
   return (
     <footer id="contact" className="relative overflow-hidden px-6 pb-10 pt-28 md:px-10 md:pt-40">
       <div className="mb-6 flex items-center gap-4 text-[11px] uppercase tracking-[0.25em] text-muted">
         <span className="text-accent">06</span>
         <span className="h-px w-10 bg-line" />
-        <span>{tx("contact.label", "Contact")}</span>
+        <span>Contact</span>
       </div>
       <a href={`mailto:${profile.email}`} className="group block" data-cursor>
-        <SplitChars as="h2" text={tx("contact.h1", "LET'S BREAK")} className="font-display display-hero block" />
-        <SplitChars as="h2" text={tx("contact.h2", "SOMETHING")} className="font-display display-hero block text-outline italic transition-colors duration-500 group-hover:text-accent group-hover:[-webkit-text-stroke:0px]" />
+        <SplitChars as="h2" text="LET'S BREAK" className="font-display display-hero block" />
+        <SplitChars as="h2" text="SOMETHING" className="font-display display-hero block text-outline italic transition-colors duration-500 group-hover:text-accent group-hover:[-webkit-text-stroke:0px]" />
       </a>
       <FadeUp delay={0.2}>
         <p className="mt-8 max-w-md text-muted">
-          {tx(
-            "contact.blurb",
-            "Open to junior QA, software engineering and DevOps roles — and to conversations about testing, CI pipelines, dashboards, or why your release keeps slipping."
-          )}
+          Open to junior QA, software engineering and DevOps roles — and to
+          conversations about testing, CI pipelines, dashboards, or why your
+          release keeps slipping.
         </p>
       </FadeUp>
       <FadeUp delay={0.3}>
@@ -38,7 +35,7 @@ export default function Footer() {
         <span>© 2026 {profile.name}</span>
         <span>{profile.location} · {profile.timezone}</span>
         <span className="inline-flex items-center gap-2">
-          {tx("footer.built", "Designed & built with Next.js, Motion and Three.js")}
+          Designed &amp; built with Next.js, Motion and Three.js
           <BugHunt />
         </span>
       </div>

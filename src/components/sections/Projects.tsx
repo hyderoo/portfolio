@@ -6,7 +6,6 @@ import SectionHeading from "./SectionHeading";
 import { FadeUp } from "../Reveal";
 import { projects } from "@/lib/data";
 import TestStatus from "../TestStatus";
-import { useLang } from "@/lib/i18n";
 
 function ArrowIcon() {
   return (
@@ -17,7 +16,6 @@ function ArrowIcon() {
 }
 
 export default function Projects() {
-  const { tx } = useLang();
   const [active, setActive] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(0);
@@ -36,7 +34,7 @@ export default function Projects() {
 
   return (
     <section id="work" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
-      <SectionHeading index="03" label={tx("sh.work.label", "Selected work")} title={tx("sh.work.title", "Things I've built.")} />
+      <SectionHeading index="03" label="Selected work" title="Things I've built." />
       <div ref={containerRef} className="relative hairline-t" onMouseMove={onMove}>
         {/* floating preview, desktop only */}
         <AnimatePresence>
@@ -72,7 +70,7 @@ export default function Projects() {
                   <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted">{p.year}</p>
                   {p.ci && <TestStatus repo={p.ci.repo} workflow={p.ci.workflow} />}
                 </div>
-                <p className="max-w-md text-sm leading-relaxed text-muted md:col-span-5">{tx(`p.${i}.description`, p.description)}</p>
+                <p className="max-w-md text-sm leading-relaxed text-muted md:col-span-5">{p.description}</p>
                 <div className="flex gap-5 text-sm md:col-span-2 md:justify-end">
                   {p.live && (
                     <a href={p.live} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-ink">

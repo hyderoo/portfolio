@@ -1,6 +1,5 @@
 "use client";
 
-import { useLang } from "@/lib/i18n";
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
 import { SplitChars } from "../Reveal";
@@ -9,7 +8,6 @@ import { profile } from "@/lib/data";
 const HeroScene = dynamic(() => import("../HeroScene"), { ssr: false });
 
 export default function Hero({ started }: { started: boolean }) {
-  const { tx } = useLang();
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-between overflow-hidden">
       <motion.div
@@ -52,10 +50,9 @@ export default function Hero({ started }: { started: boolean }) {
             transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
           <p className="max-w-md text-base leading-relaxed text-muted md:text-lg">
-            {tx(
-              "hero.tagline",
-              "I break software before your users do. QA engineer working on a mobile banking app used by millions — and building things on the side so I never stop breaking interesting ones."
-            )}
+            I break software before your users do. QA engineer working on a
+            mobile banking app used by millions — and building things on the
+            side so I never stop breaking interesting ones.
           </p>
           <a
             href={profile.cv}
@@ -63,7 +60,7 @@ export default function Hero({ started }: { started: boolean }) {
             rel="noreferrer"
             className="mt-5 inline-flex items-center gap-2 rounded-full border border-ink/30 px-5 py-2 text-xs uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:border-accent hover:text-accent"
           >
-            {tx("hero.cv", "Download CV")}
+            Download CV
           </a>
           </motion.div>
           <motion.div
@@ -73,7 +70,7 @@ export default function Hero({ started }: { started: boolean }) {
             transition={{ duration: 0.8, delay: 1.1 }}
           >
             <span className="inline-block h-px w-10 bg-muted" />
-            {tx("hero.scroll", "Scroll to discover")}
+            Scroll to discover
           </motion.div>
         </div>
       </div>
