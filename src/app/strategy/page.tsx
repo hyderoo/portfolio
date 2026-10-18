@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TestStatus from "@/components/TestStatus";
+import RiskMap from "@/components/RiskMap";
 
 export const metadata: Metadata = {
   title: "Test strategy: Worlds 2026 Live | Hafiz Hamdani",
@@ -8,94 +9,7 @@ export const metadata: Metadata = {
     "How the Worlds 2026 Live tracker is tested: 41 vitest cases across sync integrity, match state, auth, roster scraping, calendar feed, pick'em, push and forms, running in CI on every push.",
 };
 
-const areas = [
-  {
-    name: "Sync integrity",
-    count: 10,
-    risk: "The app re-syncs the official lolesports feed every minute. The expensive failures are silent: stale data shown as live, or a retry storm duplicating writes.",
-    covers: [
-      "Re-syncing identical upstream data changes nothing (idempotent)",
-      "When upstream fails, cached data is kept and the error is recorded",
-      "Retries back off and give up loudly after the last attempt",
-      "A manual override is never overwritten by older upstream data, and never overwrites newer",
-      "A failing stats feed does not fail the whole sync",
-      "Missing database tables fall back to memory, then retry later",
-    ],
-  },
-  {
-    name: "Match state machine",
-    count: 8,
-    risk: "A match card that claims LIVE or FINAL at the wrong moment is the most visible lie the app can tell.",
-    covers: [
-      "Upstream states map to scheduled / live / completed correctly",
-      "inProgress is trusted near the start time, flagged as unverified hours before it",
-      "A match stuck live too long is flagged",
-      "Completed requires a decided winner; unknown states are unverified",
-    ],
-  },
-  {
-    name: "Auth and access",
-    count: 5,
-    risk: "Admin overrides and the sync endpoint are the two doors into write access.",
-    covers: [
-      "Only the configured password is accepted, and a weak configured password is refused",
-      "Sessions round-trip; tampering and expiry are rejected",
-      "The sync endpoint checks its bearer secret",
-      "Repeated failures are blocked after the limit within the window",
-    ],
-  },
-  {
-    name: "Roster data (Liquipedia)",
-    count: 5,
-    risk: "Scraped wikitext is brittle: template changes silently corrupt team pages.",
-    covers: [
-      "Starters, subs and staff are read; commented-out people are ignored",
-      "Only safe social handles are kept",
-      "Scraping is disabled without a contact and throttled to one request per tick",
-      "Prize percentages are read per placement and dollars derived",
-    ],
-  },
-  {
-    name: "Calendar feed (ICS)",
-    count: 4,
-    risk: "A bad calendar entry lands on someone's phone, not on a page I can fix.",
-    covers: [
-      "UTC times, stable UIDs, no scores in the feed",
-      "Output is deterministic and SEQUENCE bumps when upstream changes",
-      "Long lines fold to 75 octets with CRLF, per RFC",
-      "A match with one TBD side is kept and titled honestly",
-    ],
-  },
-  {
-    name: "Pick'em and groups",
-    count: 3,
-    risk: "Scoring matches that have not finished, or leaking picks early, breaks the game.",
-    covers: [
-      "Only completed matches score; TBD is ignored",
-      "Picks close at start time and stay hidden until then",
-      "Head-to-head ignores unfinished matches",
-    ],
-  },
-  {
-    name: "Push notifications",
-    count: 3,
-    risk: "A push is un-unsendable, and a score in a notification is a spoiler.",
-    covers: [
-      "Only real push services over https are allowed",
-      "Due events are found and TBD matchups skipped",
-      "Spoiler mode keeps the score out of result alerts",
-    ],
-  },
-  {
-    name: "Forms and lists",
-    count: 3,
-    risk: "Wrong ordering and wrong aggregation erode trust quietly.",
-    covers: [
-      "Lists show only completed matches, newest first, own score first",
-      "Streaks and head-to-head compute from finished matches only",
-    ],
-  },
-];
+
 
 export default function StrategyPage() {
   return (
@@ -134,27 +48,7 @@ export default function StrategyPage() {
         </div>
 
         <h2 className="mt-16 font-display text-2xl md:text-3xl">What is covered, by risk</h2>
-        <div className="mt-6 space-y-4">
-          {areas.map((a) => (
-            <details key={a.name} className="group border border-line bg-surface/40 open:border-accent/40">
-              <summary className="flex cursor-pointer items-baseline justify-between gap-4 p-5 md:p-6">
-                <span className="font-display text-xl">{a.name}</span>
-                <span className="text-xs uppercase tracking-[0.2em] text-muted">{a.count} tests</span>
-              </summary>
-              <div className="border-t border-line p-5 md:p-6">
-                <p className="text-sm italic leading-relaxed text-muted">{a.risk}</p>
-                <ul className="mt-4 space-y-2">
-                  {a.covers.map((c) => (
-                    <li key={c} className="flex gap-3 text-sm leading-relaxed text-ink/85">
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                      {c}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </details>
-          ))}
-        </div>
+        <RiskMap />
 
         <h2 className="mt-16 font-display text-2xl md:text-3xl">How it runs</h2>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">

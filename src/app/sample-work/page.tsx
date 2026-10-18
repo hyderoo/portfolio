@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BugPlayground from "@/components/BugPlayground";
 
 export const metadata: Metadata = {
   title: "Sample work: test cases and bug reports | Hafiz Hamdani",
@@ -113,41 +114,7 @@ const ROWS: Row[] = [
   },
 ];
 
-const BUGS = [
-  {
-    id: "BUG-002",
-    severity: "Critical",
-    summary: "3 of 6 products cannot be added to the cart (problem_user)",
-    environment: "saucedemo.com, desktop Chrome 1280x720, account problem_user",
-    steps: [
-      "Log in as problem_user",
-      'On the inventory page, click "Add to cart" on all 6 products',
-    ],
-    expected: "Every button responds; the cart badge counts up to 6.",
-    actual:
-      "Only 3 buttons respond (the others call a broken handler). The badge stops at 3 and the affected buttons never switch to Remove.",
-    evidence: "/sample-work/qa-problem-inventory.png",
-    evidenceAlt:
-      "Inventory page as problem_user: 3 items added, 3 buttons unresponsive",
-  },
-  {
-    id: "BUG-004",
-    severity: "Critical",
-    summary: "Last Name input writes into First Name; checkout is blocked (problem_user)",
-    environment: "saucedemo.com, desktop Chrome 1280x720, account problem_user",
-    steps: [
-      "Log in as problem_user and add any item",
-      "Open the cart, click Checkout",
-      "Type into First Name, Last Name and Postal Code, then Continue",
-    ],
-    expected: "Each field keeps its own value; the form advances to the overview.",
-    actual:
-      'Typing into Last Name overwrites First Name instead ("Dani" became "Hamdani", Last Name stayed empty). Continue fails with "Error: Last Name is required", so checkout cannot be completed at all.',
-    evidence: "/sample-work/qa-problem-checkout.png",
-    evidenceAlt:
-      "Checkout form as problem_user: Last Name text landed in the First Name field",
-  },
-];
+
 
 function Status({ s }: { s: "PASS" | "FAIL" }) {
   return (
@@ -241,56 +208,12 @@ export default function SampleWorkPage() {
           </table>
         </div>
 
-        <h2 className="mt-20 font-display text-2xl md:text-3xl">Bug reports</h2>
+        <h2 className="mt-20 font-display text-2xl md:text-3xl">Bug reports, filed like tickets</h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-          Two of the four reproduced defects, written the way I file them at work. BUG-001 (product
-          images identical) and BUG-003 (sorting has no effect) are documented in the repo.
+          All four reproduced defects, written the way I file them at work: severity, priority,
+          environment, exact steps, expected vs actual, evidence. Pick a ticket to open it.
         </p>
-        <div className="mt-8 space-y-6">
-          {BUGS.map((b) => (
-            <article key={b.id} className="border border-line bg-surface/40 p-6 md:p-8">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="text-[11px] uppercase tracking-[0.25em] text-accent">{b.id}</span>
-                <span className="rounded-sm border border-accent/60 px-2 py-0.5 text-[10px] uppercase tracking-[0.15em] text-accent">
-                  {b.severity}
-                </span>
-                <span className="rounded-sm border border-line px-2 py-0.5 text-[10px] uppercase tracking-[0.15em] text-muted">
-                  Bug
-                </span>
-                <span className="rounded-sm border border-line px-2 py-0.5 text-[10px] uppercase tracking-[0.15em] text-muted">
-                  Status: Open
-                </span>
-              </div>
-              <h3 className="mt-3 font-display text-xl md:text-2xl">{b.summary}</h3>
-              <p className="mt-2 text-xs text-muted">{b.environment}</p>
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-muted">Steps to reproduce</p>
-                  <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-ink/90">
-                    {b.steps.map((s) => (
-                      <li key={s}>{s}</li>
-                    ))}
-                  </ol>
-                  <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-muted">Expected</p>
-                  <p className="mt-1 text-sm text-muted">{b.expected}</p>
-                  <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-muted">Actual</p>
-                  <p className="mt-1 text-sm text-muted">{b.actual}</p>
-                </div>
-                <figure>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={b.evidence}
-                    alt={b.evidenceAlt}
-                    className="w-full border border-line"
-                  />
-                  <figcaption className="mt-2 text-xs text-muted">
-                    Evidence captured during the 18 Oct 2026 execution.
-                  </figcaption>
-                </figure>
-              </div>
-            </article>
-          ))}
-        </div>
+        <BugPlayground />
 
         <figure className="mt-12">
           {/* eslint-disable-next-line @next/next/no-img-element */}
