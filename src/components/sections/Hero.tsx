@@ -10,9 +10,14 @@ const HeroScene = dynamic(() => import("../HeroScene"), { ssr: false });
 export default function Hero({ started }: { started: boolean }) {
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-between overflow-hidden">
-      <div className="absolute inset-0 opacity-90">
-        <HeroScene />
-      </div>
+      <motion.div
+        className="absolute inset-0 opacity-90"
+        initial={{ opacity: 0 }}
+        animate={started ? { opacity: 0.9 } : {}}
+        transition={{ duration: 1.2 }}
+      >
+        {started && <HeroScene />}
+      </motion.div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/30 via-transparent to-bg" />
 
       <div className="relative z-10 flex justify-between px-6 pt-24 text-[11px] uppercase tracking-[0.25em] text-muted md:px-10">
@@ -35,12 +40,8 @@ export default function Hero({ started }: { started: boolean }) {
 
       <div className="relative z-10 px-6 md:px-10">
         <h1 className="font-display display-hero">
-          {started && (
-            <>
-              <SplitChars text="HAFIZ" className="block" delay={0.15} />
-              <SplitChars text="HAMDANI" className="block text-outline italic" delay={0.4} />
-            </>
-          )}
+          <SplitChars text="HAFIZ" className="block" delay={0.15} start={started} />
+          <SplitChars text="HAMDANI" className="block text-outline italic" delay={0.4} start={started} />
         </h1>
         <div className="mt-8 flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
           <motion.div

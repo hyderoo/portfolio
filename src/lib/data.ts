@@ -22,6 +22,7 @@ export type Experience = {
   role: string;
   org: string;
   mono: string;
+  logo?: string;
   summary: string;
   tags: string[];
 };
@@ -32,6 +33,7 @@ export const experience: Experience[] = [
     role: "IT Quality Assurance (Contract)",
     org: "Mandiri International Technology · PT Bank Mandiri",
     mono: "BM",
+    logo: "/logos/mandiri.png",
     summary:
       "Functional QA for Livin' by Mandiri, a mobile banking app used by millions. Regression, smoke, UAT and backward-compatibility testing across 10+ releases, including KSM Emas, Bullion gold savings, Deeplink/Universal Link and a security integration. Defects reported and tracked in JIRA within a 16-person QA team, with API verification through Postman and SQL.",
     tags: ["Manual Testing", "Regression", "UAT", "JIRA", "Postman", "SQL"],
@@ -41,6 +43,7 @@ export const experience: Experience[] = [
     role: "IT E2E QA Intern",
     org: "Home Credit Indonesia",
     mono: "HC",
+    logo: "/logos/home-credit.png",
     summary:
       "End-to-end QA for HCI × OPPO projects, including AVANTO. Ran SIT, UAT, smoke and regression cycles; wrote test scenarios and test cases and carried them through review and approval. Ran daily UAT syncs with OPPO Mainland on progress, findings and clarifications. First exposure to test automation with Selenium and Katalon.",
     tags: ["E2E Testing", "SIT / UAT", "Test Planning", "Selenium", "Katalon"],
@@ -50,6 +53,7 @@ export const experience: Experience[] = [
     role: "Information Systems Development Intern",
     org: "National Land Agency (BPN)",
     mono: "BPN",
+    logo: "/logos/bpn.png",
     summary:
       "Tested internal information systems used by agency staff and wrote the accompanying user documentation.",
     tags: ["Functional Testing", "Documentation"],
@@ -255,6 +259,7 @@ export const credentials = [
 export const education = {
   school: "Diponegoro University",
   mono: "UNDIP",
+  logo: "/logos/undip.png",
   degree: "B.Eng. Computer Engineering",
   detail: "GPA 3.73/4.00 · graduated Jul 2025",
 };

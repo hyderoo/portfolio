@@ -1,41 +1,64 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+
+const GREETINGS = [
+  "Selamat datang",
+  "Welcome",
+  "ようこそ",
+  "欢迎",
+  "환영합니다",
+  "Bienvenue",
+  "Bienvenido",
+  "Bem-vindo",
+  "Willkommen",
+  "Benvenuto",
+  "Sugeng rawuh",
+];
+
+const DURATION = 2100;
+const CJK_STACK =
+  "var(--font-fraunces), 'Hiragino Sans', 'Yu Gothic', 'Noto Sans CJK JP', 'Microsoft YaHei', 'Malgun Gothic', sans-serif";
 
 export default function Preloader({ onDone }: { onDone: () => void }) {
+  const reduced = useReducedMotion();
   const [count, setCount] = useState(0);
+  const [step, setStep] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const [gone, setGone] = useState(false);
+  const raf = useRef(0);
 
   useEffect(() => {
     document.documentElement.style.overflow = "hidden";
-    let value = 0;
-    const tick = () => {
-      value += Math.max(1, Math.round((100 - value) * 0.09));
-      if (value >= 100) {
-        setCount(100);
-        setTimeout(() => setLeaving(true), 250);
-        return;
+    const t0 = performance.now();
+    const duration = reduced ? 350 : DURATION;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setCount(Math.round(eased * 100));
+      setStep(Math.min(GREETINGS.length - 1, Math.floor(t * GREETINGS.length)));
+      if (t < 1) {
+        raf.current = requestAnimationFrame(tick);
+      } else {
+        setTimeout(() => setLeaving(true), 160);
       }
-      setCount(value);
-      setTimeout(tick, 28 + Math.random() * 46);
     };
-    const start = setTimeout(tick, 150);
-    return () => clearTimeout(start);
-  }, []);
+    raf.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf.current);
+  }, [reduced]);
 
   useEffect(() => {
     if (!leaving) return;
-    const t = setTimeout(() => {
-      document.documentElement.style.overflow = "";
-      setGone(true);
-      onDone();
-    }, 1000);
+    document.documentElement.style.overflow = "";
+    onDone();
+    const t = setTimeout(() => setGone(true), 1000);
     return () => clearTimeout(t);
   }, [leaving, onDone]);
 
   if (gone) return null;
+
+  const greeting = reduced ? "Welcome" : GREETINGS[step];
 
   return (
     <AnimatePresence>
@@ -50,18 +73,33 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
             <span>Portfolio</span>
             <span>© 2026</span>
           </div>
+
+          <div className="flex flex-1 items-center justify-center" aria-hidden>
+            <AnimatePresence mode="popLayout">
+              <motion.span
+                key={greeting}
+                className="font-display text-4xl italic text-ink md:text-6xl"
+                style={{ fontFamily: CJK_STACK }}
+                initial={reduced ? false : { opacity: 0, y: 14, filter: "blur(6px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={reduced ? { opacity: 0 } : { opacity: 0, y: -14, filter: "blur(6px)" }}
+                transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {greeting}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+          <span className="sr-only" role="status">Loading, {count} percent</span>
+
           <div className="flex items-end justify-between gap-6">
-            <motion.p
-              className="font-display text-3xl italic text-ink md:text-5xl"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            >
-              hafiz hamdani
-            </motion.p>
-            <p className="font-display text-6xl leading-none text-accent tabular-nums md:text-8xl">
-              {count}
-            </p>
+            <span className="text-[11px] uppercase tracking-[0.25em] text-muted">Loading</span>
+            <span className="font-display text-sm italic text-accent tabular-nums md:text-base">{count}%</span>
+          </div>
+          <div className="mt-3 h-px w-full bg-line">
+            <div
+              className="h-px bg-accent transition-[width] duration-100 ease-linear"
+              style={{ width: `${count}%` }}
+            />
           </div>
         </motion.div>
       )}

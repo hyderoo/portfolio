@@ -10,11 +10,14 @@ export function SplitChars({
   className = "",
   delay = 0,
   as: Tag = "span",
+  start,
 }: {
   text: string;
   className?: string;
   delay?: number;
   as?: "span" | "h1" | "h2" | "p";
+  /** When provided, the reveal is driven by this flag instead of scroll-into-view. */
+  start?: boolean;
 }) {
   const reduced = useReducedMotion();
   const words = text.split(" ");
@@ -29,15 +32,18 @@ export function SplitChars({
   };
 
   const MotionTag = motion[Tag];
+  const gated = start !== undefined;
   return (
     <MotionTag
       className={className}
       variants={container}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-8% 0px" }}
-      aria-label={text}
+      {...(gated
+        ? { animate: start ? "show" : "hidden" }
+        : { whileInView: "show", viewport: { once: true, margin: "-8% 0px" } })}
     >
+      <span className="sr-only">{text}</span>
+      <span aria-hidden>
       {words.map((word, wi) => (
         <span key={wi} className="inline-block whitespace-nowrap" aria-hidden>
           {word.split("").map((c, ci) => (
@@ -50,6 +56,7 @@ export function SplitChars({
           {wi < words.length - 1 ? "\u00A0" : ""}
         </span>
       ))}
+      </span>
     </MotionTag>
   );
 }

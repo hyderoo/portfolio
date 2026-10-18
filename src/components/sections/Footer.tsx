@@ -17,8 +17,9 @@ export default function Footer() {
       </a>
       <FadeUp delay={0.2}>
         <p className="mt-8 max-w-md text-muted">
-          Open to junior QA and QA analyst roles — and to conversations about
-          testing, dashboards, or why your release keeps slipping.
+          Open to junior QA, software engineering and DevOps roles — and to
+          conversations about testing, CI pipelines, dashboards, or why your
+          release keeps slipping.
         </p>
       </FadeUp>
       <FadeUp delay={0.3}>

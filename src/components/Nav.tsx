@@ -23,9 +23,9 @@ export default function Nav({ visible }: { visible: boolean }) {
         <button
           onClick={() => scrollTo("#top")}
           className="font-display text-lg italic"
-          aria-label="Back to top"
         >
           dh.
+          <span className="sr-only">Back to top</span>
         </button>
         <ul className="flex items-center gap-5 text-[11px] uppercase tracking-[0.22em] md:gap-8">
           {links.map((l) => (
