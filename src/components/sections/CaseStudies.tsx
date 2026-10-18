@@ -39,7 +39,7 @@ export default function CaseStudies() {
                   <T>{cs.takeaway}</T>
                 </p>
               </div>
-              <div className="flex flex-row gap-5 md:col-span-2 md:flex-col md:items-end md:justify-start">
+              <div className="flex flex-row flex-wrap gap-x-5 gap-y-2 md:col-span-2 md:flex-col md:items-end md:justify-start">
                 {cs.arch && (
                   <a href={cs.arch} className="link-underline inline-flex items-center gap-1 text-accent">
                     <T>Architecture</T>

@@ -151,8 +151,8 @@ export default function BreakThisApp() {
   const count = cart.reduce((s, l) => s + l.qty, 0);
 
   return (
-    <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_340px]">
-      <div className="rounded-lg border border-line p-5 md:p-6">
+    <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="min-w-0 rounded-lg border border-line p-5 md:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="font-display text-lg"><T>QA Beans, a very small coffee shop</T></p>
           <select
@@ -262,7 +262,7 @@ export default function BreakThisApp() {
         )}
       </div>
 
-      <aside>
+      <aside className="min-w-0">
         <div className="rounded-lg border border-line p-5">
           <p className="text-xs uppercase tracking-[0.2em] text-muted"><T>Your hunt</T></p>
           <p className="mt-2 font-display text-3xl">
