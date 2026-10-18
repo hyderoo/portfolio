@@ -99,12 +99,13 @@ export const projects: Project[] = [
     title: "APEX F1",
     year: "2026",
     description:
-      "A Formula 1 intelligence dashboard for the 2026 season: calendar, live timing tower, standings, telemetry lab and tyre strategy. 37 unit tests and 10 Playwright end-to-end scenarios keep it honest.",
+      "A Formula 1 intelligence dashboard for the 2026 season: calendar, live timing tower, standings, telemetry lab and tyre strategy. 101 unit tests, 19 contract tests and 10 Playwright end-to-end scenarios keep it honest.",
     tags: ["Next.js", "Supabase", "Playwright", "OpenF1 API"],
     live: "https://apex-f1-murex.vercel.app",
     repo: "https://github.com/hyderoo/apex-f1",
     preview: "/previews/apex.png",
     ci: { repo: "hyderoo/apex-f1", workflow: "CI" },
+    arch: "/architecture#apex-f1",
   },
   {
     index: "03",
@@ -117,6 +118,7 @@ export const projects: Project[] = [
     repo: "https://github.com/hyderoo/karhutla-watch",
     preview: "/previews/karhutla.png",
     ci: { repo: "hyderoo/karhutla-watch", workflow: "e2e" },
+    arch: "/architecture#karhutla",
   },
   {
     index: "04",
@@ -140,6 +142,7 @@ export const projects: Project[] = [
     tags: ["Playwright", "CI/CD", "GitHub Actions", "Allure"],
     repo: "https://github.com/hyderoo/ShelfSeeker-e2e",
     ci: { repo: "hyderoo/ShelfSeeker-e2e", workflow: "e2e" },
+    arch: "/architecture#shelfseeker-e2e",
   },
   {
     index: "06",
@@ -147,9 +150,10 @@ export const projects: Project[] = [
     year: "2023",
     description:
       "University project turned portfolio piece: a book-discovery app on the OpenLibrary API with a reading list, barcode scan and similar-book suggestions. Redesigned and extended in 2026. The badge here is live from the ShelfSeeker E2E suite (project 05), which tests this deployed app.",
-    tags: ["React", "Firebase", "OpenLibrary"],
+    tags: ["React", "OpenLibrary", "PWA"],
     repo: "https://github.com/hyderoo/ShelfSeeker",
     ci: { repo: "hyderoo/ShelfSeeker-e2e", workflow: "e2e" },
+    arch: "/architecture#shelfseeker",
   },
   {
     index: "07",
@@ -159,10 +163,12 @@ export const projects: Project[] = [
       "Final-thesis project: a Flutter mobile app and companion website talking over a REST API, built for a real stakeholder, Dewa Management.",
     tags: ["Flutter", "Dart", "REST API"],
     repo: "https://github.com/hyderoo/dewa-apk",
+    arch: "/architecture#dewa",
   },
 ];
 
 export type CaseStudy = {
+  arch?: string;
   index: string;
   title: string;
   context: string;
@@ -218,7 +224,7 @@ export const caseStudies: CaseStudy[] = [
       "My F1 dashboard mixes live, delayed, historical and demo data from several providers, a correctness risk if any panel overstates what it knows.",
     approach: [
       "Labelled every panel by data provenance (LIVE, DELAYED, HISTORICAL, DEMO DATA) so the UI never presents delayed or fallback data as live.",
-      "Protected that contract with 37 unit tests and 10 Playwright end-to-end scenarios in CI.",
+      "Protected that contract with 101 unit tests, 19 contract tests and 10 Playwright end-to-end scenarios in CI.",
       "Used a bundled snapshot of real recorded race data as the demo fallback instead of fabricated numbers.",
     ],
     takeaway:
@@ -228,6 +234,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Repository", href: "https://github.com/hyderoo/apex-f1" },
     ],
     ci: { repo: "hyderoo/apex-f1", workflow: "CI" },
+    arch: "/architecture#apex-f1",
   },
 ];
 
