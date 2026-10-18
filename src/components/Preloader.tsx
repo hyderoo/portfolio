@@ -17,7 +17,7 @@ const GREETINGS = [
   "Sugeng rawuh",
 ];
 
-const DURATION = 850;
+const DURATION = 600;
 const CJK_STACK =
   "var(--font-fraunces), 'Hiragino Sans', 'Yu Gothic', 'Noto Sans CJK JP', 'Microsoft YaHei', 'Malgun Gothic', sans-serif";
 
@@ -41,7 +41,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
       if (t < 1) {
         raf.current = requestAnimationFrame(tick);
       } else {
-        setTimeout(() => setLeaving(true), 120);
+        setTimeout(() => setLeaving(true), 80);
       }
     };
     raf.current = requestAnimationFrame(tick);
@@ -52,7 +52,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
     if (!leaving) return;
     document.documentElement.style.overflow = "";
     onDone();
-    const t = setTimeout(() => setGone(true), 500);
+    const t = setTimeout(() => setGone(true), 700);
     return () => clearTimeout(t);
   }, [leaving, onDone]);
 
@@ -67,7 +67,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
           className="fixed inset-0 z-[80] flex flex-col justify-between bg-bg p-6 md:p-10"
           initial={false}
           animate={leaving ? { clipPath: "inset(0 0 100% 0)" } : { clipPath: "inset(0 0 0% 0)" }}
-          transition={{ duration: 0.95, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
         >
           <div className="flex justify-between text-[11px] uppercase tracking-[0.25em] text-muted">
             <span>Portfolio</span>

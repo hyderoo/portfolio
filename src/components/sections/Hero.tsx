@@ -14,6 +14,14 @@ const HeroScene = dynamic(() => import("../HeroScene"), { ssr: false });
 
 export default function Hero({ started }: { started: boolean }) {
   const [sceneReady, setSceneReady] = useState(false);
+  // Hero text starts its reveal as soon as React is up, not after the preloader
+  // lifts. The preloader is opaque while it counts, so the choreography looks
+  // identical, but the copy paints about a second earlier (better LCP).
+  const [live, setLive] = useState(false);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setLive(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   // The 3D scene is heavy (three.js + WebGL setup). Load it after the page has settled:
   // on the first user input, or after a short delay, whichever comes first.
@@ -49,16 +57,16 @@ export default function Hero({ started }: { started: boolean }) {
       <div className="relative z-10 flex justify-between px-6 pt-24 text-[11px] uppercase tracking-[0.25em] text-muted md:px-10">
         <motion.span
           initial={{ opacity: 0 }}
-          animate={started ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          animate={live ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
         >
           {profile.name} · <T>{profile.role}</T>
         </motion.span>
         <motion.span
           className="hidden sm:block"
           initial={{ opacity: 0 }}
-          animate={started ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.65 }}
+          animate={live ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
           <T>{profile.location}</T>
         </motion.span>
@@ -66,14 +74,14 @@ export default function Hero({ started }: { started: boolean }) {
 
       <div className="relative z-10 px-6 md:px-10">
         <h1 className="font-display display-hero">
-          <SplitChars text="HAFIZ" className="block" delay={0} start={started} />
-          <SplitChars text="HAMDANI" className="block text-outline italic" delay={0.15} start={started} />
+          <SplitChars text="HAFIZ" className="block" delay={0} start={live} />
+          <SplitChars text="HAMDANI" className="block text-outline italic" delay={0.15} start={live} />
         </h1>
         <div className="mt-8 flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={started ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            animate={live ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
           <p className="max-w-md text-base leading-relaxed text-muted md:text-lg">
             <T>{HERO_COPY}</T>
@@ -90,8 +98,8 @@ export default function Hero({ started }: { started: boolean }) {
           <motion.div
             className="flex items-center gap-3 text-[11px] uppercase tracking-[0.25em] text-muted"
             initial={{ opacity: 0 }}
-            animate={started ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 1.1 }}
+            animate={live ? { opacity: 1 } : {}}
+            transition={{ duration: 0.7, delay: 0.3 }}
           >
             <span className="inline-block h-px w-10 bg-muted" />
             <T>Scroll to discover</T>
