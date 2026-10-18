@@ -56,8 +56,8 @@ export default function Hero({ started }: { started: boolean }) {
 
       <div className="relative z-10 px-6 md:px-10">
         <h1 className="font-display display-hero">
-          <SplitChars text="HAFIZ" className="block" delay={0.15} start={started} />
-          <SplitChars text="HAMDANI" className="block text-outline italic" delay={0.4} start={started} />
+          <SplitChars text="HAFIZ" className="block" delay={0} start={started} />
+          <SplitChars text="HAMDANI" className="block text-outline italic" delay={0.15} start={started} />
         </h1>
         <div className="mt-8 flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
           <motion.div

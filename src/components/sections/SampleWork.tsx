@@ -27,6 +27,9 @@ export default function SampleWork() {
               <Link href="/sample-work" className="link-underline inline-flex items-center gap-1 text-ink">
                 See the test cases and bug reports <ArrowIcon />
               </Link>
+              <Link href="/quality" className="link-underline inline-flex items-center gap-1 text-ink">
+                Quality in numbers: coverage, live API checks, bug changelog <ArrowIcon />
+              </Link>
               <a
                 href="https://github.com/hyderoo/qa-portfolio"
                 target="_blank"

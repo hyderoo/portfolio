@@ -59,10 +59,37 @@ function CameraRig() {
   return null;
 }
 
+function isSoftwareGL(): boolean {
+  try {
+    const c = document.createElement("canvas");
+    const gl = c.getContext("webgl");
+    if (!gl) return true;
+    const ext = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : "";
+    return /swiftshader|llvmpipe|softpipe|software/i.test(renderer);
+  } catch {
+    return false;
+  }
+}
+
+function SlowTicker() {
+  const invalidate = useThree((s) => s.invalidate);
+  useEffect(() => {
+    const i = setInterval(() => invalidate(), 250);
+    return () => clearInterval(i);
+  }, [invalidate]);
+  return null;
+}
+
 export default function HeroScene() {
   const reduced = useReducedMotion() ?? false;
   const host = useRef<HTMLDivElement>(null);
   const [onScreen, setOnScreen] = useState(true);
+  const [softGL, setSoftGL] = useState(false);
+
+  useEffect(() => {
+    setSoftGL(isSoftwareGL());
+  }, []);
 
   useEffect(() => {
     const el = host.current;
@@ -80,10 +107,11 @@ export default function HeroScene() {
       <Canvas
         className="!absolute inset-0"
         camera={{ position: [0, 0, 6.2], fov: 42 }}
-        dpr={[1, 1.75]}
-        frameloop={reduced || !onScreen ? "never" : "always"}
-        gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
+        dpr={softGL ? 1 : [1, 1.75]}
+        frameloop={reduced || !onScreen ? "never" : softGL ? "demand" : "always"}
+        gl={{ antialias: !softGL, alpha: true, powerPreference: "low-power" }}
       >
+        {softGL && !reduced && onScreen && <SlowTicker />}
         <CameraRig />
         <ParticleGlobe reduced={reduced} />
       </Canvas>

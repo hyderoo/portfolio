@@ -52,7 +52,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
     if (!leaving) return;
     document.documentElement.style.overflow = "";
     onDone();
-    const t = setTimeout(() => setGone(true), 700);
+    const t = setTimeout(() => setGone(true), 500);
     return () => clearTimeout(t);
   }, [leaving, onDone]);
 
