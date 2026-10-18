@@ -89,9 +89,9 @@ const a: Record<string, string> = {
   "GPA 3.73/4.00 · graduated Jul 2025": "GPA 3.73 / 4.00 · 2025年7月卒業",
   "{org} logo": "{org}のロゴ",
   // experience
-  "Jun 2026 — Present": "2026年6月から現在",
-  "Oct 2025 — Apr 2026": "2025年10月から2026年4月",
-  "Jan 2024 — Feb 2024": "2024年1月から2月",
+  "Jun 2026 to Present": "2026年6月から現在",
+  "Oct 2025 to Apr 2026": "2025年10月から2026年4月",
+  "Jan 2024 to Feb 2024": "2024年1月から2月",
   "IT Quality Assurance": "ITクオリティアシュアランス（QA）",
   "IT E2E QA Intern": "IT E2E QAインターン",
   "Information Systems Development Intern": "情報システム開発インターン",

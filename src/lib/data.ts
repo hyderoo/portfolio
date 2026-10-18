@@ -31,7 +31,7 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    period: "Jun 2026 — Present",
+    period: "Jun 2026 to Present",
     role: "IT Quality Assurance",
     org: "PT Bank Mandiri",
     mono: "BM",
@@ -41,7 +41,7 @@ export const experience: Experience[] = [
     tags: ["Manual Testing", "Regression", "UAT", "JIRA", "Postman", "SQL"],
   },
   {
-    period: "Oct 2025 — Apr 2026",
+    period: "Oct 2025 to Apr 2026",
     role: "IT E2E QA Intern",
     org: "Home Credit Indonesia",
     mono: "HC",
@@ -51,7 +51,7 @@ export const experience: Experience[] = [
     tags: ["E2E Testing", "SIT / UAT", "Test Planning", "Selenium", "Katalon"],
   },
   {
-    period: "Jan 2024 — Feb 2024",
+    period: "Jan 2024 to Feb 2024",
     role: "Information Systems Development Intern",
     org: "National Land Agency (BPN)",
     mono: "BPN",
