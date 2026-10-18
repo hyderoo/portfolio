@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ApiExplorer from "@/components/ApiExplorer";
+import RunSuite from "@/components/RunSuite";
 
 export const metadata: Metadata = {
   title: "Quality in numbers | Hafiz Hamdani",
@@ -194,6 +195,10 @@ export default function QualityPage() {
           here is cached or staged.
         </p>
         <ApiExplorer />
+        <div className="mt-10">
+          <h3 className="font-display text-xl">Trigger a real CI run</h3>
+          <RunSuite />
+        </div>
       </section>
 
       <section className="mt-20">
