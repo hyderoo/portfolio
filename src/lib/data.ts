@@ -75,6 +75,8 @@ export type Project = {
   ci?: { repo: string; workflow: string };
   /** Link to a test-strategy write-up on this site. */
   strategy?: string;
+  /** Link to the architecture diagrams for this project. */
+  arch?: string;
 };
 
 export const projects: Project[] = [
@@ -90,6 +92,7 @@ export const projects: Project[] = [
     preview: "/previews/worlds.png",
     ci: { repo: "hyderoo/worlds-2026-live", workflow: "CI" },
     strategy: "/strategy",
+    arch: "/architecture#worlds",
   },
   {
     index: "02",
@@ -126,6 +129,7 @@ export const projects: Project[] = [
     repo: "https://github.com/hyderoo/quakewatch",
     preview: "/previews/quake.png",
     ci: { repo: "hyderoo/quakewatch", workflow: "e2e" },
+    arch: "/architecture#quakewatch",
   },
   {
     index: "05",

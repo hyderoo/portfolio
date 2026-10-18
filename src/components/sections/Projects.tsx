@@ -85,6 +85,11 @@ export default function Projects() {
                       Test strategy <ArrowIcon />
                     </a>
                   )}
+                  {p.arch && (
+                    <a href={p.arch} className="link-underline inline-flex items-center gap-1 text-accent">
+                      Architecture <ArrowIcon />
+                    </a>
+                  )}
                 </div>
               </div>
               <ul className="mt-3 flex flex-wrap gap-2 md:pl-[calc(8.333%+1rem)]">
