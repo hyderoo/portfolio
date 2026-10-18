@@ -15,17 +15,23 @@ const HeroScene = dynamic(() => import("../HeroScene"), { ssr: false });
 export default function Hero({ started }: { started: boolean }) {
   const [sceneReady, setSceneReady] = useState(false);
 
+  // The 3D scene is heavy (three.js + WebGL setup). Load it after the page has settled:
+  // on the first user input, or after a short delay, whichever comes first.
   useEffect(() => {
     if (!started) return;
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-      const id = (window as Window & { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback(
-        () => setSceneReady(true),
-        { timeout: 2500 }
-      );
-      return () => (window as Window & { cancelIdleCallback: (n: number) => void }).cancelIdleCallback(id);
-    }
-    const t = setTimeout(() => setSceneReady(true), 400);
-    return () => clearTimeout(t);
+    let done = false;
+    const go = () => {
+      if (done) return;
+      done = true;
+      setSceneReady(true);
+    };
+    const t = setTimeout(go, 7000);
+    const evs = ["pointerdown", "pointermove", "scroll", "keydown", "touchstart"] as const;
+    evs.forEach((e) => window.addEventListener(e, go, { once: true, passive: true }));
+    return () => {
+      clearTimeout(t);
+      evs.forEach((e) => window.removeEventListener(e, go));
+    };
   }, [started]);
 
   return (

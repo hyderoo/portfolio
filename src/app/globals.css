@@ -126,7 +126,7 @@ html[lang="ja"] {
 }
 html[lang="ja"] body {
   line-break: strict;
-  word-break: auto-phrase;
+  word-break: keep-all;
   line-height: 1.8;
 }
 html[lang="ja"] .italic { font-style: normal; }
@@ -134,3 +134,10 @@ html[lang="ja"] .uppercase { letter-spacing: 0.08em; }
 html[lang="ja"] .display-hero { font-size: clamp(2.4rem, 9vw, 8rem); line-height: 1.12; letter-spacing: 0; }
 html[lang="ja"] .display-2 { font-size: clamp(2rem, 6vw, 5rem); line-height: 1.2; letter-spacing: 0; }
 html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 { line-height: 1.3; }
+
+/* Japanese layout safety: grid children may shrink, long titles scale down and wrap by phrase. */
+html[lang="ja"] .grid > * { min-width: 0; }
+html[lang="ja"] h3.font-display { font-size: 1.35rem; line-height: 1.35; }
+@media (min-width: 768px) { html[lang="ja"] h3.font-display { font-size: 1.6rem; } }
+html[lang="ja"] p, html[lang="ja"] li, html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 { overflow-wrap: break-word; text-wrap: pretty; }
+html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 { text-wrap: balance; }

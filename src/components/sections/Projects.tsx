@@ -71,8 +71,9 @@ export default function Projects() {
                   <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted"><T>{p.year}</T></p>
                   {p.ci && <TestStatus repo={p.ci.repo} workflow={p.ci.workflow} />}
                 </div>
-                <p className="max-w-md text-sm leading-relaxed text-muted md:col-span-5"><T>{p.description}</T></p>
-                <div className="flex gap-5 text-sm md:col-span-2 md:justify-end">
+                <div className="min-w-0 md:col-span-7">
+                <p className="max-w-xl text-sm leading-relaxed text-muted"><T>{p.description}</T></p>
+                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
                   {p.live && (
                     <a href={p.live} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-ink">
                       <T>Live</T> <ArrowIcon />
@@ -97,12 +98,13 @@ export default function Projects() {
                     </a>
                   )}
                 </div>
+                </div>
               </div>
               <ul className="mt-3 flex flex-wrap gap-2 md:pl-[calc(8.333%+1rem)]">
-                {p.tags.map((t) => (
+                {p.tags.map((t, ti) => (
                   <li key={t} className="text-xs text-muted/70">
                     <T>{t}</T>
-                    <span className="mx-2 text-accent">·</span>
+                    {ti < p.tags.length - 1 && <span className="ml-2 text-accent">·</span>}
                   </li>
                 ))}
               </ul>

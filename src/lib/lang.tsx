@@ -142,6 +142,28 @@ export function useLang() {
   return useContext(LangContext);
 }
 
+let segmenter: Intl.Segmenter | null = null;
+
+/**
+ * Japanese has no spaces, and not every browser supports `word-break: auto-phrase`.
+ * Combined with `word-break: keep-all` in CSS, a <wbr> between words gives line breaks
+ * only at word boundaries (never inside テスト or API名 style words).
+ */
+export function phrased(s: string, lang: Lang): ReactNode {
+  if (lang !== "ja" || !/[\u3040-\u30ff\u3400-\u9fff]/.test(s)) return s;
+  try {
+    segmenter ??= new Intl.Segmenter("ja", { granularity: "word" });
+    const words: string[] = [];
+    for (const { segment } of segmenter.segment(s)) {
+      if (/^[、。，．・：；！？）」』】%％]+$/.test(segment) && words.length) words[words.length - 1] += segment;
+      else words.push(segment);
+    }
+    return words.flatMap((w, i) => (i ? [<wbr key={i} />, w] : [w]));
+  } catch {
+    return s;
+  }
+}
+
 /** Translates a plain string. `vars` fills {name} placeholders. */
 export function T({
   children,
@@ -150,8 +172,8 @@ export function T({
   children: string;
   vars?: Record<string, string | number>;
 }) {
-  const { t } = useLang();
-  return <>{t(children, vars)}</>;
+  const { t, lang } = useLang();
+  return <>{phrased(t(children, vars), lang)}</>;
 }
 
 /**
@@ -165,7 +187,7 @@ export function R({
   children: string;
   parts: Record<string, (inner: string) => ReactNode>;
 }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const s = t(children);
   const out: ReactNode[] = [];
   const re = /\{(\w+)\}([\s\S]*?)\{\/\1\}/g;
@@ -173,12 +195,12 @@ export function R({
   let m: RegExpExecArray | null;
   let i = 0;
   while ((m = re.exec(s))) {
-    if (m.index > last) out.push(s.slice(last, m.index));
+    if (m.index > last) out.push(<span key={`t${i++}`} style={{ display: "contents" }}>{phrased(s.slice(last, m.index), lang)}</span>);
     const wrap = parts[m[1]];
     out.push(wrap ? <span key={i++} style={{ display: "contents" }}>{wrap(m[2])}</span> : m[2]);
     last = m.index + m[0].length;
   }
-  if (last < s.length) out.push(s.slice(last));
+  if (last < s.length) out.push(<span key={`t${i++}`} style={{ display: "contents" }}>{phrased(s.slice(last), lang)}</span>);
   return <>{out}</>;
 }
 

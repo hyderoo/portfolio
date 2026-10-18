@@ -17,7 +17,7 @@ const GREETINGS = [
   "Sugeng rawuh",
 ];
 
-const DURATION = 1200;
+const DURATION = 850;
 const CJK_STACK =
   "var(--font-fraunces), 'Hiragino Sans', 'Yu Gothic', 'Noto Sans CJK JP', 'Microsoft YaHei', 'Malgun Gothic', sans-serif";
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -21,7 +22,11 @@ function splitWords(text: string): string[] {
   }
 }
 
-/** Splits text into words and chars, revealing char by char when in view. */
+/**
+ * Splits text into words and chars, revealing char by char when in view.
+ * Plain spans with CSS transitions (no per-character motion component), so
+ * hydration stays cheap even for long headings.
+ */
 export function SplitChars({
   text,
   className = "",
@@ -39,43 +44,61 @@ export function SplitChars({
   const reduced = useReducedMotion();
   const words = splitWords(text);
   const isJa = /[\u3040-\u30ff\u3400-\u9fff]/.test(text);
-
-  const container: Variants = {
-    hidden: {},
-    show: { transition: { staggerChildren: reduced ? 0 : 0.018, delayChildren: delay } },
-  };
-  const char: Variants = {
-    hidden: { y: reduced ? 0 : "115%", opacity: reduced ? 0 : 1 },
-    show: { y: "0%", opacity: 1, transition: { duration: 0.7, ease: EASE } },
-  };
-
-  const MotionTag = motion[Tag];
+  const ref = useRef<HTMLElement | null>(null);
+  const [seen, setSeen] = useState(false);
   const gated = start !== undefined;
+
+  useEffect(() => {
+    if (gated || seen) return;
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setSeen(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setSeen(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "-8% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [gated, seen]);
+
+  const shown = gated ? !!start : seen;
+  let n = 0;
   return (
-    <MotionTag
-      className={className}
-      variants={container}
-      initial="hidden"
-      {...(gated
-        ? { animate: start ? "show" : "hidden" }
-        : { whileInView: "show", viewport: { once: true, margin: "-8% 0px" } })}
-    >
+    <Tag className={className} ref={ref as never}>
       <span className="sr-only">{text}</span>
       <span aria-hidden>
-      {words.map((word, wi) => (
-        <span key={wi} className="inline-block whitespace-nowrap" aria-hidden>
-          {word.split("").map((c, ci) => (
-            <span key={ci} className="inline-block overflow-hidden align-bottom">
-              <motion.span className="inline-block" variants={char}>
-                {c}
-              </motion.span>
-            </span>
-          ))}
-          {wi < words.length - 1 && !isJa ? "\u00A0" : ""}
-        </span>
-      ))}
+        {words.map((word, wi) => (
+          <span key={wi} className="inline-block whitespace-nowrap" aria-hidden>
+            {word.split("").map((c, ci) => {
+              const d = delay + (reduced ? 0 : n++ * 0.018);
+              return (
+                <span key={ci} className="inline-block overflow-hidden align-bottom" style={{ paddingBottom: "0.18em", marginBottom: "-0.18em" }}>
+                  <span
+                    className="inline-block"
+                    style={{
+                      transform: shown || reduced ? "translateY(0)" : "translateY(115%)",
+                      opacity: reduced && !shown ? 0 : 1,
+                      transition: `transform 0.7s cubic-bezier(0.22,1,0.36,1) ${d}s, opacity 0.7s ease ${d}s`,
+                      willChange: shown ? "auto" : "transform",
+                    }}
+                  >
+                    {c}
+                  </span>
+                </span>
+              );
+            })}
+            {wi < words.length - 1 && !isJa ? "\u00A0" : ""}
+          </span>
+        ))}
       </span>
-    </MotionTag>
+    </Tag>
   );
 }
 

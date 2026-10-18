@@ -133,7 +133,7 @@ const a: Record<string, string> = {
   "A self-directed API testing practice against two public Formula 1 APIs (Jolpica and OpenF1). No employer or private data is involved.":
     "F1の公開API2つ（JolpicaとOpenF1）を対象にした、自主的なAPIテストの実践です。勤務先のデータや非公開のデータは一切使っていません。",
   "Designed a 13-request Postman collection with 41 assertions on real payloads: standings ordering, sequential finishing positions, required fields on every record.":
-    "実際のレスポンスに対して41のアサーションを持つ、13リクエストのPostmanコレクションを設計しました。順位の並び、連続したフィニッシュ順位、全レコードの必須項目などを検証します。",
+    "13リクエストのPostmanコレクションを作成し、実際のレスポンスに対して41件のアサーションを書きました。順位の並び、連続したフィニッシュ順位、全レコードの必須項目などを検証します。",
   "Chained dynamic data between requests: the latest race session key feeds the driver and lap calls.":
     "リクエスト間で動的なデータを受け渡しています。最新のレースセッションキーを、ドライバーとラップのAPI呼び出しに引き継ぎます。",
   "Verified pagination behaviour and documented each API's error quirks against the live endpoints, including rate limits and empty-result semantics.":
@@ -141,7 +141,7 @@ const a: Record<string, string> = {
   "Set a 3-second performance budget per response and wired the suite into GitHub Actions: on every change, on demand, and weekly as an availability monitor.":
     "レスポンスごとに3秒の性能上限を設け、スイートをGitHub Actionsに組み込みました。変更のたび、手動実行、そして死活監視として毎週実行します。",
   "Shows how I design API tests: real assertions on real payloads, quirks documented instead of assumed, and a report anyone can open.":
-    "APIテストの設計方針が分かります。実際のレスポンスに対する実質的なアサーション、思い込みではなく文書化したクセ、誰でも開けるレポートです。",
+    "APIテストの進め方をご覧いただけます。実際のレスポンスに対する意味のあるアサーション、推測ではなく確認した上で書き残したAPIの挙動、誰でも開けるレポートです。",
   "Live Newman report": "Newmanレポート（公開）",
   Repository: "リポジトリ",
   "End-to-end testing ShelfSeeker with Playwright": "PlaywrightによるShelfSeekerのE2Eテスト",
