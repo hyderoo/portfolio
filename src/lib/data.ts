@@ -32,8 +32,8 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     period: "Jun 2026 — Present",
-    role: "IT Quality Assurance (Contract)",
-    org: "Mandiri International Technology · PT Bank Mandiri",
+    role: "IT Quality Assurance",
+    org: "PT Bank Mandiri",
     mono: "BM",
     logo: "/logos/mandiri.png",
     summary:
