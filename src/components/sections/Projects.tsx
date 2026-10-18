@@ -80,6 +80,11 @@ export default function Projects() {
                   <a href={p.repo} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-muted hover:text-ink">
                     Code <ArrowIcon />
                   </a>
+                  {p.strategy && (
+                    <a href={p.strategy} className="link-underline inline-flex items-center gap-1 text-accent">
+                      Test strategy <ArrowIcon />
+                    </a>
+                  )}
                 </div>
               </div>
               <ul className="mt-3 flex flex-wrap gap-2 md:pl-[calc(8.333%+1rem)]">

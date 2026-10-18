@@ -73,6 +73,8 @@ export type Project = {
   preview?: string;
   /** Public GitHub Actions workflow whose latest run feeds the live badge. */
   ci?: { repo: string; workflow: string };
+  /** Link to a test-strategy write-up on this site. */
+  strategy?: string;
 };
 
 export const projects: Project[] = [
@@ -87,6 +89,7 @@ export const projects: Project[] = [
     repo: "https://github.com/hyderoo/worlds-2026-live",
     preview: "/previews/worlds.png",
     ci: { repo: "hyderoo/worlds-2026-live", workflow: "CI" },
+    strategy: "/strategy",
   },
   {
     index: "02",
