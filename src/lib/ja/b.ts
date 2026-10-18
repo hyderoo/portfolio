@@ -90,6 +90,8 @@ const b: Record<string, string> = {
   "Run the suite": "スイートを実行",
   "Live triggering is not wired on this deployment yet.": "このデプロイでは、ライブ実行はまだ設定されていません。",
   "GitHub refused the dispatch (status {status}).": "GitHubがディスパッチを拒否しました（ステータス {status}）。",
+  "A run was started a few minutes ago. Please wait a bit and try again.":
+    "数分前に実行が開始されました。しばらく待ってからもう一度お試しください。",
   "The dispatch request failed.": "ディスパッチのリクエストに失敗しました。",
   "Run #{id}: {status}. ": "実行 #{id}：{status}。",
   "Waiting for the run to appear in GitHub Actions. ": "GitHub Actionsに実行が表示されるのを待っています。",

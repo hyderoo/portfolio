@@ -180,5 +180,9 @@ const c: Record<string, string> = {
   "Wrong ordering and wrong aggregation erode trust quietly.": "並び順や集計の誤りは、静かに信頼を損ないます。",
   "Lists show only completed matches, newest first, own score first": "リストには終了した試合だけを新しい順に表示し、自チームのスコアを先に置く",
   "Streaks and head-to-head compute from finished matches only": "連勝・連敗や対戦成績は、終了した試合のみから計算する",
+  "Repository": "リポジトリ",
+  "Projects": "プロジェクト",
+  "Diagrams": "図",
+  "App screens": "アプリ画面",
 };
 export default c;

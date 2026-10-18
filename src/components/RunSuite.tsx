@@ -66,8 +66,10 @@ export default function RunSuite() {
           message:
             body.error === "not_configured"
               ? "Live triggering is not wired on this deployment yet."
-                      : "GitHub refused the dispatch (status {status}).",
-          status: body.status ?? res.status,
+              : body.error === "cooldown"
+                ? "A run was started a few minutes ago. Please wait a bit and try again."
+                : "GitHub refused the dispatch (status {status}).",
+          status: body.error === "cooldown" ? undefined : (body.status ?? res.status),
         });
         return;
       }

@@ -129,12 +129,12 @@ export default function RiskMap() {
               onClick={() => setOpen(active ? null : a.name)}
               aria-pressed={active}
               aria-label={t("{name}, {count} tests", { name: t(a.name), count: a.count })}
-              className={`flex h-24 flex-col justify-between rounded-sm border p-2 text-left transition-colors sm:h-28 ${
+              className={`flex h-24 min-w-0 flex-col justify-between rounded-sm border p-2 text-left transition-colors sm:h-28 ${
                 active ? "border-accent" : "border-line hover:border-accent/50"
               }`}
               style={{ backgroundColor: `rgba(228, 87, 46, ${0.08 + (a.count / maxCount) * 0.5})` }}
             >
-              <span className="text-[10px] font-medium uppercase leading-tight tracking-[0.1em] text-ink/90 sm:text-[11px]">
+              <span className="text-[10px] font-medium uppercase leading-tight tracking-[0.1em] break-words text-ink/90 sm:text-[11px]">
                 <T>{a.name}</T>
               </span>
               <span className="font-display text-lg text-ink sm:text-xl">{a.count}</span>
