@@ -47,6 +47,7 @@ export const experience: Experience[] = [
     org: "Home Credit Indonesia",
     mono: "HC",
     logo: "/logos/home-credit.png",
+    logoTile: true,
     summary:
       "End-to-end QA for HCI × OPPO projects, including AVANTO. Ran SIT, UAT, smoke and regression cycles; wrote test scenarios and test cases and carried them through review and approval. Ran daily UAT syncs with OPPO Mainland on progress, findings and clarifications. First exposure to test automation with Selenium and Katalon.",
     tags: ["E2E Testing", "SIT / UAT", "Test Planning", "Selenium", "Katalon"],
@@ -234,7 +235,7 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
       { name: "TestRail", icon: "/icons/testrail.svg" },
       { name: "Confluence", icon: "/icons/confluence.svg" },
       { name: "Postman", icon: "/icons/postman.svg" },
-      { name: "SQL" },
+      { name: "SQL", icon: "/icons/sql.png" },
       { name: "Git & GitHub", icon: "/icons/github.svg" },
     ],
   },
@@ -243,7 +244,7 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
     skills: [
       { name: "TypeScript / JavaScript", icon: "/icons/typescript.svg" },
       { name: "Next.js & React", icon: "/icons/react.svg" },
-      { name: "Playwright" },
+      { name: "Playwright", icon: "/icons/playwright.png" },
       { name: "Selenium & Katalon", icon: "/icons/selenium.svg" },
       { name: "Python", icon: "/icons/python.svg" },
       { name: "Flutter & Dart", icon: "/icons/flutter.svg" },
