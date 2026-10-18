@@ -14,11 +14,11 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Hafiz Hamdani — Software QA Engineer",
+  title: "Hafiz Hamdani | Software QA Engineer",
   description:
-    "Portfolio of Hafiz (Dani) Hamdani, a software QA engineer in Jakarta working on mobile banking — and building dashboards and trackers on the side.",
+    "Portfolio of Hafiz (Dani) Hamdani, a software QA engineer in Jakarta working on mobile banking, and building dashboards and trackers on the side.",
   openGraph: {
-    title: "Hafiz Hamdani — Software QA Engineer",
+    title: "Hafiz Hamdani | Software QA Engineer",
     description:
       "QA engineer in Jakarta working on mobile banking, with case studies in API testing, Playwright E2E and live data apps.",
     type: "website",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hafiz Hamdani — Software QA Engineer",
+    title: "Hafiz Hamdani | Software QA Engineer",
     description:
       "QA engineer in Jakarta working on mobile banking, with case studies in API testing, Playwright E2E and live data apps.",
   },

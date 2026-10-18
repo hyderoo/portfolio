@@ -10,7 +10,7 @@ export default function About() {
         <div className="md:col-span-7">
           <ClipReveal>
             <p className="max-w-xl text-lg leading-relaxed text-ink/90 md:text-xl">
-              I&apos;m Dani — a QA engineer from Padang, now based in West
+              I&apos;m Dani, a QA engineer from Padang, now based in West
               Jakarta. By day I test Livin&apos; by Mandiri, a mobile banking
               app millions of people trust with their money, which means the
               bugs have to meet me before they meet them.
@@ -21,8 +21,8 @@ export default function About() {
               I graduated in computer engineering from Diponegoro University,
               and I got into QA the honest way: internships, test cases, and a
               lot of regression cycles. Outside of work I build dashboards and
-              trackers for the things I follow — fires, earthquakes, F1,
-              League of Legends — because shipping my own projects makes me a
+              trackers for the things I follow: fires, earthquakes, F1,
+              League of Legends. Shipping my own projects makes me a
               better tester of other people&apos;s.
             </p>
           </FadeUp>

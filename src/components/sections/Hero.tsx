@@ -26,7 +26,7 @@ export default function Hero({ started }: { started: boolean }) {
           animate={started ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          {profile.name} — {profile.role}
+          {profile.name} · {profile.role}
         </motion.span>
         <motion.span
           className="hidden sm:block"
@@ -50,8 +50,8 @@ export default function Hero({ started }: { started: boolean }) {
             transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
           <p className="max-w-md text-base leading-relaxed text-muted md:text-lg">
-            I break software before your users do. QA engineer working on a
-            mobile banking app used by millions — and building things on the
+            I find the bugs before your users do. QA engineer working on a
+            mobile banking app used by millions, and building things on the
             side so I never stop breaking interesting ones.
           </p>
           <a

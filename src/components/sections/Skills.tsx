@@ -27,8 +27,8 @@ export default function Skills() {
           <FadeUp delay={0.15}>
             <p className="max-w-md text-sm leading-relaxed text-muted">
               Honest note: my automation skills come from courses and side
-              projects, not production ownership — yet. That&apos;s the gap
-              I&apos;m closing on purpose.
+              projects, not production ownership. Not yet, anyway, and
+              that&apos;s the gap I&apos;m closing on purpose.
             </p>
           </FadeUp>
         </div>

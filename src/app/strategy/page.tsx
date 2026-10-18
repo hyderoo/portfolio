@@ -3,7 +3,7 @@ import Link from "next/link";
 import TestStatus from "@/components/TestStatus";
 
 export const metadata: Metadata = {
-  title: "Test strategy: Worlds 2026 Live - Hafiz Hamdani",
+  title: "Test strategy: Worlds 2026 Live | Hafiz Hamdani",
   description:
     "How the Worlds 2026 Live tracker is tested: 41 vitest cases across sync integrity, match state, auth, roster scraping, calendar feed, pick'em, push and forms, running in CI on every push.",
 };
@@ -113,7 +113,7 @@ export default function StrategyPage() {
           Worlds 2026 Live is a real-time tracker for the League of Legends World Championship: a
           Next.js PWA that syncs the official lolesports feed into Supabase every minute and serves
           a match center, bracket, standings, pick&apos;em and push notifications. This page is how
-          I keep it honest - every claim below comes from the repo&apos;s <code>tests/</code>{" "}
+          I keep it honest: every claim below comes from the repo&apos;s <code>tests/</code>{" "}
           directory and CI workflow, not from memory.
         </p>
         <TestStatus repo="hyderoo/worlds-2026-live" workflow="CI" />
@@ -168,7 +168,7 @@ export default function StrategyPage() {
         <ul className="mt-4 max-w-2xl space-y-2">
           <li className="flex gap-3 text-sm leading-relaxed text-ink/85">
             <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-            No browser-level end-to-end tests in this repo - the suite is unit and integration
+            No browser-level end-to-end tests in this repo. The suite is unit and integration
             level. UI flows are verified manually before each deploy. (My ShelfSeeker project is
             where I keep the full Playwright E2E practice.)
           </li>

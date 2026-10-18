@@ -1,4 +1,4 @@
-# Portfolio — Hafiz (Dani) Hamdani
+# Portfolio: Hafiz (Dani) Hamdani
 
 Personal portfolio site: selected QA experience and side projects, with a
 focus on motion and typography.
@@ -26,11 +26,11 @@ focus on motion and typography.
 ## Fonts & assets
 
 - [Fraunces](https://fonts.google.com/specimen/Fraunces) and
-  [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) — Google
+  [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk), Google
   Fonts, SIL Open Font License 1.1, self-hosted at build time via `next/font`.
 - Project preview images in `public/previews/` are screenshots of my own
   deployed projects.
-- Everything else (grain, icons, 3D scene) is generated in code — no stock
+- Everything else (grain, icons, 3D scene) is generated in code, no stock
   assets.
 
 ## Run locally
@@ -42,4 +42,4 @@ npm run dev
 
 ## Deploy
 
-Deployed on [Vercel](https://vercel.com) — push to `main` triggers a build.
+Deployed on [Vercel](https://vercel.com). Push to `main` triggers a build.

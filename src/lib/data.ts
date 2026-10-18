@@ -170,10 +170,10 @@ export const caseStudies: CaseStudy[] = [
     index: "A",
     title: "API testing in CI with Postman + Newman",
     context:
-      "A self-directed API testing practice against two public Formula 1 APIs (Jolpica and OpenF1) — no employer or private data involved.",
+      "A self-directed API testing practice against two public Formula 1 APIs (Jolpica and OpenF1). No employer or private data is involved.",
     approach: [
       "Designed a 13-request Postman collection with 33 assertions on real payloads: standings ordering, sequential finishing positions, required fields on every record.",
-      "Chained dynamic data between requests — the latest race session key feeds the driver and lap calls.",
+      "Chained dynamic data between requests: the latest race session key feeds the driver and lap calls.",
       "Verified pagination behaviour and documented each API's error quirks against the live endpoints, including rate limits and empty-result semantics.",
       "Set a 3-second performance budget per response and wired the suite into GitHub Actions: on every change, on demand, and weekly as an availability monitor.",
     ],
@@ -189,10 +189,10 @@ export const caseStudies: CaseStudy[] = [
     index: "B",
     title: "End-to-end testing ShelfSeeker with Playwright",
     context:
-      "A full E2E suite for my own book-discovery app — 39 tests running as 78 combinations across desktop Chrome and Pixel 7 emulation in GitHub Actions.",
+      "A full E2E suite for my own book-discovery app: 39 tests running as 78 combinations across desktop Chrome and Pixel 7 emulation in GitHub Actions.",
     approach: [
-      "Mapped coverage from user flows first: search, filters, paging, reading list, import/export, then the unhappy paths — server errors, network failure, slow API, offline state.",
-      "Intercepted network calls against a mocked OpenLibrary so the suite is deterministic — and documented plainly what that does and does not prove.",
+      "Mapped coverage from user flows first: search, filters, paging, reading list, import/export, then the unhappy paths: server errors, network failure, slow API, offline state.",
+      "Intercepted network calls against a mocked OpenLibrary so the suite is deterministic, and documented plainly what that does and does not prove.",
       "Analyzed run history for flakiness and tracked it in a written flaky-test analysis.",
       "Built a self-updating results dashboard and a full Allure report on every CI run.",
     ],
@@ -208,9 +208,9 @@ export const caseStudies: CaseStudy[] = [
     index: "C",
     title: "Keeping a live data app honest: APEX F1",
     context:
-      "My F1 dashboard mixes live, delayed, historical and demo data from several providers — a correctness risk if any panel overstates what it knows.",
+      "My F1 dashboard mixes live, delayed, historical and demo data from several providers, a correctness risk if any panel overstates what it knows.",
     approach: [
-      "Labelled every panel by data provenance — LIVE, DELAYED, HISTORICAL, DEMO DATA — so the UI never presents delayed or fallback data as live.",
+      "Labelled every panel by data provenance (LIVE, DELAYED, HISTORICAL, DEMO DATA) so the UI never presents delayed or fallback data as live.",
       "Protected that contract with 37 unit tests and 10 Playwright end-to-end scenarios in CI.",
       "Used a bundled snapshot of real recorded race data as the demo fallback instead of fabricated numbers.",
     ],
@@ -263,10 +263,10 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
 ];
 
 export const credentials = [
-  { name: "ISTQB CTFL", detail: "In preparation — not certified yet" },
+  { name: "ISTQB CTFL", detail: "In preparation, not certified yet" },
   { name: "Playwright 101", detail: "TestMu" },
   { name: "Claude Code in Action", detail: "Anthropic" },
-  { name: "TOEFL ITP — 603", detail: "Englishvit" },
+  { name: "TOEFL ITP 603", detail: "Englishvit" },
   { name: "SFC · BAFC · SODFC", detail: "SCRUMstudy, fundamentals" },
 ];
 

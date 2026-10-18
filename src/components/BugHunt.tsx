@@ -47,7 +47,7 @@ export default function BugHunt() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="You found the hidden bug. Open the bug report form."
-        title="psst - you found a bug"
+        title="psst, you found a bug"
         className="group -my-3 inline-flex h-11 w-11 translate-y-[-1px] items-center justify-center opacity-[0.65] transition-all duration-300 hover:opacity-100 focus-visible:opacity-100"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
@@ -119,7 +119,7 @@ export default function BugHunt() {
                 </div>
 
                 <div className="mt-7 flex items-center justify-between gap-4">
-                  <p className="text-xs text-muted">Demo only - this report never leaves your browser.</p>
+                  <p className="text-xs text-muted">Demo only. This report never leaves your browser.</p>
                   <div className="flex gap-3">
                     <button type="button" onClick={() => setOpen(false)} className="px-3 py-2 text-sm text-muted hover:text-ink">
                       Cancel
