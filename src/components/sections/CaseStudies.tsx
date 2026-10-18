@@ -2,6 +2,7 @@ import SectionHeading from "./SectionHeading";
 import { FadeUp } from "../Reveal";
 import { caseStudies } from "@/lib/data";
 import TestStatus from "../TestStatus";
+import { T } from "@/lib/lang";
 
 function ArrowIcon() {
   return (
@@ -21,8 +22,8 @@ export default function CaseStudies() {
             <article className="grid gap-8 border border-line bg-surface/40 p-6 transition-colors duration-500 hover:border-accent/40 md:grid-cols-12 md:p-10">
               <div className="md:col-span-4">
                 <span className="font-display text-5xl italic text-accent/80">{cs.index}</span>
-                <h3 className="mt-4 font-display text-2xl leading-tight md:text-3xl">{cs.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted">{cs.context}</p>
+                <h3 className="mt-4 font-display text-2xl leading-tight md:text-3xl"><T>{cs.title}</T></h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted"><T>{cs.context}</T></p>
                 {cs.ci && <TestStatus repo={cs.ci.repo} workflow={cs.ci.workflow} />}
               </div>
               <div className="md:col-span-6">
@@ -30,18 +31,18 @@ export default function CaseStudies() {
                   {cs.approach.map((step, si) => (
                     <li key={si} className="flex gap-3 text-sm leading-relaxed text-ink/85">
                       <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                      {step}
+                      <T>{step}</T>
                     </li>
                   ))}
                 </ul>
                 <p className="mt-6 border-l-2 border-accent/60 pl-4 text-sm italic leading-relaxed text-muted">
-                  {cs.takeaway}
+                  <T>{cs.takeaway}</T>
                 </p>
               </div>
               <div className="flex flex-row gap-5 md:col-span-2 md:flex-col md:items-end md:justify-start">
                 {cs.arch && (
                   <a href={cs.arch} className="link-underline inline-flex items-center gap-1 text-accent">
-                    Architecture
+                    <T>Architecture</T>
                   </a>
                 )}
                 {cs.links.map((l) => (
@@ -52,7 +53,7 @@ export default function CaseStudies() {
                     rel="noreferrer"
                     className="link-underline inline-flex items-center gap-1 text-sm text-ink"
                   >
-                    {l.label} <ArrowIcon />
+                    <T>{l.label}</T> <ArrowIcon />
                   </a>
                 ))}
               </div>

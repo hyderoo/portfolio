@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { T, useLang } from "@/lib/lang";
 
 const FEED = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
 
-type Check = { name: string; pass: boolean | null; detail: string };
+type Check = { name: string; pass: boolean | null; detail: string; vars?: Record<string, string | number> };
 
 type RunState =
   | { phase: "idle" }
@@ -13,6 +14,7 @@ type RunState =
   | { phase: "error"; message: string };
 
 export default function ApiExplorer() {
+  const { t } = useLang();
   const [state, setState] = useState<RunState>({ phase: "idle" });
 
   async function run() {
@@ -35,12 +37,12 @@ export default function ApiExplorer() {
         return lon >= 94 && lon <= 141.5 && lat >= -11.5 && lat <= 6.5;
       });
       const checks: Check[] = [
-        { name: "Status is 200", pass: res.status === 200, detail: `got ${res.status}` },
-        { name: "Body is a GeoJSON FeatureCollection", pass: body?.type === "FeatureCollection", detail: `type: ${body?.type ?? "missing"}` },
-        { name: "Features array is present", pass: features.length > 0, detail: `${features.length} events in the last 24h` },
+        { name: "Status is 200", pass: res.status === 200, detail: "got {status}", vars: { status: res.status } },
+        { name: "Body is a GeoJSON FeatureCollection", pass: body?.type === "FeatureCollection", detail: "type: {type}", vars: { type: body?.type ?? "missing" } },
+        { name: "Features array is present", pass: features.length > 0, detail: "{n} events in the last 24h", vars: { n: features.length } },
         { name: "Every event has a numeric magnitude", pass: features.length > 0 && withMag.length === features.length, detail: `${withMag.length}/${features.length}` },
         { name: "Every event has usable coordinates", pass: features.length > 0 && withCoords.length === features.length, detail: `${withCoords.length}/${features.length}` },
-        { name: "Indonesia bounding box is queryable", pass: true, detail: `${inIndonesia.length} events inside 94-141.5E, 11.5S-6.5N` },
+        { name: "Indonesia bounding box is queryable", pass: true, detail: "{n} events inside 94-141.5E, 11.5S-6.5N", vars: { n: inIndonesia.length } },
       ];
       setState({ phase: "done", ms, status: res.status, count: features.length, checks });
     } catch (e) {
@@ -57,14 +59,16 @@ export default function ApiExplorer() {
           disabled={state.phase === "running"}
           className="rounded-full border border-ink/30 px-5 py-2 text-xs uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:border-accent hover:text-accent disabled:opacity-50"
         >
-          {state.phase === "running" ? "Running" : "Run live checks"}
+          {state.phase === "running" ? t("Running") : t("Run live checks")}
         </button>
       </div>
 
       {state.phase === "done" && (
         <div className="mt-5">
           <p className="text-sm text-muted">
-            Response in {state.ms} ms · status {state.status} · {state.count} earthquakes in the feed right now
+            <T vars={{ ms: state.ms, status: state.status, count: state.count }}>
+              {"Response in {ms} ms · status {status} · {count} earthquakes in the feed right now"}
+            </T>
           </p>
           <ul className="mt-4 space-y-2">
             {state.checks.map((c) => (
@@ -76,8 +80,8 @@ export default function ApiExplorer() {
                 >
                   {c.pass ? "PASS" : "FAIL"}
                 </span>
-                <span>{c.name}</span>
-                <span className="text-muted">{c.detail}</span>
+                <span><T>{c.name}</T></span>
+                <span className="text-muted"><T vars={c.vars}>{c.detail}</T></span>
               </li>
             ))}
           </ul>
@@ -86,7 +90,7 @@ export default function ApiExplorer() {
 
       {state.phase === "error" && (
         <p className="mt-5 text-sm text-accent">
-          The request failed: {state.message}. That is a real result too; the feed or the network is down right now.
+          <T vars={{ message: t(state.message) }}>{"The request failed: {message}. That is a real result too; the feed or the network is down right now."}</T>
         </p>
       )}
     </div>

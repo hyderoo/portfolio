@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { T, useLang } from "@/lib/lang";
 
 type Area = { name: string; count: number; risk: string; covers: string[]; file: string };
 
@@ -9,7 +10,7 @@ const areas: Area[] = [
     name: "Sync integrity",
     file: "sync.test.ts",
     count: 10,
-    risk: "The app re-syncs the official lolesports feed every minute. The expensive failures are silent: stale data shown as live, or a retry storm duplicating writes.",
+    risk: "The app re-syncs the official lolesports feed every 5 minutes. The expensive failures are silent: stale data shown as live, or a retry storm duplicating writes.",
     covers: [
       "Re-syncing identical upstream data changes nothing (idempotent)",
       "When upstream fails, cached data is kept and the error is recorded",
@@ -101,21 +102,24 @@ const areas: Area[] = [
   },
 ];
 
+const MAP =
+  "The map shows where the 41 tests sit: cell size and intensity follow the number of tests mapped to each risk area. Select a cell to open its coverage.";
+
 const maxCount = Math.max(...areas.map((a) => a.count));
 
 export default function RiskMap() {
+  const { t } = useLang();
   const [open, setOpen] = useState<string | null>(areas[0].name);
 
   return (
     <div className="mt-6">
       <p className="max-w-2xl text-sm leading-relaxed text-muted">
-        The map shows where the 41 tests sit: cell size and intensity follow the number of
-        tests mapped to each risk area. Select a cell to open its coverage.
+        <T>{MAP}</T>
       </p>
       <div
         className="mt-5 grid gap-1.5"
         style={{ gridTemplateColumns: areas.map((a) => `${a.count}fr`).join(" ") }}
-        aria-label="Risk areas by test coverage"
+        aria-label={t("Risk areas by test coverage")}
       >
         {areas.map((a) => {
           const active = open === a.name;
@@ -124,14 +128,14 @@ export default function RiskMap() {
               key={a.name}
               onClick={() => setOpen(active ? null : a.name)}
               aria-pressed={active}
-              aria-label={`${a.name}, ${a.count} tests`}
+              aria-label={t("{name}, {count} tests", { name: t(a.name), count: a.count })}
               className={`flex h-24 flex-col justify-between rounded-sm border p-2 text-left transition-colors sm:h-28 ${
                 active ? "border-accent" : "border-line hover:border-accent/50"
               }`}
               style={{ backgroundColor: `rgba(228, 87, 46, ${0.08 + (a.count / maxCount) * 0.5})` }}
             >
               <span className="text-[10px] font-medium uppercase leading-tight tracking-[0.1em] text-ink/90 sm:text-[11px]">
-                {a.name}
+                <T>{a.name}</T>
               </span>
               <span className="font-display text-lg text-ink sm:text-xl">{a.count}</span>
             </button>
@@ -153,17 +157,17 @@ export default function RiskMap() {
                 aria-expanded={active}
                 className="flex w-full cursor-pointer items-baseline justify-between gap-4 p-5 text-left md:p-6"
               >
-                <span className="font-display text-xl">{a.name}</span>
-                <span className="text-xs uppercase tracking-[0.2em] text-muted">{a.count} tests</span>
+                <span className="font-display text-xl"><T>{a.name}</T></span>
+                <span className="text-xs uppercase tracking-[0.2em] text-muted"><T vars={{ count: a.count }}>{"{count} tests"}</T></span>
               </button>
               {active && (
                 <div className="border-t border-line p-5 md:p-6">
-                  <p className="text-sm italic leading-relaxed text-muted">{a.risk}</p>
+                  <p className="text-sm italic leading-relaxed text-muted"><T>{a.risk}</T></p>
                   <ul className="mt-4 space-y-2">
                     {a.covers.map((c) => (
                       <li key={c} className="flex gap-3 text-sm leading-relaxed text-ink/85">
                         <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                        {c}
+                        <T>{c}</T>
                       </li>
                     ))}
                   </ul>

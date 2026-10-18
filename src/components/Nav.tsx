@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { scrollTo } from "./SmoothScroll";
 import { profile } from "@/lib/data";
+import { LangSwitch, T } from "@/lib/lang";
 
 const links = [
   { label: "About", target: "#about" },
@@ -39,19 +40,22 @@ export default function Nav({ visible }: { visible: boolean }) {
           className="font-display text-lg italic"
         >
           dh.
-          <span className="sr-only">Back to top</span>
+          <span className="sr-only"><T>Back to top</T></span>
         </button>
         <ul className="flex items-center gap-5 text-[11px] uppercase tracking-[0.22em] md:gap-8">
           {links.map((l) => (
             <li key={l.label} className="hidden md:block">
               <button className="link-underline" onClick={() => scrollTo(l.target)}>
-                {l.label}
+                <T>{l.label}</T>
               </button>
             </li>
           ))}
           <li>
+            <LangSwitch />
+          </li>
+          <li>
             <a href={`mailto:${profile.email}`} className="rounded-full border border-white/60 px-4 py-1.5 transition-colors hover:bg-white hover:text-black">
-              Hire me
+              <T>Hire me</T>
             </a>
           </li>
         </ul>

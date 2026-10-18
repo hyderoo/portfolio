@@ -4,6 +4,23 @@ import { motion, useReducedMotion, type Variants } from "motion/react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+/** Words for the reveal. Japanese has no spaces, so use the browser segmenter to keep natural line breaks. */
+function splitWords(text: string): string[] {
+  if (!/[\u3040-\u30ff\u3400-\u9fff]/.test(text)) return text.split(" ");
+  try {
+    const seg = new Intl.Segmenter("ja", { granularity: "word" });
+    const out: string[] = [];
+    for (const { segment } of seg.segment(text)) {
+      // fold punctuation into the word before it so it never wraps to a line start
+      if (/^[、。，．・：；！？）」』】]+$/.test(segment) && out.length) out[out.length - 1] += segment;
+      else out.push(segment);
+    }
+    return out;
+  } catch {
+    return [text];
+  }
+}
+
 /** Splits text into words and chars, revealing char by char when in view. */
 export function SplitChars({
   text,
@@ -20,7 +37,8 @@ export function SplitChars({
   start?: boolean;
 }) {
   const reduced = useReducedMotion();
-  const words = text.split(" ");
+  const words = splitWords(text);
+  const isJa = /[\u3040-\u30ff\u3400-\u9fff]/.test(text);
 
   const container: Variants = {
     hidden: {},
@@ -53,7 +71,7 @@ export function SplitChars({
               </motion.span>
             </span>
           ))}
-          {wi < words.length - 1 ? "\u00A0" : ""}
+          {wi < words.length - 1 && !isJa ? "\u00A0" : ""}
         </span>
       ))}
       </span>

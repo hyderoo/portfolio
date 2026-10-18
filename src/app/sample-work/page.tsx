@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BugPlayground from "@/components/BugPlayground";
+import { SampleWorkIntro } from "@/components/I18nBlocks";
+import { T, TImg } from "@/lib/lang";
 
 export const metadata: Metadata = {
   title: "Sample work: test cases and bug reports | Hafiz Hamdani",
@@ -130,71 +132,62 @@ function Status({ s }: { s: "PASS" | "FAIL" }) {
   );
 }
 
+const BUGS =
+  "All four reproduced defects, written the way I file them at work: severity, priority, environment, exact steps, expected vs actual, evidence. Pick a ticket to open it.";
+
 export default function SampleWorkPage() {
   return (
     <main className="px-6 pb-28 pt-28 md:px-10 md:pt-36">
       <div className="mx-auto max-w-5xl">
         <Link href="/#sample-work" className="link-underline text-sm text-muted hover:text-ink">
-          &larr; Back to sample work
+          <T>{"← Back to sample work"}</T>
         </Link>
 
-        <p className="mt-10 text-[11px] uppercase tracking-[0.25em] text-accent">Sample work</p>
+        <p className="mt-10 text-[11px] uppercase tracking-[0.25em] text-accent"><T>Sample work</T></p>
         <h1 className="mt-4 font-display text-4xl leading-tight md:text-6xl">
-          Test cases and bug reports, on an app anyone can open.
+          <T>Test cases and bug reports, on an app anyone can open.</T>
         </h1>
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
-          My day-job test artifacts are confidential, so this page shows how I plan, execute and
-          report testing against{" "}
-          <a href="https://www.saucedemo.com/" target="_blank" rel="noreferrer" className="link-underline text-ink">
-            SauceDemo
-          </a>
-          , a public training app that ships defects on purpose. Every result below comes from a
-          real execution on 18 October 2026 (desktop Chrome, 1280x720). The same flows pass on the
-          standard account, which is the control that makes the failures worth reporting. The full
-          24-case set, test plan and exploratory notes live in the{" "}
-          <a href="https://github.com/hyderoo/qa-portfolio" target="_blank" rel="noreferrer" className="link-underline text-ink">
-            qa-portfolio repo
-          </a>
-          .
+          <SampleWorkIntro />
         </p>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-3">
           <div className="border border-line p-5">
             <p className="font-display text-4xl text-accent">11</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted">Cases executed</p>
+            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted"><T>Cases executed</T></p>
           </div>
           <div className="border border-line p-5">
             <p className="font-display text-4xl text-accent">7</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted">Passed</p>
+            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted"><T>Passed</T></p>
           </div>
           <div className="border border-line p-5">
             <p className="font-display text-4xl text-accent">4</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted">Defects reproduced</p>
+            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted"><T>Defects reproduced</T></p>
           </div>
         </div>
 
-        <h2 className="mt-20 font-display text-2xl md:text-3xl">Execution record</h2>
+        <h2 className="mt-20 font-display text-2xl md:text-3xl"><T>Execution record</T></h2>
         <div className="mt-6 overflow-x-auto border border-line">
           <table className="w-full min-w-[880px] border-collapse text-left text-sm">
             <thead>
               <tr className="border-b border-line text-[11px] uppercase tracking-[0.18em] text-muted">
                 <th className="px-4 py-3 font-normal">ID</th>
-                <th className="px-4 py-3 font-normal">Test case</th>
-                <th className="px-4 py-3 font-normal">Expected</th>
-                <th className="px-4 py-3 font-normal">Account</th>
-                <th className="px-4 py-3 font-normal">Actual</th>
-                <th className="px-4 py-3 font-normal">Status</th>
+                <th className="px-4 py-3 font-normal"><T>Test case</T></th>
+                <th className="px-4 py-3 font-normal"><T>Expected</T></th>
+                <th className="px-4 py-3 font-normal"><T>Account</T></th>
+                <th className="px-4 py-3 font-normal"><T>Actual</T></th>
+                <th className="px-4 py-3 font-normal"><T>Status</T></th>
               </tr>
             </thead>
             <tbody>
               {ROWS.map((r, i) => (
                 <tr key={`${r.id}-${r.account}`} className={i % 2 ? "bg-surface/40" : ""}>
                   <td className="px-4 py-3 align-top font-mono text-xs text-muted">{r.id}</td>
-                  <td className="px-4 py-3 align-top">{r.title}</td>
-                  <td className="px-4 py-3 align-top text-muted">{r.expected}</td>
+                  <td className="px-4 py-3 align-top"><T>{r.title}</T></td>
+                  <td className="px-4 py-3 align-top text-muted"><T>{r.expected}</T></td>
                   <td className="px-4 py-3 align-top font-mono text-xs text-muted">{r.account}</td>
                   <td className="px-4 py-3 align-top text-muted">
-                    {r.actual}
+                    <T>{r.actual}</T>
                     {r.bug && (
                       <span className="ml-2 font-mono text-xs text-accent">{r.bug}</span>
                     )}
@@ -208,32 +201,30 @@ export default function SampleWorkPage() {
           </table>
         </div>
 
-        <h2 className="mt-20 font-display text-2xl md:text-3xl">Bug reports, filed like tickets</h2>
+        <h2 className="mt-20 font-display text-2xl md:text-3xl"><T>Bug reports, filed like tickets</T></h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-          All four reproduced defects, written the way I file them at work: severity, priority,
-          environment, exact steps, expected vs actual, evidence. Pick a ticket to open it.
+          <T>{BUGS}</T>
         </p>
         <BugPlayground />
 
         <figure className="mt-12">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <TImg
             src="/sample-work/qa-std-complete.png"
             alt="Order confirmation on the standard account: Thank you for your order!"
             className="w-full max-w-2xl border border-line"
           />
           <figcaption className="mt-2 text-xs text-muted">
-            The control: the same checkout flow passes on standard_user.
+            <T>The control: the same checkout flow passes on standard_user.</T>
           </figcaption>
         </figure>
 
         <p className="mt-12 text-sm text-muted">
           <Link href="/#work" className="link-underline hover:text-ink">
-            &larr; Back to selected work
+            <T>{"← Back to selected work"}</T>
           </Link>
           <span className="mx-3 text-line">·</span>
           <Link href="/break-this-app" className="link-underline hover:text-ink">
-            Try it yourself: break this app &rarr;
+            <T>{"Try it yourself: break this app →"}</T>
           </Link>
         </p>
       </div>

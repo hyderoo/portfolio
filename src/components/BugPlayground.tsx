@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { T, useLang } from "@/lib/lang";
 
 type Ticket = {
   id: string;
@@ -116,6 +117,7 @@ function Pill({ children, tone = "neutral" }: { children: React.ReactNode; tone?
 }
 
 export default function BugPlayground() {
+  const { t } = useLang();
   const [openId, setOpenId] = useState<string>("BUG-002");
   const open = TICKETS.find((t) => t.id === openId) ?? TICKETS[0];
 
@@ -132,10 +134,10 @@ export default function BugPlayground() {
             aria-pressed={openId === t.id}
           >
             <span className="font-mono text-xs text-accent">{t.id}</span>
-            <span className="min-w-0 flex-1 truncate text-sm text-ink">{t.summary}</span>
-            <Pill tone={t.severity === "Critical" ? "accent" : "neutral"}>{t.severity}</Pill>
-            <Pill>{t.priority}</Pill>
-            <Pill>Open</Pill>
+            <span className="min-w-0 flex-1 truncate text-sm text-ink"><T>{t.summary}</T></span>
+            <Pill tone={t.severity === "Critical" ? "accent" : "neutral"}><T>{t.severity}</T></Pill>
+            <Pill><T>{t.priority}</T></Pill>
+            <Pill><T>Open</T></Pill>
           </button>
         ))}
       </div>
@@ -146,65 +148,65 @@ export default function BugPlayground() {
           <span>/</span>
           <span className="font-mono text-ink">{open.id}</span>
           <span className="ml-auto flex gap-2">
-            <Pill>Bug</Pill>
-            <Pill tone="green">Reproduced</Pill>
+            <Pill><T>Bug</T></Pill>
+            <Pill tone="green"><T>Reproduced</T></Pill>
           </span>
         </div>
         <div className="grid gap-8 p-5 md:grid-cols-[1fr_240px] md:p-8">
           <div>
-            <h3 className="font-display text-xl md:text-2xl">{open.summary}</h3>
-            <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-muted">Steps to reproduce</p>
+            <h3 className="font-display text-xl md:text-2xl"><T>{open.summary}</T></h3>
+            <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-muted"><T>Steps to reproduce</T></p>
             <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-ink/90">
               {open.steps.map((s) => (
-                <li key={s}>{s}</li>
+                <li key={s}><T>{s}</T></li>
               ))}
             </ol>
-            <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-muted">Expected</p>
-            <p className="mt-1 text-sm leading-relaxed text-muted">{open.expected}</p>
-            <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-muted">Actual</p>
-            <p className="mt-1 text-sm leading-relaxed text-muted">{open.actual}</p>
+            <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-muted"><T>Expected</T></p>
+            <p className="mt-1 text-sm leading-relaxed text-muted"><T>{open.expected}</T></p>
+            <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-muted"><T>Actual</T></p>
+            <p className="mt-1 text-sm leading-relaxed text-muted"><T>{open.actual}</T></p>
             {open.notes && (
               <>
-                <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-muted">Notes</p>
-                <p className="mt-1 text-sm leading-relaxed text-muted">{open.notes}</p>
+                <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-muted"><T>Notes</T></p>
+                <p className="mt-1 text-sm leading-relaxed text-muted"><T>{open.notes}</T></p>
               </>
             )}
             {open.evidence && (
               <figure className="mt-6">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={open.evidence.src} alt={open.evidence.alt} className="w-full max-w-xl border border-line" />
-                <figcaption className="mt-2 text-xs text-muted">{open.evidence.caption}</figcaption>
+                <img src={open.evidence.src} alt={t(open.evidence.alt)} className="w-full max-w-xl border border-line" />
+                <figcaption className="mt-2 text-xs text-muted"><T>{open.evidence.caption}</T></figcaption>
               </figure>
             )}
           </div>
           <aside className="space-y-4 border-t border-line pt-5 text-sm md:border-l md:border-t-0 md:pl-6 md:pt-0">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-muted">Severity</p>
-              <p className="mt-1">{open.severity}</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted"><T>Severity</T></p>
+              <p className="mt-1"><T>{open.severity}</T></p>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-muted">Priority</p>
-              <p className="mt-1">{open.priority}</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted"><T>Priority</T></p>
+              <p className="mt-1"><T>{open.priority}</T></p>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-muted">Environment</p>
-              <p className="mt-1">SauceDemo, desktop Chrome, 1280x720</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted"><T>Environment</T></p>
+              <p className="mt-1"><T>SauceDemo, desktop Chrome, 1280x720</T></p>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-muted">Account</p>
-              <p className="mt-1 font-mono text-xs">{open.account}</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted"><T>Account</T></p>
+              <p className="mt-1 font-mono text-xs"><T>{open.account}</T></p>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-muted">Found</p>
-              <p className="mt-1 text-muted">{open.found}</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted"><T>Found</T></p>
+              <p className="mt-1 text-muted"><T>{open.found}</T></p>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-muted">Related test cases</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted"><T>Related test cases</T></p>
               <p className="mt-1 font-mono text-xs">{open.related.join(", ")}</p>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-muted">Status</p>
-              <p className="mt-1">Open (training app; not filed upstream)</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted"><T>Status</T></p>
+              <p className="mt-1"><T>Open (training app; not filed upstream)</T></p>
             </div>
           </aside>
         </div>

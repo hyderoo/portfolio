@@ -5,6 +5,10 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { SplitChars } from "../Reveal";
 import { profile } from "@/lib/data";
+import { T } from "@/lib/lang";
+
+const HERO_COPY =
+  "I find the bugs before your users do. QA engineer working on a mobile banking app used by millions, and building things on the side so I never stop breaking interesting ones.";
 
 const HeroScene = dynamic(() => import("../HeroScene"), { ssr: false });
 
@@ -42,7 +46,7 @@ export default function Hero({ started }: { started: boolean }) {
           animate={started ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          {profile.name} · {profile.role}
+          {profile.name} · <T>{profile.role}</T>
         </motion.span>
         <motion.span
           className="hidden sm:block"
@@ -50,7 +54,7 @@ export default function Hero({ started }: { started: boolean }) {
           animate={started ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.65 }}
         >
-          {profile.location}
+          <T>{profile.location}</T>
         </motion.span>
       </div>
 
@@ -66,9 +70,7 @@ export default function Hero({ started }: { started: boolean }) {
             transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
           <p className="max-w-md text-base leading-relaxed text-muted md:text-lg">
-            I find the bugs before your users do. QA engineer working on a
-            mobile banking app used by millions, and building things on the
-            side so I never stop breaking interesting ones.
+            <T>{HERO_COPY}</T>
           </p>
           <a
             href={profile.cv}
@@ -76,7 +78,7 @@ export default function Hero({ started }: { started: boolean }) {
             rel="noreferrer"
             className="mt-5 inline-flex items-center gap-2 rounded-full border border-ink/30 px-5 py-2 text-xs uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:border-accent hover:text-accent"
           >
-            Download CV
+            <T>Download CV</T>
           </a>
           </motion.div>
           <motion.div
@@ -86,7 +88,7 @@ export default function Hero({ started }: { started: boolean }) {
             transition={{ duration: 0.8, delay: 1.1 }}
           >
             <span className="inline-block h-px w-10 bg-muted" />
-            Scroll to discover
+            <T>Scroll to discover</T>
           </motion.div>
         </div>
       </div>

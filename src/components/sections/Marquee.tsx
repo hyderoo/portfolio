@@ -1,3 +1,5 @@
+import { T } from "@/lib/lang";
+
 const items = [
   "Functional Testing",
   "API Testing",
@@ -16,7 +18,7 @@ export default function Marquee() {
           <div key={half} className="flex items-center gap-8">
             {row.map((item, i) => (
               <span key={`${half}-${i}`} className="flex items-center gap-8 whitespace-nowrap">
-                <span className="font-display text-xl italic text-ink/85 md:text-2xl">{item}</span>
+                <span className="font-display text-xl italic text-ink/85 md:text-2xl"><T>{item}</T></span>
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               </span>
             ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { T, useLang } from "@/lib/lang";
 
 const REPO = "hyderoo/quakewatch";
 const WORKFLOW = "e2e";
@@ -18,7 +19,7 @@ type State =
   | { phase: "triggering" }
   | { phase: "watching"; run: RunInfo | null }
   | { phase: "done"; run: RunInfo }
-  | { phase: "unavailable"; message: string };
+  | { phase: "unavailable"; message: string; status?: number };
 
 async function latestRun(): Promise<RunInfo | null> {
   const res = await fetch(
@@ -41,7 +42,11 @@ async function latestRun(): Promise<RunInfo | null> {
   };
 }
 
+const DESC =
+  "This triggers the actual GitHub Actions workflow: 6 Playwright tests against the deployed app, browser install included, usually 3 to 6 minutes. The status below is polled from the public GitHub API while you wait.";
+
 export default function RunSuite() {
+  const { t } = useLang();
   const [state, setState] = useState<State>({ phase: "idle" });
   const [elapsed, setElapsed] = useState(0);
   const poll = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -61,7 +66,8 @@ export default function RunSuite() {
           message:
             body.error === "not_configured"
               ? "Live triggering is not wired on this deployment yet."
-              : `GitHub refused the dispatch (status ${body.status ?? res.status}).`,
+                      : "GitHub refused the dispatch (status {status}).",
+          status: body.status ?? res.status,
         });
         return;
       }
@@ -89,11 +95,9 @@ export default function RunSuite() {
     <div className="mt-6 rounded-lg border border-white/10 p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold">Run the QuakeWatch test suite, for real</p>
+          <p className="text-sm font-semibold"><T>Run the QuakeWatch test suite, for real</T></p>
           <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted">
-            This triggers the actual GitHub Actions workflow: 6 Playwright tests against the
-            deployed app, browser install included, usually 3 to 6 minutes. The status below
-            is polled from the public GitHub API while you wait.
+            <T>{DESC}</T>
           </p>
         </div>
         <button
@@ -101,39 +105,39 @@ export default function RunSuite() {
           disabled={state.phase === "triggering" || state.phase === "watching"}
           className="rounded-full border border-ink/30 px-5 py-2 text-xs uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:border-accent hover:text-accent disabled:opacity-50"
         >
-          {state.phase === "watching" ? `Running ${mm}:${ss}` : state.phase === "triggering" ? "Triggering" : "Run the suite"}
+          {state.phase === "watching" ? t("Running {mm}:{ss}", { mm, ss }) : state.phase === "triggering" ? t("Triggering") : t("Run the suite")}
         </button>
       </div>
 
       {state.phase === "watching" && (
         <p className="mt-4 text-sm text-muted">
           {state.run
-            ? `Run #${state.run.id}: ${state.run.status}. `
-            : "Waiting for the run to appear in GitHub Actions. "}
+            ? t("Run #{id}: {status}. ", { id: state.run.id, status: state.run.status })
+            : t("Waiting for the run to appear in GitHub Actions. ")}
           <a href={`https://github.com/${REPO}/actions`} target="_blank" rel="noreferrer" className="text-accent hover:text-ink">
-            Watch it on GitHub
+            <T>Watch it on GitHub</T>
           </a>
         </p>
       )}
       {state.phase === "done" && (
         <p className="mt-4 text-sm">
           <span className={state.run.conclusion === "success" ? "text-emerald-400" : "text-accent"}>
-            {state.run.conclusion === "success" ? "All 6 tests passed." : `Finished: ${state.run.conclusion}.`}
+            {state.run.conclusion === "success" ? t("All 6 tests passed.") : t("Finished: {c}.", { c: String(state.run.conclusion) })}
           </span>{" "}
           <a href={state.run.url} target="_blank" rel="noreferrer" className="text-accent hover:text-ink">
-            Open the run
+            <T>Open the run</T>
           </a>
           {" · "}
           <a href="https://hyderoo.github.io/quakewatch/e2e/" target="_blank" rel="noreferrer" className="text-accent hover:text-ink">
-            Open the HTML report
+            <T>Open the HTML report</T>
           </a>
         </p>
       )}
       {state.phase === "unavailable" && (
         <p className="mt-4 text-sm text-muted">
-          {state.message}{" "}
+          {t(state.message, { status: state.status ?? "" })}{" "}
           <a href={`https://github.com/${REPO}/actions`} target="_blank" rel="noreferrer" className="text-accent hover:text-ink">
-            See the latest real runs instead
+            <T>See the latest real runs instead</T>
           </a>
         </p>
       )}

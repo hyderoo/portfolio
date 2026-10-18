@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ApiExplorer from "@/components/ApiExplorer";
 import RunSuite from "@/components/RunSuite";
+import { Count, R, T } from "@/lib/lang";
 
 export const metadata: Metadata = {
   title: "Quality in numbers | Hafiz Hamdani",
@@ -63,8 +64,8 @@ const PROJECTS: ProjectQuality[] = [
   },
   {
     name: "SauceDemo (manual sample)",
-    layers: { manual: 22 },
-    runs: "22 designed cases; 11 re-executed live on 18 Oct 2026, 4 bugs filed",
+    layers: { manual: 24 },
+    runs: "24 designed cases; 11 re-executed live on 18 Oct 2026, 4 bugs filed",
     notTested: [],
   },
 ];
@@ -139,46 +140,62 @@ function LayerBar({ layers }: { layers: Layers }) {
   );
 }
 
+const INTRO =
+  'Every number on this page is counted from the real repository it names, and the "not tested yet" lists are kept on purpose: a tester who hides gaps is not a tester you want.';
+const LIVE =
+  "The same style of assertions I write in Postman, executed right now from your browser against the public USGS earthquake feed that powers QuakeWatch. Nothing here is cached or staged.";
+const OWN =
+  "A tester's own code should not get a free pass. Each entry links the real fix commit.";
+
 export default function QualityPage() {
   return (
     <main className="mx-auto max-w-5xl px-6 pb-24 pt-28 md:px-10">
       <Link href="/" className="text-[11px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-accent">
-        Back to home
+        <T>Back to home</T>
       </Link>
-      <h1 className="mt-6 font-display text-4xl md:text-6xl">Quality, in numbers.</h1>
+      <h1 className="mt-6 font-display text-4xl md:text-6xl"><T>Quality, in numbers.</T></h1>
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
-        Every number on this page is counted from the real repository it names, and the
-        &quot;not tested yet&quot; lists are kept on purpose: a tester who hides gaps is
-        not a tester you want.
+        <T>{INTRO}</T>
       </p>
 
       <section className="mt-16">
-        <h2 className="font-display text-2xl md:text-3xl">Test coverage per project</h2>
+        <h2 className="font-display text-2xl md:text-3xl"><T>Test coverage per project</T></h2>
         <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-[11px] uppercase tracking-[0.15em] text-muted">
           {LAYER_ORDER.map((l) => (
             <span key={l.key} className="inline-flex items-center gap-2">
               <span className={`inline-block h-2 w-2 rounded-full ${l.color}`} />
-              {l.label}
+              <T>{l.label}</T>
             </span>
           ))}
         </div>
         <div className="mt-8 space-y-8">
           {PROJECTS.map((p) => {
-            const counts = LAYER_ORDER.filter((l) => p.layers[l.key])
-              .map((l) => `${p.layers[l.key]} ${l.label}`)
-              .join(" / ");
+            const shown = LAYER_ORDER.filter((l) => p.layers[l.key]);
             return (
               <article key={p.name} className="border-b border-white/10 pb-8">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="text-lg font-semibold">{p.name}</h3>
-                  <span className="text-sm text-muted">{counts}</span>
+                  <span className="text-sm text-muted">
+                    {shown.map((l, i) => (
+                      <span key={l.key}>
+                        {i > 0 && " / "}
+                        <Count label={l.label} n={p.layers[l.key] ?? 0} />
+                      </span>
+                    ))}
+                  </span>
                 </div>
                 <LayerBar layers={p.layers} />
-                <p className="mt-2 text-sm text-muted">{p.runs}</p>
+                <p className="mt-2 text-sm text-muted"><T>{p.runs}</T></p>
                 {p.notTested.length > 0 && (
                   <p className="mt-2 text-sm text-muted">
-                    <span className="text-accent">Not tested yet: </span>
-                    {p.notTested.join("; ")}.
+                    <span className="text-accent"><T>Not tested yet: </T></span>
+                    {p.notTested.map((x, i) => (
+                      <span key={x}>
+                        {i > 0 && <T>{"; "}</T>}
+                        <T>{x}</T>
+                      </span>
+                    ))}
+                    <T>.</T>
                   </p>
                 )}
               </article>
@@ -188,42 +205,39 @@ export default function QualityPage() {
       </section>
 
       <section className="mt-20">
-        <h2 className="font-display text-2xl md:text-3xl">Live API checks</h2>
+        <h2 className="font-display text-2xl md:text-3xl"><T>Live API checks</T></h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">
-          The same style of assertions I write in Postman, executed right now from your
-          browser against the public USGS earthquake feed that powers QuakeWatch. Nothing
-          here is cached or staged.
+          <T>{LIVE}</T>
         </p>
         <ApiExplorer />
         <div className="mt-10">
-          <h3 className="font-display text-xl">Trigger a real CI run</h3>
+          <h3 className="font-display text-xl"><T>Trigger a real CI run</T></h3>
           <RunSuite />
         </div>
       </section>
 
       <section className="mt-20">
-        <h2 className="font-display text-2xl md:text-3xl">Bugs I found and fixed in my own projects</h2>
+        <h2 className="font-display text-2xl md:text-3xl"><T>Bugs I found and fixed in my own projects</T></h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">
-          A tester&apos;s own code should not get a free pass. Each entry links the real
-          fix commit.
+          <T>{OWN}</T>
         </p>
         <div className="mt-8 space-y-6">
           {CHANGELOG.map((c) => (
             <article key={c.sha} className="rounded-lg border border-white/10 p-5">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="text-base font-semibold">{c.title}</h3>
+                <h3 className="text-base font-semibold"><T>{c.title}</T></h3>
                 <span className="text-xs uppercase tracking-[0.15em] text-muted">
-                  {c.repo} · {c.date}
+                  {c.repo} · <T>{c.date}</T>
                 </span>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{c.body}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted"><T>{c.body}</T></p>
               <a
                 href={`https://github.com/hyderoo/${c.repo}/commit/${c.sha}`}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-3 inline-block text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:text-ink"
               >
-                Fix commit {c.sha.slice(0, 7)}
+                <T>Fix commit</T> {c.sha.slice(0, 7)}
               </a>
             </article>
           ))}

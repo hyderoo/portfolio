@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { T } from "@/lib/lang";
+import { DEWA_APK_URL } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Architecture | Hafiz Hamdani",
@@ -12,6 +14,7 @@ type ProjectArch = {
   slug: string;
   name: string;
   repo: string;
+  apk?: string;
   intro: string;
   diagrams: Diagram[];
   skipped?: string[];
@@ -106,6 +109,7 @@ const PROJECTS: ProjectArch[] = [
     slug: "dewa",
     name: "Dewa Management App",
     repo: "https://github.com/hyderoo/dewa-apk",
+    apk: DEWA_APK_URL,
     intro:
       "Flutter Android app on BLoC cubits over a repository layer, talking to the Dewa Management REST API at dewamanagement.com, with WhatsApp deep links for follow-ups.",
     diagrams: [
@@ -118,40 +122,57 @@ const PROJECTS: ProjectArch[] = [
   },
 ];
 
+const INTRO =
+  "Every diagram on this page is drawn from the actual repository: real routes, real tables, real cron schedules. Where a diagram type does not apply to a project, that is stated instead of drawn.";
+
 export default function ArchitecturePage() {
   return (
     <main className="mx-auto max-w-5xl px-6 pb-24 pt-28 md:px-10">
       <Link href="/" className="text-[11px] uppercase tracking-[0.25em] text-muted transition-colors hover:text-accent">
-        Back to home
+        <T>Back to home</T>
       </Link>
-      <h1 className="mt-6 font-display text-4xl md:text-6xl">Architecture.</h1>
+      <h1 className="mt-6 font-display text-4xl md:text-6xl"><T>Architecture.</T></h1>
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
-        Every diagram on this page is drawn from the actual repository: real routes, real
-        tables, real cron schedules. Where a diagram type does not apply to a project,
-        that is stated instead of drawn.
+        <T>{INTRO}</T>
+      </p>
+
+      <p className="mt-3 max-w-2xl text-sm text-muted lang-ja-only">
+        <T>Diagram labels are kept in English on purpose, so they match the route, table and service names in the code.</T>
       </p>
 
       {PROJECTS.map((p) => (
         <section key={p.name} id={p.slug} className="mt-20 scroll-mt-24">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="font-display text-2xl md:text-3xl">{p.name}</h2>
+            <span className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+            {p.apk && (
+              <a
+                href={p.apk}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:text-ink"
+              >
+                <T>Android APK for demo, install at own risk</T>
+              </a>
+            )}
             <a
               href={p.repo}
               target="_blank"
               rel="noreferrer"
               className="text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:text-ink"
             >
-              Repository
+              <T>Repository</T>
             </a>
+            </span>
           </div>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">{p.intro}</p>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted"><T>{p.intro}</T></p>
 
           {p.skipped && (
             <ul className="mt-4 space-y-1 text-sm text-muted">
               {p.skipped.map((s) => (
                 <li key={s}>
-                  <span className="text-accent">Skipped: </span>
-                  {s}
+                  <span className="text-accent"><T>Skipped: </T></span>
+                  <T>{s}</T>
                 </li>
               ))}
             </ul>
@@ -161,8 +182,12 @@ export default function ArchitecturePage() {
             {p.diagrams.map((d) => (
               <figure key={d.file}>
                 <figcaption className="mb-3 text-sm font-semibold">
-                  {d.title}
-                  {d.note && <span className="ml-2 text-xs font-normal text-muted">{d.note}</span>}
+                  <T>{d.title}</T>
+                  {d.note && (
+                    <span className="ml-2 text-xs font-normal text-muted">
+                      <T>{d.note}</T>
+                    </span>
+                  )}
                 </figcaption>
                 <div className="overflow-x-auto rounded-lg border border-white/10 bg-black/30 p-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { FloatingLang, LangProvider } from "@/lib/lang";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -37,8 +38,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${spaceGrotesk.variable}`}>
-      <body className="grain">{children}</body>
+    <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${spaceGrotesk.variable}`}>
+      <body className="grain">
+        <LangProvider>
+          {children}
+          <FloatingLang />
+        </LangProvider>
+      </body>
     </html>
   );
 }

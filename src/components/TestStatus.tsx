@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang } from "@/lib/lang";
 
 type RunInfo = { conclusion: string; updatedAt: string; url: string };
 
@@ -11,6 +12,7 @@ type RunInfo = { conclusion: string; updatedAt: string; url: string };
  */
 export default function TestStatus({ repo, workflow }: { repo: string; workflow: string }) {
   const [run, setRun] = useState<RunInfo | null>(null);
+  const { t, lang } = useLang();
 
   useEffect(() => {
     const key = `ci:${repo}:${workflow}`;
@@ -47,19 +49,19 @@ export default function TestStatus({ repo, workflow }: { repo: string; workflow:
   if (!run) return null;
 
   const ok = run.conclusion === "success";
-  const date = new Date(run.updatedAt).toLocaleDateString("en-GB", {
+  const date = new Date(run.updatedAt).toLocaleDateString(lang === "ja" ? "ja-JP" : "en-GB", {
     day: "numeric",
     month: "short",
   });
-  const label = ok ? "Tests passing" : `Tests ${run.conclusion}`;
+  const label = ok ? t("Tests passing") : t("Tests {c}", { c: run.conclusion });
 
   return (
     <a
       href={run.url}
       target="_blank"
       rel="noreferrer"
-      title="Live from GitHub Actions"
-      aria-label={`Latest ${workflow} run on GitHub Actions: ${label}, ${date}`}
+      title={t("Live from GitHub Actions")}
+      aria-label={t("Latest {workflow} run on GitHub Actions: {label}, {date}", { workflow, label, date })}
       className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-line px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:border-accent/50 hover:text-ink"
     >
       <span

@@ -6,6 +6,7 @@ import SectionHeading from "./SectionHeading";
 import { FadeUp } from "../Reveal";
 import { projects } from "@/lib/data";
 import TestStatus from "../TestStatus";
+import { T } from "@/lib/lang";
 
 function ArrowIcon() {
   return (
@@ -67,27 +68,32 @@ export default function Projects() {
                   <h3 className="font-display text-2xl leading-tight transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
                     {p.title}
                   </h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted">{p.year}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted"><T>{p.year}</T></p>
                   {p.ci && <TestStatus repo={p.ci.repo} workflow={p.ci.workflow} />}
                 </div>
-                <p className="max-w-md text-sm leading-relaxed text-muted md:col-span-5">{p.description}</p>
+                <p className="max-w-md text-sm leading-relaxed text-muted md:col-span-5"><T>{p.description}</T></p>
                 <div className="flex gap-5 text-sm md:col-span-2 md:justify-end">
                   {p.live && (
                     <a href={p.live} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-ink">
-                      Live <ArrowIcon />
+                      <T>Live</T> <ArrowIcon />
                     </a>
                   )}
                   <a href={p.repo} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-muted hover:text-ink">
-                    Code <ArrowIcon />
+                    <T>Code</T> <ArrowIcon />
                   </a>
                   {p.strategy && (
                     <a href={p.strategy} className="link-underline inline-flex items-center gap-1 text-accent">
-                      Test strategy <ArrowIcon />
+                      <T>Test strategy</T> <ArrowIcon />
+                    </a>
+                  )}
+                  {p.apk && (
+                    <a href={p.apk} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-accent">
+                      <T>Android APK for demo, install at own risk</T> <ArrowIcon />
                     </a>
                   )}
                   {p.arch && (
                     <a href={p.arch} className="link-underline inline-flex items-center gap-1 text-accent">
-                      Architecture <ArrowIcon />
+                      <T>Architecture</T> <ArrowIcon />
                     </a>
                   )}
                 </div>
@@ -95,7 +101,7 @@ export default function Projects() {
               <ul className="mt-3 flex flex-wrap gap-2 md:pl-[calc(8.333%+1rem)]">
                 {p.tags.map((t) => (
                   <li key={t} className="text-xs text-muted/70">
-                    {t}
+                    <T>{t}</T>
                     <span className="mx-2 text-accent">·</span>
                   </li>
                 ))}

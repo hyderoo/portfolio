@@ -62,6 +62,10 @@ export const experience: Experience[] = [
   },
 ];
 
+/** Public, view-only link to the Dewa Management Android APK (demo build). */
+export const DEWA_APK_URL =
+  "https://drive.google.com/file/d/1L0btTRlFBDIuOV7c9Yzl0UkWHFPUAg1l/view?usp=sharing";
+
 export type Project = {
   index: string;
   title: string;
@@ -77,6 +81,8 @@ export type Project = {
   strategy?: string;
   /** Link to the architecture diagrams for this project. */
   arch?: string;
+  /** Android APK demo download (view-only link). */
+  apk?: string;
 };
 
 export const projects: Project[] = [
@@ -85,7 +91,7 @@ export const projects: Project[] = [
     title: "Worlds 2026 Live",
     year: "2026",
     description:
-      "A live tracker for the League of Legends World Championship: match center, bracket, standings, team pages, pick'em and push notifications. Next.js PWA backed by Supabase, syncing the official lolesports feed every minute.",
+      "A live tracker for the League of Legends World Championship: match center, bracket, standings, team pages, pick'em and push notifications. Next.js PWA backed by Supabase, syncing the official lolesports feed every 5 minutes.",
     tags: ["Next.js", "TypeScript", "Supabase", "PWA"],
     live: "https://worlds-2026-live.vercel.app",
     repo: "https://github.com/hyderoo/worlds-2026-live",
@@ -164,6 +170,7 @@ export const projects: Project[] = [
     tags: ["Flutter", "Dart", "REST API"],
     repo: "https://github.com/hyderoo/dewa-apk",
     arch: "/architecture#dewa",
+    apk: DEWA_APK_URL,
   },
 ];
 
@@ -185,7 +192,7 @@ export const caseStudies: CaseStudy[] = [
     context:
       "A self-directed API testing practice against two public Formula 1 APIs (Jolpica and OpenF1). No employer or private data is involved.",
     approach: [
-      "Designed a 13-request Postman collection with 33 assertions on real payloads: standings ordering, sequential finishing positions, required fields on every record.",
+      "Designed a 13-request Postman collection with 41 assertions on real payloads: standings ordering, sequential finishing positions, required fields on every record.",
       "Chained dynamic data between requests: the latest race session key feeds the driver and lap calls.",
       "Verified pagination behaviour and documented each API's error quirks against the live endpoints, including rate limits and empty-result semantics.",
       "Set a 3-second performance budget per response and wired the suite into GitHub Actions: on every change, on demand, and weekly as an availability monitor.",
@@ -291,3 +298,4 @@ export const education = {
   degree: "B.Eng. Computer Engineering",
   detail: "GPA 3.73/4.00 · graduated Jul 2025",
 };
+
