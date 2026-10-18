@@ -2,6 +2,7 @@
 
 import { SplitChars, FadeUp } from "../Reveal";
 import { profile } from "@/lib/data";
+import BugHunt from "../BugHunt";
 
 export default function Footer() {
   return (
@@ -33,7 +34,10 @@ export default function Footer() {
       <div className="mt-20 flex flex-col gap-2 border-t border-line pt-6 text-xs text-muted md:flex-row md:items-center md:justify-between">
         <span>© 2026 {profile.name}</span>
         <span>{profile.location} · {profile.timezone}</span>
-        <span>Designed &amp; built with Next.js, Motion and Three.js</span>
+        <span className="inline-flex items-center gap-2">
+          Designed &amp; built with Next.js, Motion and Three.js
+          <BugHunt />
+        </span>
       </div>
     </footer>
   );

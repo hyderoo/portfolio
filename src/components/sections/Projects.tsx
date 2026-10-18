@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react
 import SectionHeading from "./SectionHeading";
 import { FadeUp } from "../Reveal";
 import { projects } from "@/lib/data";
+import TestStatus from "../TestStatus";
 
 function ArrowIcon() {
   return (
@@ -67,6 +68,7 @@ export default function Projects() {
                     {p.title}
                   </h3>
                   <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted">{p.year}</p>
+                  {p.ci && <TestStatus repo={p.ci.repo} workflow={p.ci.workflow} />}
                 </div>
                 <p className="max-w-md text-sm leading-relaxed text-muted md:col-span-5">{p.description}</p>
                 <div className="flex gap-5 text-sm md:col-span-2 md:justify-end">

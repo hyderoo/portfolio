@@ -1,6 +1,7 @@
 import SectionHeading from "./SectionHeading";
 import { FadeUp } from "../Reveal";
 import { caseStudies } from "@/lib/data";
+import TestStatus from "../TestStatus";
 
 function ArrowIcon() {
   return (
@@ -22,6 +23,7 @@ export default function CaseStudies() {
                 <span className="font-display text-5xl italic text-accent/80">{cs.index}</span>
                 <h3 className="mt-4 font-display text-2xl leading-tight md:text-3xl">{cs.title}</h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted">{cs.context}</p>
+                {cs.ci && <TestStatus repo={cs.ci.repo} workflow={cs.ci.workflow} />}
               </div>
               <div className="md:col-span-6">
                 <ul className="space-y-3">

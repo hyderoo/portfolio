@@ -71,6 +71,8 @@ export type Project = {
   live?: string;
   repo: string;
   preview?: string;
+  /** Public GitHub Actions workflow whose latest run feeds the live badge. */
+  ci?: { repo: string; workflow: string };
 };
 
 export const projects: Project[] = [
@@ -84,6 +86,7 @@ export const projects: Project[] = [
     live: "https://worlds-2026-live.vercel.app",
     repo: "https://github.com/hyderoo/worlds-2026-live",
     preview: "/previews/worlds.png",
+    ci: { repo: "hyderoo/worlds-2026-live", workflow: "CI" },
   },
   {
     index: "02",
@@ -95,6 +98,7 @@ export const projects: Project[] = [
     live: "https://apex-f1-murex.vercel.app",
     repo: "https://github.com/hyderoo/apex-f1",
     preview: "/previews/apex.png",
+    ci: { repo: "hyderoo/apex-f1", workflow: "CI" },
   },
   {
     index: "03",
@@ -126,6 +130,7 @@ export const projects: Project[] = [
       "Playwright end-to-end suite for ShelfSeeker: 39 tests across desktop and mobile emulation, running in GitHub Actions with a self-updating report dashboard and an Allure report per run.",
     tags: ["Playwright", "CI/CD", "GitHub Actions", "Allure"],
     repo: "https://github.com/hyderoo/ShelfSeeker-e2e",
+    ci: { repo: "hyderoo/ShelfSeeker-e2e", workflow: "e2e" },
   },
   {
     index: "06",
@@ -154,6 +159,7 @@ export type CaseStudy = {
   approach: string[];
   takeaway: string;
   links: { label: string; href: string }[];
+  ci?: { repo: string; workflow: string };
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -174,6 +180,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Live Newman report", href: "https://hyderoo.github.io/api-testing-postman/" },
       { label: "Repository", href: "https://github.com/hyderoo/api-testing-postman" },
     ],
+    ci: { repo: "hyderoo/api-testing-postman", workflow: "Newman API tests" },
   },
   {
     index: "B",
@@ -192,6 +199,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Results dashboard", href: "https://hyderoo.github.io/ShelfSeeker-e2e/" },
       { label: "Repository", href: "https://github.com/hyderoo/ShelfSeeker-e2e" },
     ],
+    ci: { repo: "hyderoo/ShelfSeeker-e2e", workflow: "e2e" },
   },
   {
     index: "C",
@@ -209,6 +217,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Live app", href: "https://apex-f1-murex.vercel.app" },
       { label: "Repository", href: "https://github.com/hyderoo/apex-f1" },
     ],
+    ci: { repo: "hyderoo/apex-f1", workflow: "CI" },
   },
 ];
 
