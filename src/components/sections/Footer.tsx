@@ -19,7 +19,7 @@ export default function Footer() {
       </div>
       <a href={`mailto:${profile.email}`} className="group block" data-cursor>
         <SplitChars as="h2" text={t("LET'S BREAK")} className="font-display display-hero block" />
-        <SplitChars as="h2" text={t("SOMETHING")} className="font-display display-hero block text-outline italic transition-colors duration-500 group-hover:text-accent group-hover:[-webkit-text-stroke:0px]" />
+        <SplitChars as="h2" text={t("SOMETHING")} className="font-display display-hero block text-outline italic transition-colors duration-500 group-hover:text-accent group-hover:[filter:none]" />
       </a>
       <FadeUp delay={0.2}>
         <p className="mt-8 max-w-md text-muted">

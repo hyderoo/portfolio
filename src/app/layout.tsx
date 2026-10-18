@@ -40,6 +40,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${spaceGrotesk.variable}`}>
       <body className="grain">
+        <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true">
+          <filter id="text-outline" x="-5%" y="-5%" width="110%" height="110%">
+            <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d" />
+            <feFlood floodColor="#f2ede3" result="c" />
+            <feComposite in="c" in2="d" operator="in" result="ring" />
+            <feComposite in="ring" in2="SourceAlpha" operator="out" />
+          </filter>
+        </svg>
         <LangProvider>
           {children}
           <FloatingLang />

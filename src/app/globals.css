@@ -49,9 +49,15 @@ body {
   line-height: 0.95;
   letter-spacing: -0.015em;
 }
+/* Outline via an SVG silhouette filter: the variable Fraunces carries
+   overlapping contours (WONK axis), and -webkit-text-stroke strokes each
+   contour, doubling inner lines and drawing small triangles at vertices.
+   Dilating the glyph silhouette and cutting the fill out gives one clean
+   outline while keeping the exact live letterforms. The filter is defined
+   once in the root layout. */
 .text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-ink);
+  color: var(--color-ink);
+  filter: url(#text-outline);
 }
 
 /* film grain */

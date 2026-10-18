@@ -23,23 +23,13 @@ export default function Hero({ started }: { started: boolean }) {
     return () => cancelAnimationFrame(id);
   }, []);
 
-  // The 3D scene is heavy (three.js + WebGL setup). Load it after the page has settled:
-  // on the first user input, or after a short delay, whichever comes first.
+  // Fetch the heavy three.js chunk while the preloader counts, then mount the
+  // scene as soon as the preloader lifts so the orb shows right away.
   useEffect(() => {
-    if (!started) return;
-    let done = false;
-    const go = () => {
-      if (done) return;
-      done = true;
-      setSceneReady(true);
-    };
-    const t = setTimeout(go, 7000);
-    const evs = ["pointerdown", "pointermove", "scroll", "keydown", "touchstart"] as const;
-    evs.forEach((e) => window.addEventListener(e, go, { once: true, passive: true }));
-    return () => {
-      clearTimeout(t);
-      evs.forEach((e) => window.removeEventListener(e, go));
-    };
+    import("../HeroScene");
+  }, []);
+  useEffect(() => {
+    if (started) setSceneReady(true);
   }, [started]);
 
   return (
