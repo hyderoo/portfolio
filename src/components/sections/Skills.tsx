@@ -5,7 +5,7 @@ import { skillGroups, credentials, education } from "@/lib/data";
 export default function Skills() {
   return (
     <section id="skills" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
-      <SectionHeading index="05" label="Toolbox" title="What I test with." />
+      <SectionHeading index="06" label="Toolbox" title="What I test with." />
       <div className="grid gap-14 md:grid-cols-2">
         <div className="space-y-10">
           {skillGroups.map((group, gi) => (

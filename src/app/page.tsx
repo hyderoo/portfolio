@@ -11,6 +11,7 @@ import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
 import CaseStudies from "@/components/sections/CaseStudies";
+import SampleWork from "@/components/sections/SampleWork";
 import Skills from "@/components/sections/Skills";
 import Footer from "@/components/sections/Footer";
 
@@ -29,6 +30,7 @@ export default function Home() {
         <Experience />
         <Projects />
         <CaseStudies />
+        <SampleWork />
         <Skills />
         <Footer />
       </main>

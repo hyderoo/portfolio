@@ -36,6 +36,22 @@ export default function About() {
               </FadeUp>
             ))}
           </div>
+          <FadeUp delay={0.15}>
+            <div className="mt-10 border border-line p-6 md:p-8">
+              <p className="text-[11px] uppercase tracking-[0.25em] text-accent">Now</p>
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted">
+                <li>
+                  Preparing for the ISTQB CTFL exam, with{" "}
+                  <a href="https://github.com/hyderoo/ctfl-study-notes" target="_blank" rel="noreferrer" className="link-underline text-ink">
+                    notes in public
+                  </a>
+                  .
+                </li>
+                <li>Learning Playwright through TestMu&apos;s course.</li>
+                <li>Learning Japanese, from zero.</li>
+              </ul>
+            </div>
+          </FadeUp>
         </div>
       </div>
     </section>
