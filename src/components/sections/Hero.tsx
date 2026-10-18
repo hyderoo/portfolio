@@ -26,20 +26,26 @@ export default function Hero({ started }: { started: boolean }) {
   // Fetch the heavy three.js chunk while the preloader counts, then mount the
   // scene as soon as the preloader lifts so the orb shows right away.
   useEffect(() => {
-    import("../HeroScene");
-  }, []);
-  useEffect(() => {
     if (!started) return;
-    // Let the hero text paint first: mount the scene when the main thread is
-    // idle (1.5s cap), so the orb still shows right after the preloader
-    // without blocking LCP.
-    const ric = window.requestIdleCallback;
-    if (ric) {
-      const id = ric(() => setSceneReady(true), { timeout: 1500 });
-      return () => window.cancelIdleCallback(id);
-    }
-    const t = setTimeout(() => setSceneReady(true), 1200);
-    return () => clearTimeout(t);
+    // three.js module evaluation plus scene init costs about 700ms of
+    // simulated blocking time, so both the import and the mount must land
+    // outside the load trace to keep TBT low. Wait ~1.8s after the
+    // preloader, then mount on idle: the orb still fades in a few seconds
+    // after the preloader, but the hero text and interactivity win the
+    // main thread first.
+    let idleId: number | undefined;
+    const t = setTimeout(() => {
+      const mount = () => setSceneReady(true);
+      if (window.requestIdleCallback) {
+        idleId = window.requestIdleCallback(mount, { timeout: 1200 });
+      } else {
+        mount();
+      }
+    }, 1800);
+    return () => {
+      clearTimeout(t);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+    };
   }, [started]);
 
   return (
