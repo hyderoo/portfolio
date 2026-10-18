@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect } from "react";
 import { Float } from "@react-three/drei";
@@ -61,16 +61,32 @@ function CameraRig() {
 
 export default function HeroScene() {
   const reduced = useReducedMotion() ?? false;
+  const host = useRef<HTMLDivElement>(null);
+  const [onScreen, setOnScreen] = useState(true);
+
+  useEffect(() => {
+    const el = host.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => setOnScreen(entries[0]?.isIntersecting ?? true),
+      { threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <Canvas
-      className="!absolute inset-0"
-      camera={{ position: [0, 0, 6.2], fov: 42 }}
-      dpr={[1, 1.75]}
-      frameloop={reduced ? "never" : "always"}
-      gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
-    >
-      <CameraRig />
-      <ParticleGlobe reduced={reduced} />
-    </Canvas>
+    <div ref={host} className="absolute inset-0">
+      <Canvas
+        className="!absolute inset-0"
+        camera={{ position: [0, 0, 6.2], fov: 42 }}
+        dpr={[1, 1.75]}
+        frameloop={reduced || !onScreen ? "never" : "always"}
+        gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
+      >
+        <CameraRig />
+        <ParticleGlobe reduced={reduced} />
+      </Canvas>
+    </div>
   );
 }

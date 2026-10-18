@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { SplitChars } from "../Reveal";
 import { profile } from "@/lib/data";
@@ -8,6 +9,21 @@ import { profile } from "@/lib/data";
 const HeroScene = dynamic(() => import("../HeroScene"), { ssr: false });
 
 export default function Hero({ started }: { started: boolean }) {
+  const [sceneReady, setSceneReady] = useState(false);
+
+  useEffect(() => {
+    if (!started) return;
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const id = (window as Window & { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback(
+        () => setSceneReady(true),
+        { timeout: 2500 }
+      );
+      return () => (window as Window & { cancelIdleCallback: (n: number) => void }).cancelIdleCallback(id);
+    }
+    const t = setTimeout(() => setSceneReady(true), 400);
+    return () => clearTimeout(t);
+  }, [started]);
+
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-between overflow-hidden">
       <motion.div
@@ -16,7 +32,7 @@ export default function Hero({ started }: { started: boolean }) {
         animate={started ? { opacity: 0.9 } : {}}
         transition={{ duration: 1.2 }}
       >
-        {started && <HeroScene />}
+        {sceneReady && <HeroScene />}
       </motion.div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/30 via-transparent to-bg" />
 

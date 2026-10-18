@@ -17,7 +17,7 @@ const GREETINGS = [
   "Sugeng rawuh",
 ];
 
-const DURATION = 2100;
+const DURATION = 1200;
 const CJK_STACK =
   "var(--font-fraunces), 'Hiragino Sans', 'Yu Gothic', 'Noto Sans CJK JP', 'Microsoft YaHei', 'Malgun Gothic', sans-serif";
 
@@ -41,7 +41,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
       if (t < 1) {
         raf.current = requestAnimationFrame(tick);
       } else {
-        setTimeout(() => setLeaving(true), 160);
+        setTimeout(() => setLeaving(true), 120);
       }
     };
     raf.current = requestAnimationFrame(tick);
@@ -52,7 +52,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
     if (!leaving) return;
     document.documentElement.style.overflow = "";
     onDone();
-    const t = setTimeout(() => setGone(true), 1000);
+    const t = setTimeout(() => setGone(true), 700);
     return () => clearTimeout(t);
   }, [leaving, onDone]);
 
