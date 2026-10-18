@@ -47,7 +47,7 @@ export default function About() {
                   </a>
                   .
                 </li>
-                <li>Learning Playwright through TestMu&apos;s course.</li>
+                <li>Going deeper on Playwright.</li>
                 <li>Learning Japanese, from zero.</li>
               </ul>
             </div>
