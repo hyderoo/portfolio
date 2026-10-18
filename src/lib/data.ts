@@ -36,7 +36,6 @@ export const experience: Experience[] = [
     org: "Mandiri International Technology · PT Bank Mandiri",
     mono: "BM",
     logo: "/logos/mandiri.png",
-    logoTile: true,
     summary:
       "Functional QA for Livin' by Mandiri, a mobile banking app used by millions. Regression, smoke, UAT and backward-compatibility testing across 10+ releases, including KSM Emas, Bullion gold savings, Deeplink/Universal Link and a security integration. Defects reported and tracked in JIRA within a 16-person QA team, with API verification through Postman and SQL.",
     tags: ["Manual Testing", "Regression", "UAT", "JIRA", "Postman", "SQL"],
@@ -47,7 +46,6 @@ export const experience: Experience[] = [
     org: "Home Credit Indonesia",
     mono: "HC",
     logo: "/logos/home-credit.png",
-    logoTile: true,
     summary:
       "End-to-end QA for HCI × OPPO projects, including AVANTO. Ran SIT, UAT, smoke and regression cycles; wrote test scenarios and test cases and carried them through review and approval. Ran daily UAT syncs with OPPO Mainland on progress, findings and clarifications. First exposure to test automation with Selenium and Katalon.",
     tags: ["E2E Testing", "SIT / UAT", "Test Planning", "Selenium", "Katalon"],
