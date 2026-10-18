@@ -47,12 +47,18 @@ export default function Skills() {
           <FadeUp delay={0.1}>
             <h3 className="mb-4 mt-12 text-[11px] uppercase tracking-[0.25em] text-accent">Education</h3>
             <div className="flex items-start gap-4 border border-line p-6">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-[#f2ede3] p-1">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center">
                 {education.logo ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={education.logo} alt={`${education.school} logo`} width={40} height={40} className="max-h-10 w-auto object-contain" />
+                  <img
+                    src={education.logo}
+                    alt={`${education.school} logo`}
+                    width={44}
+                    height={44}
+                    className="max-h-11 w-auto object-contain [filter:drop-shadow(0_0_18px_rgba(242,237,227,0.7))_drop-shadow(0_0_6px_rgba(242,237,227,0.55))]"
+                  />
                 ) : (
-                  <span className="font-display text-[10px] tracking-wide text-accent">{education.mono}</span>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-sm border border-accent/40 font-display text-[10px] tracking-wide text-accent">{education.mono}</span>
                 )}
               </span>
               <div>

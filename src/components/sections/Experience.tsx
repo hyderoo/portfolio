@@ -12,12 +12,18 @@ export default function Experience() {
             <article className="group grid gap-4 border-b border-line py-10 transition-colors duration-500 hover:bg-surface md:grid-cols-12 md:gap-8 md:px-4">
               <p className="text-sm text-muted md:col-span-2">{job.period}</p>
               <div className="flex items-start gap-4 md:col-span-4">
-                <span className="mt-1 flex h-12 w-14 shrink-0 items-center justify-center rounded-sm bg-[#f2ede3] px-1.5">
+                <span className="mt-1 flex h-12 w-16 shrink-0 items-center justify-start">
                   {job.logo ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={job.logo} alt={`${job.org} logo`} width={44} height={28} className="max-h-7 w-auto object-contain" />
+                    <img
+                      src={job.logo}
+                      alt={`${job.org} logo`}
+                      width={56}
+                      height={36}
+                      className="max-h-9 w-auto object-contain [filter:drop-shadow(0_0_18px_rgba(242,237,227,0.7))_drop-shadow(0_0_6px_rgba(242,237,227,0.55))]"
+                    />
                   ) : (
-                    <span className="font-display text-xs tracking-wide text-accent">{job.mono}</span>
+                    <span className="flex h-11 w-11 items-center justify-center rounded-sm border border-accent/40 font-display text-xs tracking-wide text-accent">{job.mono}</span>
                   )}
                 </span>
                 <div>
