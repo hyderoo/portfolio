@@ -29,7 +29,17 @@ export default function Hero({ started }: { started: boolean }) {
     import("../HeroScene");
   }, []);
   useEffect(() => {
-    if (started) setSceneReady(true);
+    if (!started) return;
+    // Let the hero text paint first: mount the scene when the main thread is
+    // idle (1.5s cap), so the orb still shows right after the preloader
+    // without blocking LCP.
+    const ric = window.requestIdleCallback;
+    if (ric) {
+      const id = ric(() => setSceneReady(true), { timeout: 1500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = setTimeout(() => setSceneReady(true), 1200);
+    return () => clearTimeout(t);
   }, [started]);
 
   return (
