@@ -215,7 +215,7 @@ export default function SampleWorkPage() {
 
         <figure className="mt-12">
           <TImg
-            src="/sample-work/qa-std-complete.png"
+            src="/sample-work/qa-std-complete.webp"
             alt="Order confirmation on the standard account: Thank you for your order!"
             className="w-full max-w-2xl border border-line"
           />

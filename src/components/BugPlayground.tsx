@@ -32,7 +32,7 @@ const TICKETS: Ticket[] = [
     actual:
       "All 6 product images are byte-identical placeholder images (1 distinct src across all 6, confirmed in the DOM). The placeholder loads without error, so no broken-image indicator appears.",
     evidence: {
-      src: "/sample-work/qa-problem-images.png",
+      src: "/sample-work/qa-problem-images.webp",
       alt: "Inventory page as problem_user: every product shows the same dog placeholder photo",
       caption: "Inventory as problem_user: one placeholder image for every product.",
     },
@@ -53,7 +53,7 @@ const TICKETS: Ticket[] = [
     actual:
       'Bolt T-Shirt, Fleece Jacket and Test.allTheThings() T-Shirt (Red) do nothing: the badge stays, the button keeps saying "Add to cart", and the item never reaches the cart. The other 3 add correctly (badge reaches 3).',
     evidence: {
-      src: "/sample-work/qa-problem-inventory.png",
+      src: "/sample-work/qa-problem-inventory.webp",
       alt: "Inventory page as problem_user: 3 items added, 3 buttons unresponsive",
       caption: "Badge stuck at 3 while the 4th product is clicked.",
     },
@@ -96,7 +96,7 @@ const TICKETS: Ticket[] = [
     actual:
       'First Name now contains "Hamdani" (overwriting "Dani"), Last Name is empty, and submission fails with "Error: Last Name is required". Checkout cannot be completed.',
     evidence: {
-      src: "/sample-work/qa-problem-checkout.png",
+      src: "/sample-work/qa-problem-checkout.webp",
       alt: "Checkout form as problem_user: Last Name text landed in the First Name field",
       caption: 'First Name holds "Hamdani"; Last Name is empty; the error blocks checkout.',
     },
