@@ -89,7 +89,7 @@ export default function Projects() {
                   )}
                   {p.apk && (
                     <a href={p.apk} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-accent">
-                      <T>Android APK for demo, install at own risk</T> <ArrowIcon />
+                      <T>Android APK for demo</T> <ArrowIcon />
                     </a>
                   )}
                   {p.arch && (

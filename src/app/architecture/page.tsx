@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { T } from "@/lib/lang";
+import { T, TImg } from "@/lib/lang";
 import { DEWA_APK_URL } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 };
 
 type Diagram = { file: string; title: string; note?: string };
+type Shot = { file: string; alt: string };
 type ProjectArch = {
   slug: string;
   name: string;
@@ -17,6 +18,7 @@ type ProjectArch = {
   apk?: string;
   intro: string;
   diagrams: Diagram[];
+  shots?: Shot[];
   skipped?: string[];
 };
 
@@ -118,6 +120,21 @@ const PROJECTS: ProjectArch[] = [
       { file: "dewa-dfd0", title: "Data flow diagram, level 0" },
       { file: "dewa-usecase", title: "Use case" },
     ],
+    shots: [
+      { file: "dewa-register", alt: "Dewa app: registration screens" },
+      { file: "dewa-login", alt: "Dewa app: login screen" },
+      { file: "dewa-home", alt: "Dewa app: home page" },
+      { file: "dewa-services", alt: "Dewa app: services page" },
+      { file: "dewa-custom-package", alt: "Dewa app: custom package and calendar" },
+      { file: "dewa-order-form", alt: "Dewa app: order form with confirmation dialog" },
+      { file: "dewa-portfolio", alt: "Dewa app: portfolio list and detail" },
+      { file: "dewa-team", alt: "Dewa app: team list and member detail" },
+      { file: "dewa-orders", alt: "Dewa app: orders, order detail and payment history" },
+      { file: "dewa-payment", alt: "Dewa app: payment methods and payment detail" },
+      { file: "dewa-account", alt: "Dewa app: account settings" },
+      { file: "dewa-profile", alt: "Dewa app: profile settings" },
+      { file: "dewa-privacy", alt: "Dewa app: privacy policy" },
+    ],
     skipped: ["No ERD: the database lives behind the company backend and its schema is not in this repository."],
   },
 ];
@@ -152,7 +169,7 @@ export default function ArchitecturePage() {
                 rel="noreferrer"
                 className="text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:text-ink"
               >
-                <T>Android APK for demo, install at own risk</T>
+                <T>Android APK for demo</T>
               </a>
             )}
             <a
@@ -196,6 +213,21 @@ export default function ArchitecturePage() {
               </figure>
             ))}
           </div>
+
+          {p.shots && (
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {p.shots.map((s) => (
+                <div key={s.file} className="flex items-center justify-center rounded-lg border border-white/10 bg-black/30 p-4">
+                  <TImg
+                    src={`/dewa-app/${s.file}.webp`}
+                    alt={s.alt}
+                    loading="lazy"
+                    className="max-h-[520px] max-w-full object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </section>
       ))}
     </main>
