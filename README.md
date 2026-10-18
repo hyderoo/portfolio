@@ -3,7 +3,7 @@
 Personal portfolio site: selected QA experience and side projects, with a
 focus on motion and typography.
 
-**Live:** _deployed on Vercel — link added after first deploy_
+**Live:** https://portfolio-rust-iota-p4cmnje6xm.vercel.app/
 
 ## Stack
 
