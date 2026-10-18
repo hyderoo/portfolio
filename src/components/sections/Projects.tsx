@@ -32,7 +32,7 @@ export default function Projects() {
   const activeProject = projects.find((p) => p.title === active && p.preview);
 
   return (
-    <section id="work" className="px-6 py-24 md:px-10 md:py-36">
+    <section id="work" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
       <SectionHeading index="03" label="Selected work" title="Things I've built." />
       <div ref={containerRef} className="relative hairline-t" onMouseMove={onMove}>
         {/* floating preview, desktop only */}

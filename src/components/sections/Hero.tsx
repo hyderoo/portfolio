@@ -43,16 +43,25 @@ export default function Hero({ started }: { started: boolean }) {
           )}
         </h1>
         <div className="mt-8 flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
-          <motion.p
-            className="max-w-md text-base leading-relaxed text-muted md:text-lg"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={started ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
+          <p className="max-w-md text-base leading-relaxed text-muted md:text-lg">
             I break software before your users do. QA engineer working on a
             mobile banking app used by millions — and building things on the
             side so I never stop breaking interesting ones.
-          </motion.p>
+          </p>
+          <a
+            href={profile.cv}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-5 inline-flex items-center gap-2 rounded-full border border-ink/30 px-5 py-2 text-xs uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:border-accent hover:text-accent"
+          >
+            Download CV
+          </a>
+          </motion.div>
           <motion.div
             className="flex items-center gap-3 text-[11px] uppercase tracking-[0.25em] text-muted"
             initial={{ opacity: 0 }}

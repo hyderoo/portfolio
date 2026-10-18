@@ -4,7 +4,7 @@ import { stats } from "@/lib/data";
 
 export default function About() {
   return (
-    <section id="about" className="px-6 py-24 md:px-10 md:py-36">
+    <section id="about" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
       <SectionHeading index="01" label="About" title="Methodical about breaking things." />
       <div className="grid gap-14 md:grid-cols-12">
         <div className="md:col-span-7">

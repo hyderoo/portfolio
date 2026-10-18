@@ -10,6 +10,7 @@ import Marquee from "@/components/sections/Marquee";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
+import CaseStudies from "@/components/sections/CaseStudies";
 import Skills from "@/components/sections/Skills";
 import Footer from "@/components/sections/Footer";
 
@@ -27,6 +28,7 @@ export default function Home() {
         <About />
         <Experience />
         <Projects />
+        <CaseStudies />
         <Skills />
         <Footer />
       </main>

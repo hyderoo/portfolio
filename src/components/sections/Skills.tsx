@@ -4,8 +4,8 @@ import { skillGroups, credentials, education } from "@/lib/data";
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 py-24 md:px-10 md:py-36">
-      <SectionHeading index="04" label="Toolbox" title="What I test with." />
+    <section id="skills" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
+      <SectionHeading index="05" label="Toolbox" title="What I test with." />
       <div className="grid gap-14 md:grid-cols-2">
         <div className="space-y-10">
           {skillGroups.map((group, gi) => (
@@ -13,8 +13,12 @@ export default function Skills() {
               <h3 className="mb-4 text-[11px] uppercase tracking-[0.25em] text-accent">{group.title}</h3>
               <ul className="flex flex-wrap gap-2">
                 {group.skills.map((s) => (
-                  <li key={s} className="rounded-full border border-line px-4 py-2 text-sm text-ink/85">
-                    {s}
+                  <li key={s.name} className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-ink/85">
+                    {s.icon && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img src={s.icon} alt="" width={14} height={14} loading="lazy" />
+                    )}
+                    {s.name}
                   </li>
                 ))}
               </ul>
@@ -42,10 +46,15 @@ export default function Skills() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <h3 className="mb-4 mt-12 text-[11px] uppercase tracking-[0.25em] text-accent">Education</h3>
-            <div className="border border-line p-6">
+            <div className="flex items-start gap-4 border border-line p-6">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-accent/40 font-display text-[10px] tracking-wide text-accent">
+                {education.mono}
+              </span>
+              <div>
               <p className="font-display text-xl">{education.school}</p>
               <p className="mt-1 text-ink/85">{education.degree}</p>
               <p className="mt-2 text-sm text-muted">{education.detail}</p>
+              </div>
             </div>
           </FadeUp>
         </div>

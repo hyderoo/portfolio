@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer id="contact" className="relative overflow-hidden px-6 pb-10 pt-28 md:px-10 md:pt-40">
       <div className="mb-6 flex items-center gap-4 text-[11px] uppercase tracking-[0.25em] text-muted">
-        <span className="text-accent">05</span>
+        <span className="text-accent">06</span>
         <span className="h-px w-10 bg-line" />
         <span>Contact</span>
       </div>
@@ -26,6 +26,7 @@ export default function Footer() {
           <a className="link-underline text-ink" href={`mailto:${profile.email}`}>Email</a>
           <a className="link-underline text-ink" href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
           <a className="link-underline text-ink" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          <a className="link-underline text-ink" href={profile.cv} target="_blank" rel="noreferrer">Download CV</a>
         </div>
       </FadeUp>
       <div className="mt-20 flex flex-col gap-2 border-t border-line pt-6 text-xs text-muted md:flex-row md:items-center md:justify-between">
