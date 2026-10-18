@@ -23,6 +23,8 @@ export type Experience = {
   org: string;
   mono: string;
   logo?: string;
+  /** True when the logo file carries its own solid background (render as a tile, no glow). */
+  logoTile?: boolean;
   summary: string;
   tags: string[];
 };
@@ -34,6 +36,7 @@ export const experience: Experience[] = [
     org: "Mandiri International Technology · PT Bank Mandiri",
     mono: "BM",
     logo: "/logos/mandiri.png",
+    logoTile: true,
     summary:
       "Functional QA for Livin' by Mandiri, a mobile banking app used by millions. Regression, smoke, UAT and backward-compatibility testing across 10+ releases, including KSM Emas, Bullion gold savings, Deeplink/Universal Link and a security integration. Defects reported and tracked in JIRA within a 16-person QA team, with API verification through Postman and SQL.",
     tags: ["Manual Testing", "Regression", "UAT", "JIRA", "Postman", "SQL"],

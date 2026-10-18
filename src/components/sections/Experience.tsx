@@ -20,7 +20,9 @@ export default function Experience() {
                       alt={`${job.org} logo`}
                       width={56}
                       height={36}
-                      className="max-h-9 w-auto object-contain [filter:drop-shadow(0_0_18px_rgba(242,237,227,0.7))_drop-shadow(0_0_6px_rgba(242,237,227,0.55))]"
+                      className={job.logoTile
+                        ? "max-h-9 w-auto rounded-sm object-contain"
+                        : "max-h-9 w-auto object-contain [filter:drop-shadow(0_0_18px_rgba(242,237,227,0.7))_drop-shadow(0_0_6px_rgba(242,237,227,0.55))]"}
                     />
                   ) : (
                     <span className="flex h-11 w-11 items-center justify-center rounded-sm border border-accent/40 font-display text-xs tracking-wide text-accent">{job.mono}</span>
