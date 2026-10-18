@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { profile } from "@/lib/data";
 import { Fraunces, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { FloatingLang, LangProvider } from "@/lib/lang";
@@ -40,6 +41,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${spaceGrotesk.variable}`}>
       <body className="grain">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: profile.name,
+              jobTitle: profile.role,
+              address: { "@type": "PostalAddress", addressLocality: "Jakarta", addressCountry: "ID" },
+              url: "https://hafizhamdani.vercel.app",
+              sameAs: [profile.github, profile.linkedin],
+            }),
+          }}
+        />
         <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true">
           <filter id="text-outline" x="-5%" y="-5%" width="110%" height="110%">
             <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d" />

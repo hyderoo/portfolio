@@ -6,6 +6,12 @@ import { StrategyIntro } from "@/components/I18nBlocks";
 import { T } from "@/lib/lang";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/strategy" },
+  openGraph: {
+    title: "Test strategy: Worlds 2026 Live | Hafiz Hamdani",
+    description: "How the Worlds 2026 Live tracker is tested: 41 vitest cases across sync integrity, match state, auth, roster scraping, calendar feed, pick'em, push and forms, running in CI on every push.",
+    url: "/strategy",
+  },
   title: "Test strategy: Worlds 2026 Live | Hafiz Hamdani",
   description:
     "How the Worlds 2026 Live tracker is tested: 41 vitest cases across sync integrity, match state, auth, roster scraping, calendar feed, pick'em, push and forms, running in CI on every push.",

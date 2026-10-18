@@ -4,6 +4,12 @@ import BreakThisApp from "@/components/BreakThisApp";
 import { T } from "@/lib/lang";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/break-this-app" },
+  openGraph: {
+    title: "Break this app | Hafiz Hamdani",
+    description: "A tiny coffee shop with six deliberately seeded bugs. Hunt them down, then read the bug report I would file for each one.",
+    url: "/break-this-app",
+  },
   title: "Break this app | Hafiz Hamdani",
   description:
     "A tiny coffee shop with six deliberately seeded bugs. Hunt them down, then read the bug report I would file for each one.",

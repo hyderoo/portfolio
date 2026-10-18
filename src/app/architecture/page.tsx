@@ -4,6 +4,12 @@ import { T } from "@/lib/lang";
 import ArchExplorer from "@/components/ArchExplorer";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/architecture" },
+  openGraph: {
+    title: "Architecture | Hafiz Hamdani",
+    description: "System context, sequence, data flow, use case and ER diagrams for each project, drawn from the real code and schemas in the repositories.",
+    url: "/architecture",
+  },
   title: "Architecture | Hafiz Hamdani",
   description:
     "System context, sequence, data flow, use case and ER diagrams for each project, drawn from the real code and schemas in the repositories.",

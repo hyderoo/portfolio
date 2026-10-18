@@ -5,6 +5,12 @@ import RunSuite from "@/components/RunSuite";
 import { Count, R, T } from "@/lib/lang";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/quality" },
+  openGraph: {
+    title: "Quality in numbers | Hafiz Hamdani",
+    description: "Real test counts per project, what is not tested yet, live API checks against the USGS feed, and a changelog of bugs found and fixed in my own work.",
+    url: "/quality",
+  },
   title: "Quality in numbers | Hafiz Hamdani",
   description:
     "Real test counts per project, what is not tested yet, live API checks against the USGS feed, and a changelog of bugs found and fixed in my own work.",

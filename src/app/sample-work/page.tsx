@@ -5,6 +5,12 @@ import { SampleWorkIntro } from "@/components/I18nBlocks";
 import { T, TImg } from "@/lib/lang";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/sample-work" },
+  openGraph: {
+    title: "Sample work: test cases and bug reports | Hafiz Hamdani",
+    description: "A manual QA sample: real test cases and reproduced bug reports from a live execution against the public SauceDemo training app.",
+    url: "/sample-work",
+  },
   title: "Sample work: test cases and bug reports | Hafiz Hamdani",
   description:
     "A manual QA sample: real test cases and reproduced bug reports from a live execution against the public SauceDemo training app.",
