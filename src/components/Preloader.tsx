@@ -6,18 +6,17 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 const GREETINGS = [
   "Selamat datang",
   "Welcome",
-  "ようこそ",
   "欢迎",
   "환영합니다",
   "Bienvenue",
   "Bienvenido",
   "Bem-vindo",
-  "Willkommen",
   "Benvenuto",
-  "Sugeng rawuh",
+  "Willkommen",
+  "ようこそ",
 ];
 
-const DURATION = 600;
+const DURATION = 2400;
 const CJK_STACK =
   "var(--font-fraunces), 'Hiragino Sans', 'Yu Gothic', 'Noto Sans CJK JP', 'Microsoft YaHei', 'Malgun Gothic', sans-serif";
 
@@ -35,8 +34,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
     const duration = reduced ? 350 : DURATION;
     const tick = (now: number) => {
       const t = Math.min(1, (now - t0) / duration);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setCount(Math.round(eased * 100));
+      setCount(Math.round(t * 100));
       setStep(Math.min(GREETINGS.length - 1, Math.floor(t * GREETINGS.length)));
       if (t < 1) {
         raf.current = requestAnimationFrame(tick);
@@ -72,6 +70,14 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
           <div className="flex justify-between text-[11px] uppercase tracking-[0.25em] text-muted">
             <span>Portfolio</span>
             <span>© 2026</span>
+          </div>
+
+          <div
+            aria-hidden
+            className="pointer-events-none absolute invisible"
+            style={{ fontFamily: CJK_STACK }}
+          >
+            {GREETINGS.join(" ")}
           </div>
 
           <div className="flex flex-1 items-center justify-center" aria-hidden>
