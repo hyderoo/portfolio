@@ -175,9 +175,9 @@ export const projects: Project[] = [
   {
     index: "08",
     title: "SINDAPARKA",
-    year: "2026",
+    year: "2024",
     description:
-      "Growth-monitoring PWA for posyandu cadres in Parakan Kauman, Temanggung, built with a BKKBN partner team: record a child's weight and height, get WHO 2006 z-scores on the spot, and follow each child's curve over time. Row Level Security keeps every cadre inside their own posyandu. 19 unit tests and 22 Playwright end-to-end tests run in CI.",
+      "Growth-monitoring PWA for posyandu cadres in Parakan Kauman, Temanggung, from a KKN team project with BKKBN in July 2024. The current build runs on Next.js and Supabase, with the PHP/MySQL original kept on the legacy-php branch: record a child's weight and height, get WHO 2006 z-scores on the spot, and follow each child's curve over time. Row Level Security keeps every cadre inside their own posyandu. The current codebase carries 19 unit tests and 22 Playwright end-to-end tests in CI.",
     tags: ["Next.js", "TypeScript", "Supabase", "PWA", "Playwright"],
     live: "https://sindaparka-rho.vercel.app",
     repo: "https://github.com/hyderoo/SINDAPARKA",
