@@ -132,6 +132,21 @@ const PROJECTS: ProjectArch[] = [
     ],
     skipped: ["No ERD: the database lives behind the company backend and its schema is not in this repository."],
   },
+  {
+    slug: "sindaparka",
+    name: "SINDAPARKA",
+    repo: "https://github.com/hyderoo/SINDAPARKA",
+    intro:
+      "Next.js PWA on Vercel backed by Supabase. WHO 2006 z-scores are computed on device from bundled LMS tables, so a weighing works offline and syncs when the signal returns. Postgres Row Level Security scopes every query to the signed-in role and posyandu, and triggers write an audit row for every change.",
+    diagrams: [
+      { file: "sindaparka-context", title: "System context" },
+      { file: "sindaparka-sequence", title: "Sequence: record a weighing, online and offline" },
+      { file: "sindaparka-dfd0", title: "Data flow diagram, level 0" },
+      { file: "sindaparka-usecase", title: "Use case" },
+      { file: "sindaparka-erd", title: "Entity relationship", note: "Columns from supabase/migrations." },
+    ],
+    skipped: ["No DFD level 1: the only server-side flow is login plus RLS-checked CRUD, and level 0 already covers it."],
+  },
 ];
 
 const pillBase =
