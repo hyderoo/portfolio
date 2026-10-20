@@ -65,6 +65,7 @@ const a: Record<string, string> = {
   Now: "現在の取り組み",
   "Preparing for the ISTQB CTFL exam, with {a}notes in public{/a}.": "ISTQB CTFL試験の準備中です。学習ノートは{a}公開しています{/a}。",
   "Going deeper on Playwright.": "Playwrightをさらに深く学んでいます。",
+  "Learning Rust, from zero.": "Rustを、ゼロから勉強中です。",
   "Learning Japanese, from zero.": "日本語を、ゼロから勉強中です。",
   // marquee / skills
   "Functional Testing": "機能テスト",

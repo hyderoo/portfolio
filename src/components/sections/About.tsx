@@ -52,6 +52,7 @@ export default function About() {
                   </R>
                 </li>
                 <li><T>Going deeper on Playwright.</T></li>
+                <li><T>Learning Rust, from zero.</T></li>
                 <li><T>Learning Japanese, from zero.</T></li>
               </ul>
             </div>
