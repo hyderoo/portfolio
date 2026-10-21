@@ -51,6 +51,12 @@ const PROJECTS: ProjectQuality[] = [
     notTested: ["Alert sound", "Provider failure states", "No unit tests yet"],
   },
   {
+    name: "RiskLens",
+    layers: { unit: 31, e2e: 17 },
+    runs: "Local only: 22 backend and 9 frontend unit tests plus 17 Playwright scenarios, no CI yet",
+    notTested: ["CI automation entirely", "Parallel load on the full dataset"],
+  },
+  {
     name: "ShelfSeeker",
     layers: { e2e: 39 },
     runs: "In the ShelfSeeker E2E repo, desktop and mobile emulation, every push",

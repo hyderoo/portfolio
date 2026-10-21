@@ -185,7 +185,38 @@ export const projects: Project[] = [
     ci: { repo: "hyderoo/SINDAPARKA", workflow: "CI" },
     arch: "/architecture#sindaparka",
   },
+  {
+    index: "09",
+    title: "RiskLens",
+    year: "2026",
+    description:
+      "Local fraud and transaction-risk analytics on a public synthetic dataset of 13.3 million transactions. FastAPI and DuckDB power a Next.js dashboard with transaction filtering, calibrated LightGBM scores, per-transaction explanations, model evaluation, exposure scenarios and a local case workflow. Historical labels, model estimates and simulated figures are kept separate. README, screenshots and a demo video are on GitHub; no hosted demo.",
+    tags: ["Next.js", "TypeScript", "FastAPI", "DuckDB", "LightGBM"],
+    repo: "https://github.com/hyderoo/RiskLens",
+    preview: "/previews/risklens.webp",
+  },
+  {
+    index: "10",
+    title: "PDF Lab",
+    year: "2026",
+    description:
+      "PDF tools for the Undip community that run entirely in the browser: compare two versions, summarize or translate with Gemini, merge, split, rotate, crop, compress, watermark and more. Files are processed on your device with pdf-lib and pdf.js and never uploaded to a server. Sign-in is restricted to Undip email addresses.",
+    tags: ["Next.js", "TypeScript", "pdf-lib", "Auth.js", "Gemini"],
+    live: "https://pdflab-undip.vercel.app",
+    repo: "https://github.com/hyderoo/pdf-lab",
+    preview: "/previews/pdflab.webp",
+  },
+  {
+    index: "11",
+    title: "AirSubs",
+    year: "2026",
+    description:
+      "A Chrome extension that puts live captions and translation on any tab: YouTube, Twitch, a livestream, a lecture recording. Tab audio is transcribed by Whisper on Groq's free tier with three accuracy modes; Balanced shows a fast draft and quietly replaces it with the more accurate read a moment later. Translation runs on Chrome's built-in on-device Translator where possible, with an open-weight LLM fallback, and sessions export to .srt.",
+    tags: ["Chrome Extension", "Manifest V3", "Whisper", "Groq"],
+    repo: "https://github.com/hyderoo/airsubs",
+  },
 ];
+
 
 export type CaseStudy = {
   arch?: string;

@@ -53,6 +53,7 @@ export default function About() {
                 </li>
                 <li><T>Going deeper on Playwright.</T></li>
                 <li><T>Learning Rust, from zero.</T></li>
+                <li><T>Shipping small browser tools: AirSubs (live captions) and PDF Lab.</T></li>
                 <li><T>Learning Japanese, from zero.</T></li>
               </ul>
             </div>
