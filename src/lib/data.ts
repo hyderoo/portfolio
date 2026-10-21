@@ -194,6 +194,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "FastAPI", "DuckDB", "LightGBM"],
     repo: "https://github.com/hyderoo/RiskLens",
     preview: "/previews/risklens.webp",
+    ci: { repo: "hyderoo/RiskLens", workflow: "CI" },
   },
   {
     index: "10",

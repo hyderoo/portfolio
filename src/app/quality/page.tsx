@@ -34,7 +34,7 @@ const PROJECTS: ProjectQuality[] = [
   },
   {
     name: "Worlds 2026 Live",
-    layers: { unit: 41 },
+    layers: { unit: 48 },
     runs: "Every push in GitHub Actions (lint, typecheck, unit, build)",
     notTested: ["End-to-end UI flows (no Playwright suite yet)", "Push delivery end to end"],
   },
@@ -53,14 +53,14 @@ const PROJECTS: ProjectQuality[] = [
   {
     name: "RiskLens",
     layers: { unit: 31, e2e: 17 },
-    runs: "Local only: 22 backend and 9 frontend unit tests plus 17 Playwright scenarios, no CI yet",
-    notTested: ["CI automation entirely", "Parallel load on the full dataset"],
+    runs: "Every push in GitHub Actions: 22 backend and 9 frontend unit tests, lint, typecheck and build, then 17 Playwright scenarios against the full 13.3M-row warehouse",
+    notTested: ["Parallel load on the full dataset"],
   },
   {
     name: "ShelfSeeker",
     layers: { e2e: 39 },
     runs: "In the ShelfSeeker E2E repo, desktop and mobile emulation, every push",
-    notTested: ["Firebase auth failure paths", "Barcode scanner on real devices"],
+    notTested: ["PWA install and offline update flows on real devices", "Barcode scanner on real devices"],
   },
   {
     name: "F1 public APIs (Postman)",
