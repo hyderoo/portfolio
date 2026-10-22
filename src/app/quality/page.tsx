@@ -40,9 +40,9 @@ const PROJECTS: ProjectQuality[] = [
   },
   {
     name: "KARHUTLA Watch",
-    layers: { e2e: 6 },
-    runs: "Every push in GitHub Actions, against the deployed app",
-    notTested: ["The live FIRMS path with a real API key", "Map tile interactions", "No unit tests yet"],
+    layers: { unit: 21, e2e: 11 },
+    runs: "Unit tests plus end-to-end tests against the deployed app, every push in GitHub Actions",
+    notTested: ["The live FIRMS path with a real API key"],
   },
   {
     name: "QuakeWatch",
