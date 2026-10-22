@@ -169,6 +169,7 @@ export const projects: Project[] = [
       "Final-thesis project: a Flutter mobile app and companion website talking over a REST API, built for a real stakeholder, Dewa Management.",
     tags: ["Flutter", "Dart", "REST API"],
     repo: "https://github.com/hyderoo/dewa-apk",
+    ci: { repo: "hyderoo/dewa-apk", workflow: "test" },
     arch: "/architecture#dewa",
     apk: DEWA_APK_URL,
   },

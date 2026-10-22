@@ -71,8 +71,8 @@ const PROJECTS: ProjectQuality[] = [
   {
     name: "Dewa Management App",
     layers: { unit: 6 },
-    runs: "Local only: 6 Dart unit/widget tests plus a Maestro smoke flow, no CI",
-    notTested: ["Most UI flows", "CI automation entirely"],
+    runs: "flutter analyze and 6 login-page widget tests in GitHub Actions on every push; Maestro smoke flows run locally against a device",
+    notTested: ["Most UI flows", "Maestro flows in CI (they need an emulator or device)"],
   },
   {
     name: "SauceDemo (manual sample)",

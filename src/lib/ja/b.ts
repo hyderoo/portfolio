@@ -18,7 +18,8 @@ const b: Record<string, string> = {
   "Every push in GitHub Actions, against the deployed app": "プッシュのたびにGitHub Actionsで、デプロイ済みのアプリに対して実行",
   "In the ShelfSeeker E2E repo, desktop and mobile emulation, every push": "ShelfSeeker E2Eリポジトリで、デスクトップとモバイルエミュレーションの両方を、プッシュのたびに実行",
   "Newman in GitHub Actions, 41 assertions across 13 requests": "GitHub ActionsでNewmanを実行。13リクエスト、41アサーション",
-  "Local only: 6 Dart unit/widget tests plus a Maestro smoke flow, no CI": "ローカルのみ。Dartの単体/ウィジェットテスト6件とMaestroのスモークフロー。CIなし",
+  "flutter analyze and 6 login-page widget tests in GitHub Actions on every push; Maestro smoke flows run locally against a device":
+    "プッシュのたびにGitHub Actionsでflutter analyzeとログイン画面のウィジェットテスト6件を実行。Maestroのスモークフローは実機/エミュレータ上でローカル実行",
   "24 designed cases; 11 re-executed live on 18 Oct 2026, 4 bugs filed": "設計済み24ケース。うち11ケースを2026年10月18日に再実行し、バグ4件を報告",
   "Push notification delivery on real devices": "実機でのプッシュ通知の配信",
   "Rate-limit behaviour under live provider throttling": "提供元の実際のレート制限がかかった状態での動作",
@@ -33,7 +34,7 @@ const b: Record<string, string> = {
   "Barcode scanner on real devices": "実機でのバーコードスキャナー",
   "Load and rate-limit behaviour": "負荷時とレート制限時の動作",
   "Most UI flows": "ほとんどのUIフロー",
-  "CI automation entirely": "CIによる自動化全般",
+  "Maestro flows in CI (they need an emulator or device)": "CIでのMaestroフロー（エミュレータまたは実機が必要）",
   "Live API checks": "ライブAPIチェック",
   "The same style of assertions I write in Postman, executed right now from your browser against the public USGS earthquake feed that powers QuakeWatch. Nothing here is cached or staged.":
     "Postmanで書いているのと同じ形式のアサーションを、QuakeWatchが使っているUSGSの公開地震フィードに対して、今この場でお使いのブラウザから実行します。キャッシュや仕込みは一切ありません。",
