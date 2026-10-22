@@ -46,9 +46,9 @@ const PROJECTS: ProjectQuality[] = [
   },
   {
     name: "QuakeWatch",
-    layers: { e2e: 6 },
-    runs: "Every push in GitHub Actions, against the deployed app",
-    notTested: ["Alert sound", "Provider failure states", "No unit tests yet"],
+    layers: { e2e: 11 },
+    runs: "Every push in GitHub Actions, against the deployed app, including mocked provider failures and the alert sound",
+    notTested: ["No unit tests yet"],
   },
   {
     name: "RiskLens",
