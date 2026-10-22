@@ -15,7 +15,7 @@ const securityHeaders = [
       "connect-src 'self' https://api.github.com https://earthquake.usgs.gov",
       "worker-src 'self' blob:",
       "object-src 'none'",
-      "base-uri 'self'",
+      "base-uri 'none'",
       "form-action 'self'",
       "frame-ancestors 'none'",
       "upgrade-insecure-requests",
