@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer id="contact" className="relative overflow-hidden px-6 pb-10 pt-28 md:px-10 md:pt-40">
       <div className="mb-6 flex items-center gap-4 text-[11px] uppercase tracking-[0.25em] text-muted">
-        <span className="text-accent">08</span>
+        <span className="text-accent">07</span>
         <span className="h-px w-10 bg-line" />
         <span><T>Contact</T></span>
       </div>
