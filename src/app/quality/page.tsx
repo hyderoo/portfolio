@@ -34,9 +34,9 @@ const PROJECTS: ProjectQuality[] = [
   },
   {
     name: "Worlds 2026 Live",
-    layers: { unit: 48 },
-    runs: "Every push in GitHub Actions (lint, typecheck, unit, build)",
-    notTested: ["End-to-end UI flows (no Playwright suite yet)", "Push delivery end to end"],
+    layers: { unit: 48, e2e: 6 },
+    runs: "Every push in GitHub Actions (lint, typecheck, unit, build), then 6 Playwright flows against the live deployment",
+    notTested: ["Push delivery end to end"],
   },
   {
     name: "KARHUTLA Watch",
