@@ -10,6 +10,7 @@ const links = [
   { label: "About", target: "#about" },
   { label: "Experience", target: "#experience" },
   { label: "Work", target: "#work" },
+  { label: "Web3", target: "#web3" },
   { label: "Contact", target: "#contact" },
 ];
 

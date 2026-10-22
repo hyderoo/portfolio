@@ -54,6 +54,19 @@ export default function About() {
                 <li><T>Going deeper on Playwright.</T></li>
                 <li><T>Learning Rust, from zero.</T></li>
                 <li><T>Shipping small browser tools: AirSubs (live captions) and PDF Lab.</T></li>
+                <li>
+                  <R
+                    parts={{
+                      a: (inner) => (
+                        <a href="#web3" className="link-underline text-ink">
+                          {inner}
+                        </a>
+                      ),
+                    }}
+                  >
+                    {"Mapping a {a}route into Web3{/a}: Solidity, contract testing, security CTFs."}
+                  </R>
+                </li>
                 <li><T>Learning Japanese, from zero.</T></li>
               </ul>
             </div>

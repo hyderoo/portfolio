@@ -13,6 +13,7 @@ import Projects from "@/components/sections/Projects";
 import CaseStudies from "@/components/sections/CaseStudies";
 import SampleWork from "@/components/sections/SampleWork";
 import Skills from "@/components/sections/Skills";
+import Web3 from "@/components/sections/Web3";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
         <CaseStudies />
         <SampleWork />
         <Skills />
+        <Web3 />
         <Footer />
       </main>
     </SmoothScroll>

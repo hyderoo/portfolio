@@ -96,5 +96,32 @@ const d: Record<string, string> = {
   "Dewa app: profile settings": "Dewaアプリ： プロフィール設定",
   "Dewa app: privacy policy": "Dewaアプリ： プライバシーポリシー",
   "; ": "、",
+  // web3 roadmap section (added 2026-10-23)
+  "Learning in public": "学びを公開中",
+  "Where I'm headed: Web3.": "次の目標はWeb3。",
+  "Smart contracts move real money and cannot be quietly patched after deploy. That is exactly the kind of software I already test for a living, so Web3 is where I am pointing next.":
+    "スマートコントラクトは実際のお金を動かし、デプロイ後にこっそり修正することはできません。それはまさに私が本業でテストしている種類のソフトウェアです。だから次はWeb3に進みます。",
+  "I have no Web3 experience yet, and I would rather say that out loud. This section is the plan in public: four steps, each one ending in something checkable on GitHub. The roadmap started 23 October 2026.":
+    "まだWeb3の経験はありませんが、それははっきり言っておきたいと思います。このセクションは計画の公開です。4つのステップ、それぞれの終点はGitHubで確認できる形にします。このロードマップは2026年10月23日に始めました。",
+  "Honest note: nothing in this section is experience or a claim of skill. It is a dated plan with placeholders, posted so future commits have somewhere to land.":
+    "正直なメモ：このセクションにあるのは経験でもスキルの主張でもありません。日付入りの計画とプレースホルダーだけです。将来のコミットの置き場として公開しています。",
+  Foundations: "基礎",
+  "How Ethereum and the EVM actually work: accounts, keys, wallets, gas, transactions. Docs first, then tiny scripts that read a real chain.":
+    "EthereumとEVMの実際の仕組み：アカウント、鍵、ウォレット、ガス、トランザクション。まずドキュメントを読み、次に実際のチェーンを読む小さなスクリプトを書きます。",
+  "Write and test contracts": "コントラクトを書いてテストする",
+  "Small contracts in Solidity with Foundry: unit tests, fuzz tests, invariant tests. The test suite matters more than the contract.":
+    "SolidityとFoundryで小さなコントラクトを作ります。単体テスト、ファズテスト、不変条件テスト。コントラクト本体よりテストスイートのほうが大事です。",
+  "Break contracts on purpose": "あえてコントラクトを壊す",
+  "The classic failure modes, learned by exploiting them in CTFs like Ethernaut: reentrancy, bad access control, oracle manipulation. A writeup for every level.":
+    "EthernautのようなCTFで実際に攻撃しながら、典型的な失敗パターンを学びます。リエントランシー、不十分なアクセス制御、オラクル操作。各レベルの解説も書きます。",
+  "First public project": "最初の公開プロジェクト",
+  "Placeholder. This slot stays empty until there is a real, fully tested contract with CI on GitHub to put here.":
+    "プレースホルダーです。CI付きで完全にテストされた実際のコントラクトがGitHubにできるまで、この枠は空のままにします。",
+  Starting: "着手",
+  Planned: "予定",
+  Placeholder: "プレースホルダー",
+  Web3: "Web3",
+  "Mapping a {a}route into Web3{/a}: Solidity, contract testing, security CTFs.":
+    "Web3への{a}道筋{/a}を検討中：Solidity、コントラクトテスト、セキュリティCTF。",
 };
 export default d;
