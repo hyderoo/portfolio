@@ -21,6 +21,8 @@ const b: Record<string, string> = {
   "flutter analyze and 6 login-page widget tests in GitHub Actions on every push; Maestro smoke flows run locally against a device":
     "プッシュのたびにGitHub Actionsでflutter analyzeとログイン画面のウィジェットテスト6件を実行。Maestroのスモークフローは実機/エミュレータ上でローカル実行",
   "24 designed cases; 11 re-executed live on 18 Oct 2026, 4 bugs filed": "設計済み24ケース。うち11ケースを2026年10月18日に再実行し、バグ4件を報告",
+  "Every push and pull request in GitHub Actions, on Python 3.9 and 3.12": "プッシュとプルリクエストのたびにGitHub Actionsで実行（Python 3.9と3.12）",
+  "Real PHP/FPM, container and non-Ubuntu deployments end to end": "実際のPHP/FPM、コンテナ、Ubuntu以外の環境でのエンドツーエンド検証",
   "Push notification delivery on real devices": "実機でのプッシュ通知の配信",
   "Rate-limit behaviour under live provider throttling": "提供元の実際のレート制限がかかった状態での動作",
   "End-to-end UI flows (no Playwright suite yet)": "UIのE2Eフロー（Playwrightのスイートはまだありません）",

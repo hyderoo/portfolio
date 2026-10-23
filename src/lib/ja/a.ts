@@ -53,10 +53,10 @@ const a: Record<string, string> = {
   "Sample work": "サンプルワーク",
   Toolbox: "スキルと道具",
   // about
-  "I'm Dani, a QA engineer from Padang, now based in West Jakarta. By day I test Livin' by Mandiri, a mobile banking app millions of people trust with their money, so the bugs have to get past me before they get to them.":
-    "パダン出身、現在は西ジャカルタ在住のQAエンジニア、ダニです。普段は、数百万人が大切なお金を預けるモバイルバンキングアプリ「Livin' by Mandiri」をテストしています。ユーザーに届く前に、バグはまず私を通り越す必要があります。",
-  "I studied computer engineering at Diponegoro University and learned QA the practical way: internships, test cases, and more regression cycles than I can count. After hours I build dashboards and trackers for the things I follow: fires, earthquakes, F1, League of Legends. Shipping my own software makes me better at testing everyone else's.":
-    "ディポネゴロ大学でコンピュータ工学を学び、QAは実践を通じて身につけてきました。インターンシップ、テストケースの作成、そして数えきれないほどのリグレッションサイクルです。仕事の後は、火災、地震、F1、League of Legendsなど、自分が追いかけているテーマのダッシュボードやトラッカーを作っています。自分のソフトウェアをリリースする経験が、他の人のソフトウェアをより良くテストする力になっています。",
+  "I'm Dani, a QA engineer from Padang, now based in West Jakarta. My day job is testing Livin' by Mandiri, a mobile banking app: regression, smoke, UAT and API checks across its releases.":
+    "パダン出身、現在は西ジャカルタ在住のQAエンジニア、ダニです。本業ではモバイルバンキングアプリ「Livin' by Mandiri」のテストを担当し、各リリースでリグレッション、スモーク、UAT、APIの確認を行っています。",
+  "I studied computer engineering at Diponegoro University and learned QA by doing it: internships, test cases and regression cycles. After hours I build dashboards and trackers for the things I follow: fires, earthquakes, F1 and League of Legends. Shipping my own software makes me better at testing everyone else's.":
+    "ディポネゴロ大学でコンピュータ工学を学び、QAは実践を通じて身につけました。インターンシップ、テストケースの作成、そして数多くのリグレッションサイクルです。仕事の後は、火災、地震、F1、League of Legendsなど、自分が追いかけているテーマのダッシュボードやトラッカーを作っています。自分のソフトウェアをリリースする経験が、他の人のソフトウェアをテストする力を磨いてくれます。",
   "~1 yr": "約1年",
   "of QA experience in mobile banking & fintech": "モバイルバンキングとフィンテックでのQA経験",
   "test cases executed on a live banking app": "稼働中のバンキングアプリで実行したテストケース",
@@ -121,6 +121,8 @@ const a: Record<string, string> = {
     "大学のプロジェクトから、ポートフォリオ作品へ育てたアプリです。OpenLibrary APIを使った本の探索アプリで、読書リスト、バーコードスキャン、類似書籍の提案があります。2026年に再設計して機能を追加しました。ここのバッジは、このデプロイ済みアプリをテストするShelfSeeker E2Eスイート（プロジェクト05）の最新結果を、リアルタイムに表示しています。",
   "Final-thesis project: a Flutter mobile app and companion website talking over a REST API, built for a real stakeholder, Dewa Management.":
     "卒業研究のプロジェクト。FlutterのモバイルアプリとWebサイトをREST APIでつなぎ、実際の依頼元であるDewa Management向けに開発しました。",
+  "A defensive CLI that checks PHP runtimes against the PHP2Shell fixes (CVE-2026-109618 and CVE-2026-109619). It inventories local installs, SSH hosts, HTTP headers and logs, and tracks which Ubuntu package owns each binary so an unrelated package can never pass as a patch. It reports version and inventory evidence, never a blanket 'site is safe' verdict. 41 tests run in CI on Python 3.9 and 3.12.":
+    "PHP2Shellの修正（CVE-2026-109618とCVE-2026-109619）に対して、PHPランタイムをチェックする防御用CLIです。ローカルのインストール、SSHホスト、HTTPヘッダー、ログを調査し、各バイナリを所有するUbuntuパッケージを追跡するため、無関係のパッケージがパッチ扱いされることはありません。「サイトは安全」という包括的な判定ではなく、バージョンとインベントリの証拠を報告するツールです。CIではPython 3.9と3.12で41件のテストを実行しています。",
   Live: "デモ",
   Code: "コード",
   "Test strategy": "テスト戦略",

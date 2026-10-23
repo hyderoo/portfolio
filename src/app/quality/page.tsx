@@ -75,6 +75,12 @@ const PROJECTS: ProjectQuality[] = [
     notTested: ["Most UI flows", "Maestro flows in CI (they need an emulator or device)"],
   },
   {
+    name: "php2shell-check",
+    layers: { unit: 41 },
+    runs: "Every push and pull request in GitHub Actions, on Python 3.9 and 3.12",
+    notTested: ["Real PHP/FPM, container and non-Ubuntu deployments end to end"],
+  },
+  {
     name: "SauceDemo (manual sample)",
     layers: { manual: 24 },
     runs: "24 designed cases; 11 re-executed live on 18 Oct 2026, 4 bugs filed",

@@ -217,6 +217,16 @@ export const projects: Project[] = [
     tags: ["Chrome Extension", "Manifest V3", "Whisper", "Groq"],
     repo: "https://github.com/hyderoo/airsubs",
   },
+  {
+    index: "12",
+    title: "php2shell-check",
+    year: "2026",
+    description:
+      "A defensive CLI that checks PHP runtimes against the PHP2Shell fixes (CVE-2026-109618 and CVE-2026-109619). It inventories local installs, SSH hosts, HTTP headers and logs, and tracks which Ubuntu package owns each binary so an unrelated package can never pass as a patch. It reports version and inventory evidence, never a blanket 'site is safe' verdict. 41 tests run in CI on Python 3.9 and 3.12.",
+    tags: ["Python", "Security", "CLI", "GitHub Actions"],
+    repo: "https://github.com/hyderoo/php2shell-check",
+    ci: { repo: "hyderoo/php2shell-check", workflow: "tests" },
+  },
 ];
 
 
