@@ -79,9 +79,11 @@ export default function Projects() {
                       <T>Live</T> <ArrowIcon />
                     </a>
                   )}
-                  <a href={p.repo} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-muted hover:text-ink">
-                    <T>Code</T> <ArrowIcon />
-                  </a>
+                  {p.repo && (
+                    <a href={p.repo} target="_blank" rel="noreferrer" className="link-underline inline-flex items-center gap-1 text-muted hover:text-ink">
+                      <T>Code</T> <ArrowIcon />
+                    </a>
+                  )}
                   {p.strategy && (
                     <a href={p.strategy} className="link-underline inline-flex items-center gap-1 text-accent">
                       <T>Test strategy</T> <ArrowIcon />

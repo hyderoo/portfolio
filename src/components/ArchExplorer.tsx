@@ -208,14 +208,16 @@ export default function ArchExplorer() {
                 <T>Android APK for demo</T>
               </a>
             )}
-            <a
-              href={p.repo}
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:text-ink"
-            >
-              <T>Repository</T>
-            </a>
+            {p.repo && (
+              <a
+                href={p.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:text-ink"
+              >
+                <T>Repository</T>
+              </a>
+            )}
           </span>
         </div>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted"><T>{p.intro}</T></p>
