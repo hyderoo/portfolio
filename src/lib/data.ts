@@ -335,17 +335,17 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
       { name: "Python", icon: "/icons/python.svg" },
       { name: "Flutter & Dart", icon: "/icons/flutter.svg" },
       { name: "Supabase", icon: "/icons/supabase.svg" },
-      { name: "FastAPI & DuckDB" },
+      { name: "FastAPI & DuckDB", icon: "/icons/fastapi.svg" },
       { name: "Tailwind CSS", icon: "/icons/tailwindcss.svg" },
       { name: "Playwright", icon: "/icons/playwright.webp" },
-      { name: "GitHub Actions" },
-      { name: "Newman & Allure" },
-      { name: "Maestro" },
+      { name: "GitHub Actions", icon: "/icons/githubactions.svg" },
+      { name: "Newman & Allure", icon: "/icons/allure.svg" },
+      { name: "Maestro", icon: "/icons/maestro.svg" },
     ],
   },
   {
     title: "Learning now",
-    skills: [{ name: "Rust" }, { name: "Solana & Anchor" }],
+    skills: [{ name: "Rust", icon: "/icons/rust.svg" }, { name: "Solana & Anchor", icon: "/icons/solana.svg" }],
   },
 ];
 
