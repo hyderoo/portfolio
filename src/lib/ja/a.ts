@@ -127,6 +127,8 @@ const a: Record<string, string> = {
     "卒業研究のプロジェクト。FlutterのモバイルアプリとWebサイトをREST APIでつなぎ、実際の依頼元であるDewa Management向けに開発しました。",
   "A defensive CLI that checks PHP runtimes against the PHP2Shell fixes (CVE-2026-109618 and CVE-2026-109619). It inventories local installs, SSH hosts, HTTP headers and logs, and tracks which Ubuntu package owns each binary so an unrelated package can never pass as a patch. It reports version and inventory evidence, never a blanket 'site is safe' verdict. 41 tests run in CI on Python 3.9 and 3.12.":
     "PHP2Shellの修正（CVE-2026-109618とCVE-2026-109619）に対して、PHPランタイムをチェックする防御用CLIです。ローカルのインストール、SSHホスト、HTTPヘッダー、ログを調査し、各バイナリを所有するUbuntuパッケージを追跡するため、無関係のパッケージがパッチ扱いされることはありません。「サイトは安全」という包括的な判定ではなく、バージョンとインベントリの証拠を報告するツールです。CIではPython 3.9と3.12で41件のテストを実行しています。",
+  "A personal bookshelf for a real 50-volume collection of manga and novels. Drag spines into any order, open a per-book journal with ratings, notes, quotes and loan tracking, get a mood-based random pick, or play per-book soundtracks on a vinyl turntable. Add your own books by hand or by ISBN lookup. Local-first: everything stays in the browser, with validated JSON backup and restore. 194 unit and Playwright checks run against the production build.":
+    "実際に所有するマンガと小説50冊のための、個人の本棚アプリです。背表紙をドラッグして自由に並び替え、評価・メモ・引用・貸出記録を1冊ごとのジャーナルに残せます。気分に合わせたランダム選書や、レコードプレイヤーで流す本ごとのサウンドトラックも楽しめます。自分の本は手入力またはISBN検索で追加できます。ローカルファースト設計で、データはすべてブラウザ内に保存され、検証付きのJSONバックアップと復元に対応しています。194件のunitテストとPlaywrightチェックを、プロダクションビルドに対して実行しています。",
   Live: "デモ",
   Code: "コード",
   "Test strategy": "テスト戦略",

@@ -227,6 +227,17 @@ export const projects: Project[] = [
     repo: "https://github.com/hyderoo/php2shell-check",
     ci: { repo: "hyderoo/php2shell-check", workflow: "tests" },
   },
+  {
+    index: "13",
+    title: "Lumenshelf",
+    year: "2026",
+    description:
+      "A personal bookshelf for a real 50-volume collection of manga and novels. Drag spines into any order, open a per-book journal with ratings, notes, quotes and loan tracking, get a mood-based random pick, or play per-book soundtracks on a vinyl turntable. Add your own books by hand or by ISBN lookup. Local-first: everything stays in the browser, with validated JSON backup and restore. 194 unit and Playwright checks run against the production build.",
+    tags: ["React", "TypeScript", "Vite", "Playwright"],
+    live: "https://lumenshelf.vercel.app",
+    repo: "https://github.com/hyderoo/lumenshelf",
+    preview: "/previews/lumenshelf.webp",
+  },
 ];
 
 
