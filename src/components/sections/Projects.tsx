@@ -36,7 +36,7 @@ export default function Projects() {
   return (
     <section id="work" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
       <SectionHeading index="03" label="Selected work" title="Things I've built." />
-      <div ref={containerRef} className="relative hairline-t" onMouseMove={onMove}>
+      <div ref={containerRef} className="copy-glass relative -mx-3 px-3 py-2 hairline-t md:-mx-6 md:px-6 md:py-4" onMouseMove={onMove}>
         {/* floating preview, desktop only */}
         <AnimatePresence>
           {activeProject?.preview && (

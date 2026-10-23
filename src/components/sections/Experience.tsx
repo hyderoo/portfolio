@@ -8,7 +8,7 @@ export default function Experience() {
   return (
     <section id="experience" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
       <SectionHeading index="02" label="Experience" title="Where I've tested." />
-      <div className="hairline-t">
+      <div className="copy-glass -mx-3 px-3 py-2 hairline-t md:-mx-6 md:px-6 md:py-4">
         {experience.map((job, i) => (
           <FadeUp key={job.role} delay={i * 0.05}>
             <article className="group grid gap-4 border-b border-line py-10 transition-colors duration-500 hover:bg-surface md:grid-cols-12 md:gap-8 md:px-4">

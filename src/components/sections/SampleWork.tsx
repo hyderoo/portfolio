@@ -19,7 +19,7 @@ export default function SampleWork() {
     <section id="sample-work" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
       <SectionHeading index="05" label="Sample work" title="The paperwork too." />
       <FadeUp>
-        <div className="grid gap-10 border border-line bg-surface/40 p-6 md:grid-cols-12 md:p-10">
+        <div className="grid gap-10 border border-line bg-bg/80 p-6 backdrop-blur-md md:grid-cols-12 md:p-10">
           <div className="md:col-span-7">
             <p className="max-w-xl leading-relaxed text-muted">
               <T>{COPY}</T>

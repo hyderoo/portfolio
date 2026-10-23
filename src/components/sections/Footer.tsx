@@ -22,7 +22,7 @@ export default function Footer() {
         <SplitChars as="h2" text={t("SOMETHING")} className="font-display display-hero block text-outline italic transition-colors duration-500 group-hover:text-accent group-hover:[filter:none]" />
       </a>
       <FadeUp delay={0.2}>
-        <p className="mt-8 max-w-md text-muted">
+        <p className="copy-glass -m-4 mt-12 max-w-md p-4 text-muted">
           <T>{OPEN}</T>
         </p>
       </FadeUp>

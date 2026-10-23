@@ -316,7 +316,7 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
     ],
   },
   {
-    title: "Tools",
+    title: "Used at work",
     skills: [
       { name: "JIRA", icon: "/icons/jira.svg" },
       { name: "TestRail", icon: "/icons/testrail.svg" },
@@ -324,18 +324,28 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
       { name: "Postman", icon: "/icons/postman.svg" },
       { name: "SQL", icon: "/icons/sql.webp" },
       { name: "Git & GitHub", icon: "/icons/github.svg" },
+      { name: "Selenium & Katalon", icon: "/icons/selenium.svg" },
     ],
   },
   {
-    title: "Code & Automation",
+    title: "In my side projects",
     skills: [
       { name: "TypeScript / JavaScript", icon: "/icons/typescript.svg" },
       { name: "Next.js & React", icon: "/icons/react.svg" },
-      { name: "Playwright", icon: "/icons/playwright.webp" },
-      { name: "Selenium & Katalon", icon: "/icons/selenium.svg" },
       { name: "Python", icon: "/icons/python.svg" },
       { name: "Flutter & Dart", icon: "/icons/flutter.svg" },
+      { name: "Supabase", icon: "/icons/supabase.svg" },
+      { name: "FastAPI & DuckDB" },
+      { name: "Tailwind CSS", icon: "/icons/tailwindcss.svg" },
+      { name: "Playwright", icon: "/icons/playwright.webp" },
+      { name: "GitHub Actions" },
+      { name: "Newman & Allure" },
+      { name: "Maestro" },
     ],
+  },
+  {
+    title: "Learning now",
+    skills: [{ name: "Rust" }, { name: "Solana & Anchor" }],
   },
 ];
 

@@ -147,3 +147,12 @@ html[lang="ja"] h3.font-display { font-size: 1.35rem; line-height: 1.35; }
 @media (min-width: 768px) { html[lang="ja"] h3.font-display { font-size: 1.6rem; } }
 html[lang="ja"] p, html[lang="ja"] li, html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 { overflow-wrap: break-word; text-wrap: pretty; }
 html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 { text-wrap: balance; }
+
+/* frosted text zone: keeps body copy readable over the scroll particle field
+   while the morphs stay crisp in the negative space around it */
+.copy-glass {
+  border-radius: 0.75rem;
+  background: color-mix(in oklab, var(--color-bg) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}

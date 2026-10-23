@@ -13,7 +13,7 @@ export default function About() {
     <section id="about" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
       <SectionHeading index="01" label="About" title="Methodical about breaking things." />
       <div className="grid gap-14 md:grid-cols-12">
-        <div className="md:col-span-7">
+        <div className="copy-glass -m-4 p-4 md:col-span-7 md:-m-6 md:p-6">
           <ClipReveal>
             <p className="max-w-xl text-lg leading-relaxed text-ink/90 md:text-xl">
               <T>{P1}</T>
@@ -35,7 +35,7 @@ export default function About() {
             ))}
           </div>
           <FadeUp delay={0.15}>
-            <div className="mt-10 border border-line p-6 md:p-8">
+            <div className="copy-glass mt-10 border border-line p-6 md:p-8">
               <p className="text-[11px] uppercase tracking-[0.25em] text-accent"><T>Now</T></p>
               <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted">
                 <li>

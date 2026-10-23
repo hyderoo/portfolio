@@ -19,7 +19,7 @@ export default function CaseStudies() {
       <div className="space-y-6">
         {caseStudies.map((cs, i) => (
           <FadeUp key={cs.title} delay={Math.min(i * 0.05, 0.15)}>
-            <article className="grid gap-8 border border-line bg-surface/40 p-6 transition-colors duration-500 hover:border-accent/40 md:grid-cols-12 md:p-10">
+            <article className="grid gap-8 border border-line bg-bg/80 p-6 backdrop-blur-md transition-colors duration-500 hover:border-accent/40 md:grid-cols-12 md:p-10">
               <div className="md:col-span-4">
                 <span className="font-display text-5xl italic text-accent/80">{cs.index}</span>
                 <h3 className="mt-4 font-display text-2xl leading-tight md:text-3xl"><T>{cs.title}</T></h3>

@@ -12,7 +12,7 @@ export default function Skills() {
     <section id="skills" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-36">
       <SectionHeading index="06" label="Toolbox" title="What I test with." />
       <div className="grid gap-14 md:grid-cols-2">
-        <div className="space-y-10">
+        <div className="copy-glass -m-4 space-y-10 p-4 md:-m-6 md:p-6">
           {skillGroups.map((group, gi) => (
             <FadeUp key={group.title} delay={gi * 0.06}>
               <h3 className="mb-4 text-[11px] uppercase tracking-[0.25em] text-accent"><T>{group.title}</T></h3>
@@ -35,7 +35,7 @@ export default function Skills() {
             </p>
           </FadeUp>
         </div>
-        <div>
+        <div className="copy-glass -m-4 p-4 md:-m-6 md:p-6">
           <FadeUp>
             <h3 className="mb-4 text-[11px] uppercase tracking-[0.25em] text-accent"><T>Credentials</T></h3>
             <ul className="hairline-t">
