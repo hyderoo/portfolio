@@ -31,14 +31,14 @@ const a: Record<string, string> = {
   "Back to top": "ページの先頭へ",
   "Software QA Engineer": "ソフトウェアQAエンジニア",
   "Jakarta, Indonesia": "インドネシア・ジャカルタ",
-  "I find the bugs before your users do. QA engineer on a mobile banking app used by millions, and a builder of side projects that keep my testing instincts sharp.":
-    "ユーザーより先に、バグを見つけます。数百万人が使うモバイルバンキングアプリでQAエンジニアとして働きながら、個人開発にも取り組み、テスターとしての勘を磨き続けています。",
+  "I find the bugs before your users do. QA engineer testing Livin' by Mandiri, and a builder of side projects that keep my testing instincts sharp.":
+    "ユーザーより先に、バグを見つけます。モバイルバンキングアプリ「Livin' by Mandiri」をテストするQAエンジニアとして働きながら、個人開発にも取り組み、テスターとしての勘を磨き続けています。",
   "Download CV": "CVをダウンロード（英語版）",
   "Scroll to discover": "スクロールして見る",
   "LET'S BREAK": "一緒に",
   SOMETHING: "壊しましょう",
-  "Open to junior QA, software engineering and DevOps roles, and to conversations about testing, CI pipelines, dashboards, or why your release keeps slipping.":
-    "ジュニアレベルのQA、ソフトウェアエンジニア、DevOpsのポジションを探しています。テスト、CIパイプライン、ダッシュボード、あるいは「なぜリリースが毎回遅れるのか」といった話題でも、お気軽にどうぞ。",
+  "Open to junior QA, software engineering and DevOps roles, and to conversations about testing, CI pipelines and dashboards.":
+    "ジュニアレベルのQA、ソフトウェアエンジニア、DevOpsのポジションを探しています。テスト、CIパイプライン、ダッシュボードの話題でも、お気軽にご連絡ください。",
   Email: "メール",
   "Designed & built with Next.js, Motion and Three.js": "Next.js、Motion、Three.jsで設計・制作",
   // section headings

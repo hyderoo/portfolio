@@ -8,7 +8,7 @@ import { T } from "@/lib/lang";
 import { isSoftwareGL } from "@/lib/gl";
 
 const HERO_COPY =
-  "I find the bugs before your users do. QA engineer on a mobile banking app used by millions, and a builder of side projects that keep my testing instincts sharp.";
+  "I find the bugs before your users do. QA engineer testing Livin' by Mandiri, and a builder of side projects that keep my testing instincts sharp.";
 
 export default function Hero({ started }: { started: boolean }) {
   const reduced = useReducedMotion() ?? false;

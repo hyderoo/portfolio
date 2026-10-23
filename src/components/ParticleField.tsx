@@ -395,6 +395,8 @@ export default function ParticleField({ started }: { started: boolean }) {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
+      {/* dims the field so body copy keeps its contrast over the particles */}
+      <div className="absolute inset-0 z-10 bg-bg/55" />
       <Canvas
         camera={{ position: [0, 0, 6.4], fov: 42 }}
         dpr={[1, 1.75]}

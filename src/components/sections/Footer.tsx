@@ -6,7 +6,7 @@ import BugHunt from "../BugHunt";
 import { T, useLang } from "@/lib/lang";
 
 const OPEN =
-  "Open to junior QA, software engineering and DevOps roles, and to conversations about testing, CI pipelines, dashboards, or why your release keeps slipping.";
+  "Open to junior QA, software engineering and DevOps roles, and to conversations about testing, CI pipelines and dashboards.";
 
 export default function Footer() {
   const { t } = useLang();
