@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import Preloader from "@/components/Preloader";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -15,6 +16,10 @@ import SampleWork from "@/components/sections/SampleWork";
 import Skills from "@/components/sections/Skills";
 import Footer from "@/components/sections/Footer";
 
+const ParticleField = dynamic(() => import("@/components/ParticleField"), {
+  ssr: false,
+});
+
 export default function Home() {
   const [ready, setReady] = useState(false);
 
@@ -22,8 +27,9 @@ export default function Home() {
     <SmoothScroll>
       <Cursor />
       <Preloader onDone={() => setReady(true)} />
+      <ParticleField started={ready} />
       <Nav visible={ready} />
-      <main>
+      <main className="relative z-10">
         <Hero started={ready} />
         <Marquee />
         <About />

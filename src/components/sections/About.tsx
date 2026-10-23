@@ -4,9 +4,9 @@ import { stats } from "@/lib/data";
 import { R, T } from "@/lib/lang";
 
 const P1 =
-  "I'm Dani, a QA engineer from Padang, now based in West Jakarta. By day I test Livin' by Mandiri, a mobile banking app millions of people trust with their money, which means the bugs have to meet me before they meet them.";
+  "I'm Dani, a QA engineer from Padang, now based in West Jakarta. By day I test Livin' by Mandiri, a mobile banking app millions of people trust with their money, so the bugs have to get past me before they get to them.";
 const P2 =
-  "I graduated in computer engineering from Diponegoro University, and I got into QA the honest way: internships, test cases, and a lot of regression cycles. Outside of work I build dashboards and trackers for the things I follow: fires, earthquakes, F1, League of Legends. Shipping my own projects makes me a better tester of other people's.";
+  "I studied computer engineering at Diponegoro University and learned QA the practical way: internships, test cases, and more regression cycles than I can count. After hours I build dashboards and trackers for the things I follow: fires, earthquakes, F1, League of Legends. Shipping my own software makes me better at testing everyone else's.";
 
 export default function About() {
   return (

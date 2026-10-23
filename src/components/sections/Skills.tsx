@@ -4,7 +4,7 @@ import { skillGroups, credentials, education } from "@/lib/data";
 import { T, useLang } from "@/lib/lang";
 
 const NOTE =
-  "Honest note: my automation skills come from courses and side projects, not production ownership. Not yet, anyway, and that's the gap I'm closing on purpose.";
+  "An honest note: my automation experience comes from courses and side projects, not from owning automation in production. Not yet. Closing that gap is the point of everything on this page.";
 
 export default function Skills() {
   const { t } = useLang();

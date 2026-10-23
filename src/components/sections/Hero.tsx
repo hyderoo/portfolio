@@ -1,38 +1,21 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { SplitChars } from "../Reveal";
 import { profile } from "@/lib/data";
 import { T } from "@/lib/lang";
+import { isSoftwareGL } from "@/lib/gl";
 
 const HERO_COPY =
-  "I find the bugs before your users do. QA engineer working on a mobile banking app used by millions, and building things on the side so I never stop breaking interesting ones.";
-
-const HeroScene = dynamic(() => import("../HeroScene"), { ssr: false });
-
-// Software rasterizers (SwiftShader, llvmpipe) turn the WebGL orb into seconds
-// of main-thread work for a slideshow. Those clients get a pre-rendered still
-// of the orb instead: same look, same moment, no three.js download and no
-// render loop. Real GPUs always get the live scene.
-function isSoftwareGL(): boolean {
-  try {
-    const c = document.createElement("canvas");
-    const gl = c.getContext("webgl");
-    if (!gl) return true;
-    const ext = gl.getExtension("WEBGL_debug_renderer_info");
-    const renderer = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : "";
-    gl.getExtension("WEBGL_lose_context")?.loseContext();
-    return !renderer || /swiftshader|llvmpipe|softpipe|software/i.test(renderer);
-  } catch {
-    return true;
-  }
-}
+  "I find the bugs before your users do. QA engineer on a mobile banking app used by millions, and a builder of side projects that keep my testing instincts sharp.";
 
 export default function Hero({ started }: { started: boolean }) {
   const reduced = useReducedMotion() ?? false;
-  const [scene, setScene] = useState<"pending" | "webgl" | "still">("pending");
+  // The live orb moved into the fixed scroll-driven ParticleField mounted
+  // by the page. Clients that cannot run it (reduced motion, software
+  // GL) keep this pre-rendered still of the orb instead.
+  const [still, setStill] = useState(false);
   // Hero text starts its reveal as soon as React is up, not after the preloader
   // lifts. The preloader is opaque while it counts, so the choreography looks
   // identical, but the copy paints about a second earlier (better LCP).
@@ -42,29 +25,12 @@ export default function Hero({ started }: { started: boolean }) {
     return () => cancelAnimationFrame(id);
   }, []);
 
-  // Fetch the heavy three.js chunk while the preloader counts, then mount the
-  // scene as soon as the preloader lifts so the orb shows right away.
   useEffect(() => {
     if (!started) return;
-    // three.js module evaluation plus scene init costs about 700ms of
-    // simulated blocking time, so both the import and the mount must land
-    // outside the load trace to keep TBT low. Wait ~1.8s after the
-    // preloader, then mount on idle: the orb still fades in a few seconds
-    // after the preloader, but the hero text and interactivity win the
-    // main thread first.
-    let idleId: number | undefined;
-    const t = setTimeout(() => {
-      const mount = () => setScene(reduced || isSoftwareGL() ? "still" : "webgl");
-      if (window.requestIdleCallback) {
-        idleId = window.requestIdleCallback(mount, { timeout: 1200 });
-      } else {
-        mount();
-      }
-    }, 1800);
-    return () => {
-      clearTimeout(t);
-      if (idleId !== undefined) window.cancelIdleCallback(idleId);
-    };
+    const id = requestAnimationFrame(() => {
+      setStill(reduced || isSoftwareGL());
+    });
+    return () => cancelAnimationFrame(id);
   }, [started, reduced]);
 
   return (
@@ -75,11 +41,10 @@ export default function Hero({ started }: { started: boolean }) {
         animate={started ? { opacity: 0.9 } : {}}
         transition={{ duration: 1.2 }}
       >
-        {scene === "webgl" && <HeroScene />}
-        {scene === "still" && (
+        {still && (
           <picture>
             <source media="(max-width: 767px)" srcSet="/orb-still-mobile.webp" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+            { }
             <img
               src="/orb-still.webp"
               alt=""

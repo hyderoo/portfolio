@@ -12,7 +12,7 @@ function ArrowIcon() {
 }
 
 const COPY =
-  "Case studies show the automation side. This is the manual craft: a test plan, test cases and bug reports from a real execution against SauceDemo, a public training app, because my day-job artifacts are confidential. 11 cases run, 7 passed, 4 defects reproduced and filed, all on 18 October 2026.";
+  "The case studies above show the automation side. This is the manual craft: a test plan, test cases and bug reports from a real execution against SauceDemo, a public training app. My day-job artifacts are confidential, so this set stands in for them. 11 cases run, 7 passed, 4 defects reproduced and filed, all on 18 October 2026.";
 
 export default function SampleWork() {
   return (

@@ -31,8 +31,8 @@ const a: Record<string, string> = {
   "Back to top": "ページの先頭へ",
   "Software QA Engineer": "ソフトウェアQAエンジニア",
   "Jakarta, Indonesia": "インドネシア・ジャカルタ",
-  "I find the bugs before your users do. QA engineer working on a mobile banking app used by millions, and building things on the side so I never stop breaking interesting ones.":
-    "ユーザーより先に、バグを見つけます。数百万人が使うモバイルバンキングアプリでQAエンジニアとして働きながら、個人でも開発を続けています。壊しがいのあるものに出会い続けたいからです。",
+  "I find the bugs before your users do. QA engineer on a mobile banking app used by millions, and a builder of side projects that keep my testing instincts sharp.":
+    "ユーザーより先に、バグを見つけます。数百万人が使うモバイルバンキングアプリでQAエンジニアとして働きながら、個人開発にも取り組み、テスターとしての勘を磨き続けています。",
   "Download CV": "CVをダウンロード（英語版）",
   "Scroll to discover": "スクロールして見る",
   "LET'S BREAK": "一緒に",
@@ -53,10 +53,10 @@ const a: Record<string, string> = {
   "Sample work": "サンプルワーク",
   Toolbox: "スキルと道具",
   // about
-  "I'm Dani, a QA engineer from Padang, now based in West Jakarta. By day I test Livin' by Mandiri, a mobile banking app millions of people trust with their money, which means the bugs have to meet me before they meet them.":
-    "パダン出身、現在は西ジャカルタ在住のQAエンジニア、ダニです。普段は、数百万人が大切なお金を預けるモバイルバンキングアプリ「Livin' by Mandiri」をテストしています。ユーザーがバグに出会う前に、まず私が出会う必要があります。",
-  "I graduated in computer engineering from Diponegoro University, and I got into QA the honest way: internships, test cases, and a lot of regression cycles. Outside of work I build dashboards and trackers for the things I follow: fires, earthquakes, F1, League of Legends. Shipping my own projects makes me a better tester of other people's.":
-    "ディポネゴロ大学でコンピュータ工学を学び、QAの仕事は地道に身につけてきました。インターンシップ、テストケースの作成、そして数えきれないほどのリグレッションテストです。仕事以外では、関心のある対象のダッシュボードやトラッカーを作っています。火災、地震、F1、League of Legendsなどです。自分のプロジェクトをリリースしてきたことが、他の人のプロダクトをより良くテストする力になっています。",
+  "I'm Dani, a QA engineer from Padang, now based in West Jakarta. By day I test Livin' by Mandiri, a mobile banking app millions of people trust with their money, so the bugs have to get past me before they get to them.":
+    "パダン出身、現在は西ジャカルタ在住のQAエンジニア、ダニです。普段は、数百万人が大切なお金を預けるモバイルバンキングアプリ「Livin' by Mandiri」をテストしています。ユーザーに届く前に、バグはまず私を通り越す必要があります。",
+  "I studied computer engineering at Diponegoro University and learned QA the practical way: internships, test cases, and more regression cycles than I can count. After hours I build dashboards and trackers for the things I follow: fires, earthquakes, F1, League of Legends. Shipping my own software makes me better at testing everyone else's.":
+    "ディポネゴロ大学でコンピュータ工学を学び、QAは実践を通じて身につけてきました。インターンシップ、テストケースの作成、そして数えきれないほどのリグレッションサイクルです。仕事の後は、火災、地震、F1、League of Legendsなど、自分が追いかけているテーマのダッシュボードやトラッカーを作っています。自分のソフトウェアをリリースする経験が、他の人のソフトウェアをより良くテストする力になっています。",
   "~1 yr": "約1年",
   "of QA experience in mobile banking & fintech": "モバイルバンキングとフィンテックでのQA経験",
   "test cases executed on a live banking app": "稼働中のバンキングアプリで実行したテストケース",
@@ -79,8 +79,8 @@ const a: Record<string, string> = {
   "Functional & Manual Testing": "機能テスト・手動テスト",
   "Smoke & Sanity": "スモーク・サニティテスト",
   "Test Planning & Design": "テスト計画・設計",
-  "Honest note: my automation skills come from courses and side projects, not production ownership. Not yet, anyway, and that's the gap I'm closing on purpose.":
-    "正直なところ、自動化のスキルは講座と個人開発で身につけたもので、本番環境で責任を持って運用した経験はまだありません。そこが今、意識的に埋めている部分です。",
+  "An honest note: my automation experience comes from courses and side projects, not from owning automation in production. Not yet. Closing that gap is the point of everything on this page.":
+    "正直にお伝えすると、自動化の経験は講座と個人開発によるもので、本番環境での運用経験はまだありません。そのギャップを埋めることこそが、このページに並べたすべての狙いです。",
   Credentials: "資格・認定",
   Education: "学歴",
   "In preparation, not certified yet": "準備中（未取得）",
@@ -172,8 +172,8 @@ const a: Record<string, string> = {
     "私のテストの勘所が分かります。一番高くつくバグは、見た目は正しいのに、実際には誤ったことを伝えているソフトウェアです。",
   "Live app": "公開アプリ",
   // sample work home section
-  "Case studies show the automation side. This is the manual craft: a test plan, test cases and bug reports from a real execution against SauceDemo, a public training app, because my day-job artifacts are confidential. 11 cases run, 7 passed, 4 defects reproduced and filed, all on 18 October 2026.":
-    "ケーススタディでは自動化の面をご紹介しました。こちらは手動テストの仕事ぶりです。業務で作る成果物は社外秘のため、公開されている練習用アプリSauceDemoを実際にテストし、テスト計画、テストケース、バグ報告書をまとめました。11ケースを実行して7件が合格、4件の不具合を再現して報告しています。すべて2026年10月18日の実施です。",
+  "The case studies above show the automation side. This is the manual craft: a test plan, test cases and bug reports from a real execution against SauceDemo, a public training app. My day-job artifacts are confidential, so this set stands in for them. 11 cases run, 7 passed, 4 defects reproduced and filed, all on 18 October 2026.":
+    "上のケーススタディでは自動化の面をご紹介しました。こちらは手動テストの仕事ぶりです。公開されている練習用アプリSauceDemoを実際にテストし、テスト計画、テストケース、バグ報告書をまとめました。業務の成果物は社外秘のため、このセットがその代わりです。11ケースを実行して7件が合格、4件の不具合を再現して報告しています。すべて2026年10月18日の実施です。",
   "See the test cases and bug reports": "テストケースとバグ報告書を見る",
   "Quality in numbers: coverage, live API checks, bug changelog": "数字で見る品質：カバレッジ、ライブAPIチェック、バグ修正履歴",
   "Full set on GitHub": "GitHubで全件を見る",
