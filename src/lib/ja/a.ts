@@ -66,7 +66,6 @@ const a: Record<string, string> = {
   "Preparing for the ISTQB CTFL exam, with {a}notes in public{/a}.": "ISTQB CTFL試験の準備中です。学習ノートは{a}公開しています{/a}。",
   "Going deeper on Playwright.": "Playwrightをさらに深く学んでいます。",
   "Learning Rust, from zero.": "Rustを、ゼロから勉強中です。",
-  "Shipping small browser tools: AirSubs (live captions) and PDF Lab.": "AirSubs（ライブ字幕）やPDF Labなど、小さなブラウザツールを公開しています。",
   "Learning Japanese, from zero.": "日本語を、ゼロから勉強中です。",
   // marquee / skills
   "Functional Testing": "機能テスト",
