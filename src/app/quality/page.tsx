@@ -91,6 +91,13 @@ const LAYER_ORDER: { key: keyof Layers; label: string; color: string }[] = [
 
 const CHANGELOG = [
   {
+    repo: "php2shell-check",
+    date: "22 Oct 2026",
+    title: "Audit could clear a server that was never patched",
+    body: "The scanner credited any installed php* package as a fix, so a host running a self-compiled PHP could be reported patched when it was not, the worst verdict a security tool can give. The probe now tracks which package owns each binary, an incomplete inventory can never produce an overall patched verdict, and redirects, timeouts and empty logs fail safe. Verified with 41 tests.",
+    sha: "977d19ffd215eea1fd6bd230566e8c2a59570243",
+  },
+  {
     repo: "karhutla-watch",
     date: "16 Oct 2026",
     title: "Production crash on the FIRMS proxy",

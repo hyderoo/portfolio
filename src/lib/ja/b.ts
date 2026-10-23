@@ -43,6 +43,10 @@ const b: Record<string, string> = {
   "A tester's own code should not get a free pass. Each entry links the real fix commit.":
     "テスターが書いたコードも、特別扱いはしません。各項目に、実際の修正コミットへのリンクを付けています。",
   "Fix commit": "修正コミット",
+  "22 Oct 2026": "2026年10月22日",
+  "Audit could clear a server that was never patched": "パッチ未適用のサーバーを「安全」と判定しかけた監査ツール",
+  "The scanner credited any installed php* package as a fix, so a host running a self-compiled PHP could be reported patched when it was not, the worst verdict a security tool can give. The probe now tracks which package owns each binary, an incomplete inventory can never produce an overall patched verdict, and redirects, timeouts and empty logs fail safe. Verified with 41 tests.":
+    "インストール済みの php* パッケージがあれば修正済みとみなしていたため、独自ビルドのPHPを使うホストを、未修正なのに「修正済み」と報告するおそれがありました。セキュリティツールにとって最悪の誤判定です。プローブは各バイナリを所有するパッケージを追跡するようになり、インベントリが不完全な場合は全体として修正済みの判定を出さず、リダイレクト、タイムアウト、空のログも安全側に処理します。41件のテストで検証済みです。",
   "16 Oct 2026": "2026年10月16日",
   "17 Oct 2026": "2026年10月17日",
   "18 Oct 2026": "2026年10月18日",
