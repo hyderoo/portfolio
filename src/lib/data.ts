@@ -157,6 +157,7 @@ export const projects: Project[] = [
     description:
       "University project turned portfolio piece: a book-discovery app on the OpenLibrary API with a reading list, barcode scan and similar-book suggestions. Redesigned and extended in 2026. The badge here is live from the ShelfSeeker E2E suite (project 05), which tests this deployed app.",
     tags: ["React", "OpenLibrary", "PWA"],
+    live: "https://shelfseekerapp.web.app",
     repo: "https://github.com/hyderoo/ShelfSeeker",
     ci: { repo: "hyderoo/ShelfSeeker-e2e", workflow: "e2e" },
     arch: "/architecture#shelfseeker",
@@ -236,6 +237,26 @@ export const projects: Project[] = [
     tags: ["React", "TypeScript", "Vite", "Playwright"],
     live: "https://lumenshelf.vercel.app",
     preview: "/previews/lumenshelf.webp",
+  },
+  {
+    index: "14",
+    title: "Kedip",
+    year: "2026",
+    description:
+      "A browser Arduino simulator for learning by wiring. Guided lessons plus a free-build workspace with more than 20 wireable parts, a sketch editor with the running line highlighted, analog reads solved from the actual resistor network, and plain-language hints about what the circuit is missing. A teaching model that says plainly what it does not simulate.",
+    tags: ["TypeScript", "Vite", "Simulation"],
+    live: "https://kedip.vercel.app",
+    preview: "/previews/kedip.webp",
+  },
+  {
+    index: "15",
+    title: "Valleria Go",
+    year: "2026",
+    description:
+      "A recreation study, not an original design. The Valleria commerce template by Sevgi Odabas (Framer Marketplace) recreated as a Go web app with templ and vanilla JS, matched to the reference layout from measured boxes at five viewports. Search, cart and per-country prices work from a local index and the store's public catalog; checkout and newsletter stay unconnected. The original photos, video and copy stay with the template author. Work in progress.",
+    tags: ["Go", "templ", "Tailwind CSS", "Vanilla JS"],
+    live: "https://valleria-go.vercel.app",
+    preview: "/previews/valleria.webp",
   },
 ];
 
