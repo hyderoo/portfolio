@@ -42,7 +42,7 @@ export default function Projects() {
           {activeProject?.preview && (
             <motion.div
               key={activeProject.title}
-              className="pointer-events-none absolute z-20 hidden w-72 overflow-hidden rounded-md border border-line shadow-2xl shadow-black/60 lg:block"
+              className={`pointer-events-none absolute z-20 hidden overflow-hidden rounded-md border border-line shadow-2xl shadow-black/60 lg:block ${activeProject.title === "AirSubs" ? "w-[30rem]" : "w-72"}`}
               style={{ left: px, top: py, x: 24, y: -90 }}
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -50,7 +50,7 @@ export default function Projects() {
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={activeProject.preview} alt="" className="aspect-[4/3] w-full object-cover object-top" />
+              <img src={activeProject.preview} alt="" className={`${activeProject.title === "AirSubs" ? "aspect-video" : "aspect-[4/3]"} w-full object-cover object-top`} />
             </motion.div>
           )}
         </AnimatePresence>

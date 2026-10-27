@@ -217,6 +217,7 @@ export const projects: Project[] = [
       "A Chrome extension that puts live captions and translation on any tab: YouTube, Twitch, a livestream, a lecture recording. Tab audio is transcribed by Whisper on Groq's free tier with three accuracy modes; Balanced shows a fast draft and quietly replaces it with the more accurate read a moment later. Translation runs on Chrome's built-in on-device Translator where possible, with an open-weight LLM fallback, and sessions export to .srt.",
     tags: ["Chrome Extension", "Manifest V3", "Whisper", "Groq"],
     repo: "https://github.com/hyderoo/airsubs",
+    preview: "/previews/airsubs.webp",
   },
   {
     index: "12",
