@@ -259,6 +259,17 @@ export const projects: Project[] = [
     live: "https://valleria-go.vercel.app",
     preview: "/previews/valleria.webp",
   },
+  {
+    index: "16",
+    title: "Worlds 2026 QA suite",
+    year: "2026",
+    description:
+      "A Playwright and TypeScript test suite for my Worlds 2026 tracker: 117 test cases over the API, filters, time zones, languages, spoiler-free mode, the Swiss predictor and accessibility, with a test plan, run evidence and a log of five defects it found.",
+    tags: ["Playwright", "TypeScript", "axe-core", "GitHub Actions"],
+    live: "https://worlds-2026-live.vercel.app",
+    repo: "https://github.com/hyderoo/worlds-live-quality-suite",
+    preview: "/previews/worlds-qa.webp",
+  },
 ];
 
 

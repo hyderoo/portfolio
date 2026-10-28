@@ -39,6 +39,12 @@ const PROJECTS: ProjectQuality[] = [
     notTested: ["Push delivery end to end"],
   },
   {
+    name: "Worlds 2026 QA suite",
+    layers: { contract: 19, e2e: 98 },
+    runs: "Last run 28 Oct 2026: 120 runs against the live site (API, desktop and mobile Chrome), 115 passed and 5 known-defect runs failed as expected. Five open defects are documented with reproduction steps. Runs on push and pull request in GitHub Actions. Test plan, case table and bug log: github.com/hyderoo/worlds-live-quality-suite/tree/main/docs",
+    notTested: ["Live-match states", "Admin panel and push delivery", "Browsers other than Chromium"],
+  },
+  {
     name: "KARHUTLA Watch",
     layers: { unit: 21, e2e: 11 },
     runs: "Unit tests plus end-to-end tests against the deployed app, every push in GitHub Actions",
