@@ -23,6 +23,7 @@ type ProjectQuality = {
   layers: Layers;
   runs: string;
   notTested: string[];
+  links?: { label: string; href: string }[];
 };
 
 const PROJECTS: ProjectQuality[] = [
@@ -41,8 +42,14 @@ const PROJECTS: ProjectQuality[] = [
   {
     name: "Worlds 2026 QA suite",
     layers: { contract: 19, e2e: 98 },
-    runs: "Last run 28 Oct 2026: 120 runs against the live site (API, desktop and mobile Chrome), 115 passed and 5 known-defect runs failed as expected. Five open defects are documented with reproduction steps. Runs on push and pull request in GitHub Actions. Test plan, case table and bug log: github.com/hyderoo/worlds-live-quality-suite/tree/main/docs",
+    runs: "Last run 28 Oct 2026: 120 runs against the live site (API, desktop and mobile Chrome), 115 passed and 5 known-defect runs failed as expected. Five open defects are documented with reproduction steps. Runs on push and pull request in GitHub Actions.",
     notTested: ["Live-match states", "Admin panel and push delivery", "Browsers other than Chromium"],
+    links: [
+      { label: "Test plan", href: "https://github.com/hyderoo/worlds-live-quality-suite/blob/main/docs/TEST-PLAN.md" },
+      { label: "Case table", href: "https://github.com/hyderoo/worlds-live-quality-suite/blob/main/docs/TEST-CASES.md" },
+      { label: "Bug log", href: "https://github.com/hyderoo/worlds-live-quality-suite/blob/main/docs/BUGS.md" },
+      { label: "Repository", href: "https://github.com/hyderoo/worlds-live-quality-suite" },
+    ],
   },
   {
     name: "KARHUTLA Watch",
@@ -217,6 +224,15 @@ export default function QualityPage() {
                 </div>
                 <LayerBar layers={p.layers} />
                 <p className="mt-2 text-sm text-muted"><T>{p.runs}</T></p>
+                {p.links && (
+                  <p className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+                    {p.links.map((l) => (
+                      <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline">
+                        <T>{l.label}</T> ↗
+                      </a>
+                    ))}
+                  </p>
+                )}
                 {p.notTested.length > 0 && (
                   <p className="mt-2 text-sm text-muted">
                     <span className="text-accent"><T>Not tested yet: </T></span>
