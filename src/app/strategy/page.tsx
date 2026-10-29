@@ -79,7 +79,7 @@ export default function StrategyPage() {
         </ul>
 
         <div className="mt-16 flex flex-wrap gap-6 border-t border-line pt-8 text-sm">
-          <a href="https://worlds-2026-live.vercel.app" target="_blank" rel="noreferrer" className="link-underline text-ink">
+          <a href="https://worlds2026.web.id" target="_blank" rel="noreferrer" className="link-underline text-ink">
             <T>Live app</T>
           </a>
           <a href="https://github.com/hyderoo/worlds-2026-live" target="_blank" rel="noreferrer" className="link-underline text-ink">

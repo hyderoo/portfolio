@@ -93,7 +93,7 @@ export const projects: Project[] = [
     description:
       "A live tracker for the League of Legends World Championship: match center, bracket, standings, team pages, pick'em and push notifications. Next.js PWA backed by Supabase, syncing the official lolesports feed every 5 minutes.",
     tags: ["Next.js", "TypeScript", "Supabase", "PWA"],
-    live: "https://worlds-2026-live.vercel.app",
+    live: "https://worlds2026.web.id",
     repo: "https://github.com/hyderoo/worlds-2026-live",
     preview: "/previews/worlds.webp",
     ci: { repo: "hyderoo/worlds-2026-live", workflow: "CI" },
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     description:
       "A Formula 1 intelligence dashboard for the 2026 season: calendar, live timing tower, standings, telemetry lab and tyre strategy. 101 unit tests, 19 contract tests and 10 Playwright end-to-end scenarios keep it honest.",
     tags: ["Next.js", "Supabase", "Playwright", "OpenF1 API"],
-    live: "https://apex-f1-murex.vercel.app",
+    live: "https://apexf1.web.id",
     repo: "https://github.com/hyderoo/apex-f1",
     preview: "/previews/apex.webp",
     ci: { repo: "hyderoo/apex-f1", workflow: "CI" },
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     description:
       "Indonesian forest- and land-fire monitoring: NASA FIRMS hotspots, air-quality stations and modelled smoke plumes on one map, proxied through serverless functions.",
     tags: ["React", "TypeScript", "Vite", "NASA FIRMS"],
-    live: "https://karhutla-watch.vercel.app",
+    live: "https://karhutlawatch.web.id",
     repo: "https://github.com/hyderoo/karhutla-watch",
     preview: "/previews/karhutla.webp",
     ci: { repo: "hyderoo/karhutla-watch", workflow: "e2e" },
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     description:
       "Real-time earthquake dashboard pulling from USGS worldwide, BMKG for Indonesia and JMA for Japan, with regional views and a 60-second refresh.",
     tags: ["React", "USGS", "BMKG", "JMA"],
-    live: "https://quakewatch-one.vercel.app",
+    live: "https://quakewatch.web.id",
     repo: "https://github.com/hyderoo/quakewatch",
     preview: "/previews/quake.webp",
     ci: { repo: "hyderoo/quakewatch", workflow: "e2e" },
@@ -181,7 +181,7 @@ export const projects: Project[] = [
     description:
       "Growth-monitoring PWA for posyandu cadres in Parakan Kauman, Temanggung, from a KKN team project with BKKBN in July 2024. The current build runs on Next.js and Supabase, with the PHP/MySQL original kept on the legacy-php branch: record a child's weight and height, get WHO 2006 z-scores on the spot, and follow each child's curve over time. Row Level Security keeps every cadre inside their own posyandu. The current codebase carries 19 unit tests and 22 Playwright end-to-end tests in CI.",
     tags: ["Next.js", "TypeScript", "Supabase", "PWA", "Playwright"],
-    live: "https://sindaparka-rho.vercel.app",
+    live: "https://sindaparka.web.id",
     repo: "https://github.com/hyderoo/SINDAPARKA",
     preview: "/previews/sindaparka.webp",
     ci: { repo: "hyderoo/SINDAPARKA", workflow: "CI" },
@@ -205,7 +205,7 @@ export const projects: Project[] = [
     description:
       "PDF tools for the Undip community that run entirely in the browser: compare two versions, summarize or translate with Gemini, merge, split, rotate, crop, compress, watermark and more. Files are processed on your device with pdf-lib and pdf.js and never uploaded to a server. Sign-in is restricted to Undip email addresses.",
     tags: ["Next.js", "TypeScript", "pdf-lib", "Auth.js", "Gemini"],
-    live: "https://pdflab-undip.vercel.app",
+    live: "https://pdflab.web.id",
     repo: "https://github.com/hyderoo/pdf-lab",
     preview: "/previews/pdflab.webp",
   },
@@ -236,7 +236,7 @@ export const projects: Project[] = [
     description:
       "A personal bookshelf for a real 50-volume collection of manga and novels. Drag spines into any order, open a per-book journal with ratings, notes, quotes and loan tracking, get a mood-based random pick, or play per-book soundtracks on a vinyl turntable. Add your own books by hand or by ISBN lookup. Local-first: everything stays in the browser, with validated JSON backup and restore. 194 unit and Playwright checks run against the production build.",
     tags: ["React", "TypeScript", "Vite", "Playwright"],
-    live: "https://lumenshelf.vercel.app",
+    live: "https://lumenshelf.web.id",
     preview: "/previews/lumenshelf.webp",
   },
   {
@@ -246,7 +246,7 @@ export const projects: Project[] = [
     description:
       "A browser Arduino simulator for learning by wiring. Guided lessons plus a free-build workspace with more than 20 wireable parts, a sketch editor with the running line highlighted, analog reads solved from the actual resistor network, and plain-language hints about what the circuit is missing. A teaching model that says plainly what it does not simulate.",
     tags: ["TypeScript", "Vite", "Simulation"],
-    live: "https://kedip.vercel.app",
+    live: "https://kedip.web.id",
     preview: "/previews/kedip.webp",
   },
   {
@@ -256,7 +256,7 @@ export const projects: Project[] = [
     description:
       "A recreation study, not an original design. The Valleria commerce template by Sevgi Odabas (Framer Marketplace) recreated as a Go web app with templ and vanilla JS, matched to the reference layout from measured boxes at five viewports. Search, cart and per-country prices work from a local index and the store's public catalog; checkout and newsletter stay unconnected. The original photos, video and copy stay with the template author. Work in progress.",
     tags: ["Go", "templ", "Tailwind CSS", "Vanilla JS"],
-    live: "https://valleria-go.vercel.app",
+    live: "https://valleriago.web.id",
     preview: "/previews/valleria.webp",
   },
   {
@@ -266,7 +266,7 @@ export const projects: Project[] = [
     description:
       "A Playwright and TypeScript test suite for my Worlds 2026 tracker: 117 test cases over the API, filters, time zones, languages, spoiler-free mode, the Swiss predictor and accessibility, with a test plan, run evidence and a log of five defects it found.",
     tags: ["Playwright", "TypeScript", "axe-core", "GitHub Actions"],
-    live: "https://worlds-2026-live.vercel.app",
+    live: "https://worlds2026.web.id",
     repo: "https://github.com/hyderoo/worlds-live-quality-suite",
     preview: "/previews/worlds-qa.webp",
   },
@@ -336,7 +336,7 @@ export const caseStudies: CaseStudy[] = [
     takeaway:
       "Shows the instinct I test with: the most expensive bugs are the ones where software looks right while saying something false.",
     links: [
-      { label: "Live app", href: "https://apex-f1-murex.vercel.app" },
+      { label: "Live app", href: "https://apexf1.web.id" },
       { label: "Repository", href: "https://github.com/hyderoo/apex-f1" },
     ],
     ci: { repo: "hyderoo/apex-f1", workflow: "CI" },
