@@ -7,6 +7,8 @@ type RunInfo = { conclusion: string; updatedAt: string; url: string };
 
 /**
  * Live CI badge fed by the public GitHub Actions API for one repo+workflow.
+ * Reads the latest completed run on the repo's default branch only, so a
+ * failing pull-request branch never masks (or fakes) the main-branch status.
  * Renders nothing until the real status is known, and nothing at all if the
  * API is unreachable - it never guesses.
  */
@@ -15,7 +17,7 @@ export default function TestStatus({ repo, workflow }: { repo: string; workflow:
   const { t, lang } = useLang();
 
   useEffect(() => {
-    const key = `ci:${repo}:${workflow}`;
+    const key = `ci2:${repo}:${workflow}`;
     try {
       const cached = sessionStorage.getItem(key);
       if (cached) {
@@ -27,8 +29,13 @@ export default function TestStatus({ repo, workflow }: { repo: string; workflow:
       }
     } catch {}
     let cancelled = false;
-    fetch(`https://api.github.com/repos/${repo}/actions/runs?per_page=30`)
+    fetch(`https://api.github.com/repos/${repo}`)
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((repoInfo: { default_branch: string }) =>
+        fetch(
+          `https://api.github.com/repos/${repo}/actions/runs?per_page=30&branch=${repoInfo.default_branch}`
+        ).then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      )
       .then((d) => {
         const m = (d.workflow_runs || []).find(
           (w: { name: string; status: string }) => w.name === workflow && w.status === "completed"
