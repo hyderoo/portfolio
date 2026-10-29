@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hafizhamdani.vercel.app"),
+  metadataBase: new URL("https://hafizhamdani.my.id"),
   alternates: { canonical: "/" },
   title: "Hafiz Hamdani | Software QA Engineer",
   description:
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description:
       "QA engineer in Jakarta working on mobile banking, with case studies in API testing, Playwright E2E and live data apps.",
     type: "website",
-    url: "https://hafizhamdani.vercel.app/",
+    url: "https://hafizhamdani.my.id/",
     siteName: "Hafiz Hamdani",
   },
   twitter: {
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: profile.name,
               jobTitle: profile.role,
               address: { "@type": "PostalAddress", addressLocality: "Jakarta", addressCountry: "ID" },
-              url: "https://hafizhamdani.vercel.app",
+              url: "https://hafizhamdani.my.id",
               sameAs: [profile.github, profile.linkedin],
             }),
           }}
