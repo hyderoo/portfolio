@@ -376,6 +376,7 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
       { name: "TypeScript / JavaScript", icon: "/icons/typescript.svg" },
       { name: "Next.js & React", icon: "/icons/react.svg" },
       { name: "Python", icon: "/icons/python.svg" },
+      { name: "Go", icon: "/icons/go.svg" },
       { name: "Flutter & Dart", icon: "/icons/flutter.svg" },
       { name: "Supabase", icon: "/icons/supabase.svg" },
       { name: "FastAPI & DuckDB", icon: "/icons/fastapi.svg" },
