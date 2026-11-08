@@ -351,14 +351,6 @@ export const projects: Project[] = [
   },
   {
     index: "26",
-    title: "Capri Island",
-    year: "2026",
-    description:
-      "A Capri-themed dynamic island for Windows, after the Cyberpunk: Edgerunners character: a small liquid-glass bar with her eyes that expands into demo states for music, charging and timers. Written in Rust. Early prototype: it builds and passes CI, and the Windows app is still being verified on real hardware.",
-    tags: ["Rust", "Windows", "Desktop"],
-  },
-  {
-    index: "27",
     title: "Downloadyuk",
     year: "2026",
     description:

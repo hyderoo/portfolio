@@ -159,8 +159,6 @@ const a: Record<string, string> = {
     "無料の10m解像度Sentinel-2画像を使う、ドゥマイの石油タンク検出パイロット。Pythonの従来型画像処理とGoの評価ツールを組み合わせています。ラベル付き画像の小規模な検証であり、全国監視や石油量の推定ではありません。",
   "A paper-mode crypto spread scanner with public Binance and Kraken order books, a simulated ledger and a Next.js dashboard. Separates observed spreads from cost estimates and blocks incomplete inputs. In development, not accepted for testnet or real-money trading.":
     "BinanceとKrakenの公開板情報、模擬台帳、Next.jsダッシュボードを使うペーパーモードの暗号資産価格差スキャナー。観測した価格差とコスト見積もりを分け、不完全な入力では実行を止めます。開発中で、テストネットや実資金取引の受け入れ条件は満たしていません。",
-  "A Capri-themed dynamic island for Windows, after the Cyberpunk: Edgerunners character: a small liquid-glass bar with her eyes that expands into demo states for music, charging and timers. Written in Rust. Early prototype: it builds and passes CI, and the Windows app is still being verified on real hardware.":
-    "サイバーパンク: エッジランナーズのキャラクター、カプリをテーマにしたWindows用ダイナミックアイランド。彼女の目をあしらった小さなリキッドグラス風のバーが、音楽・充電・タイマーのデモ表示に広がります。Rust製。初期プロトタイプで、ビルドとCIは通っていますが、Windowsアプリの実機検証はこれからです。",
   "A paste-a-link video downloader with an Indonesian-first interface. X and Instagram links come down directly as MP4 video or M4A audio; YouTube links open a 360p stream in the browser to save by hand. Written in Rust and deliberately scoped to those platforms instead of claiming universal support.":
     "リンクを貼るだけの動画ダウンローダー。UIはインドネシア語優先です。XとInstagramのリンクはMP4動画またはM4A音声として直接ダウンロードでき、YouTubeリンクは360pのストリームをブラウザで開いて手動で保存します。Rust製。対応プラットフォームを限定し、「なんでも落とせる」とは謳っていません。",
   Live: "デモ",
