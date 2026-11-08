@@ -275,7 +275,7 @@ export const projects: Project[] = [
     title: "Nihongoyuk",
     year: "2026",
     description:
-      "A Japanese-learning app I am building for my own N5-to-N1 study, with explanations written in natural Indonesian. Lessons with built-in practice, a kana and kanji writing trainer with stroke-order validation, a searchable dictionary, JLPT-format practice exams, and a watch section that follows drama dialogue line by line with study notes. Rust (Leptos) compiled to WebAssembly, with progress stored locally in the browser; accounts and cross-device sync are still being built.",
+      "A Japanese-learning app I am building for my own study, with explanations written in natural Indonesian. Lessons grouped by JLPT level from N5 to N1 with built-in practice, kana and kanji writing training with stroke-order checking, a searchable dictionary, JLPT-format practice questions, and a watch section that follows a drama episode line by line with study notes. Rust (Leptos) compiled to WebAssembly, with progress stored locally in the browser; accounts and cross-device sync are still being built.",
     tags: ["Rust", "Leptos", "WebAssembly", "Education"],
     live: "https://nihongoyuk.web.id",
     preview: "/previews/nihongoyuk.webp",
