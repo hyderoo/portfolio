@@ -270,6 +270,103 @@ export const projects: Project[] = [
     repo: "https://github.com/hyderoo/worlds-live-quality-suite",
     preview: "/previews/worlds-qa.webp",
   },
+  {
+    index: "17",
+    title: "Nihongoyuk",
+    year: "2026",
+    description:
+      "A Japanese-learning app I am building for my own N5-to-N1 study, with explanations written in natural Indonesian. Lessons with built-in practice, a kana and kanji writing trainer with stroke-order validation, a searchable dictionary, JLPT-format practice exams, and a watch section that follows drama dialogue line by line with study notes. Rust (Leptos) compiled to WebAssembly, with progress stored locally in the browser; accounts and cross-device sync are still being built.",
+    tags: ["Rust", "Leptos", "WebAssembly", "Education"],
+    live: "https://nihongoyuk.web.id",
+    preview: "/previews/nihongoyuk.webp",
+  },
+  {
+    index: "18",
+    title: "Hitung Midterm",
+    year: "2026",
+    description:
+      "A live-count page for the 3 November 2026 US midterms, written for Indonesian readers. A Rust serverless function reads official state election-night feeds directly and shows who is ahead on the votes counted so far, with a timestamp per source, a warning when a feed goes stale, and no numbers at all when a feed fails. It makes no projections of its own and never shows national totals without naming their source.",
+    tags: ["Rust", "Vercel Functions", "Live Data"],
+    live: "https://hitung-midterm.vercel.app",
+    repo: "https://github.com/hyderoo/hitung-midterm",
+    preview: "/previews/hitung-midterm.webp",
+  },
+  {
+    index: "19",
+    title: "Letterboxd Stories",
+    year: "2026",
+    description:
+      "A beta web app that turns public Letterboxd diary entries into 9:16 story cards. Read-only RSS data, browser-saved preferences and PNG export. Profile favorites are used when accessible, with highest-rated recent watches clearly labelled as a fallback.",
+    tags: ["React", "TypeScript", "Vite", "Cloudflare Pages"],
+    live: "https://reelsandstories.web.id",
+    preview: "/previews/letterboxd.webp",
+  },
+  {
+    index: "20",
+    title: "Retry Lab",
+    year: "2026",
+    description:
+      "A transaction QA workbench with deliberately planted bugs: reproduce a failed transfer flow, inspect ledger evidence, then replay the same requests against a fixed implementation. A bounded, single-threaded simulation with synthetic data, not a real payment system.",
+    tags: ["Svelte", "TypeScript", "Vite", "Playwright"],
+  },
+  {
+    index: "21",
+    title: "authlog-triage",
+    year: "2026",
+    description:
+      "A read-only Python CLI for offline SSH authentication-log triage. Flags repeated failures, password spraying and suspicious successes with the triggering log lines and per-IP timelines. Findings are leads for human review, not proof of compromise.",
+    tags: ["Python", "Security", "CLI"],
+  },
+  {
+    index: "22",
+    title: "pukat",
+    year: "2026",
+    description:
+      "A config-driven Python scraping CLI that exports records to CSV, JSON or SQLite. Checks robots.txt, applies request limits and caching, respects Retry-After, and stops at access challenges rather than bypassing them.",
+    tags: ["Python", "CLI", "SQLite"],
+  },
+  {
+    index: "23",
+    title: "KarirLens",
+    year: "2026",
+    description:
+      "An Indonesian job-posting analytics project with ingestion, deduplication, skill extraction and a Next.js dashboard backed by FastAPI and PostgreSQL. Its figures describe collected postings, not the whole Indonesian job market. In development; no public demo linked.",
+    tags: ["Python", "FastAPI", "PostgreSQL", "Next.js"],
+  },
+  {
+    index: "24",
+    title: "Tangki Watch",
+    year: "2026",
+    description:
+      "A Dumai oil-tank detection pilot using free 10-metre Sentinel-2 imagery, classical computer vision in Python and an evaluation harness in Go. A small labelled-image study, not nationwide coverage or an oil-volume estimate.",
+    tags: ["Python", "Go", "Sentinel-2", "Computer Vision"],
+  },
+  {
+    index: "25",
+    title: "ArbiScope",
+    year: "2026",
+    description:
+      "A paper-mode crypto spread scanner with public Binance and Kraken order books, a simulated ledger and a Next.js dashboard. Separates observed spreads from cost estimates and blocks incomplete inputs. In development, not accepted for testnet or real-money trading.",
+    tags: ["Python", "Next.js", "TypeScript", "Paper Trading"],
+  },
+  {
+    index: "26",
+    title: "Capri Island",
+    year: "2026",
+    description:
+      "A Capri-themed dynamic island for Windows, after the Cyberpunk: Edgerunners character: a small liquid-glass bar with her eyes that expands into demo states for music, charging and timers. Written in Rust. Early prototype: it builds and passes CI, and the Windows app is still being verified on real hardware.",
+    tags: ["Rust", "Windows", "Desktop"],
+  },
+  {
+    index: "27",
+    title: "Downloadyuk",
+    year: "2026",
+    description:
+      "A paste-a-link video downloader with an Indonesian-first interface. X and Instagram links come down directly as MP4 video or M4A audio; YouTube links open a 360p stream in the browser to save by hand. Written in Rust and deliberately scoped to those platforms instead of claiming universal support.",
+    tags: ["Rust", "Downloader", "ID + EN"],
+    live: "https://downloadyuk.web.id",
+    preview: "/previews/downloadyuk.webp",
+  },
 ];
 
 
