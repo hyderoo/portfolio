@@ -377,6 +377,7 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
       { name: "Next.js & React", icon: "/icons/react.svg" },
       { name: "Python", icon: "/icons/python.svg" },
       { name: "Go", icon: "/icons/go.svg" },
+      { name: "Rust", icon: "/icons/rust.svg" },
       { name: "Flutter & Dart", icon: "/icons/flutter.svg" },
       { name: "Supabase", icon: "/icons/supabase.svg" },
       { name: "FastAPI & DuckDB", icon: "/icons/fastapi.svg" },
@@ -389,7 +390,7 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
   },
   {
     title: "Learning now",
-    skills: [{ name: "Rust", icon: "/icons/rust.svg" }, { name: "Solana & Anchor", icon: "/icons/solana.svg" }],
+    skills: [{ name: "Solana & Anchor", icon: "/icons/solana.svg" }],
   },
 ];
 
